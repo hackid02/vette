@@ -1,0 +1,349 @@
+"use client";
+
+import { useState, Suspense, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import Logo from "@/components/Logo";
+import VerdictBadge from "@/components/VerdictBadge";
+import ConnectWallet from "@/components/ConnectWallet";
+import RevokeButton from "@/components/RevokeButton";
+
+const LEVEL_STYLE = {
+  critical: { badge: "bg-danger/15 text-danger border-danger/40", label: "CRITICAL", bar: "#FF5A65" },
+  danger: { badge: "bg-danger/15 text-danger border-danger/40", label: "DANGER", bar: "#FF5A65" },
+  warning: { badge: "bg-warn/15 text-warn border-warn/40", label: "WARNING", bar: "#FFB020" },
+  info: { badge: "bg-[#1E241F] text-muted border-line", label: "INFO", bar: "#1E241F" },
+};
+
+const BASELINE_PREFIX = "vette.baseline.";
+const STREAK_KEY = "vette.streak";
+
+function todayISO() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function readBaseline(addr) {
+  try {
+    return JSON.parse(localStorage.getItem(BASELINE_PREFIX + addr.toLowerCase()));
+  } catch {
+    return null;
+  }
+}
+
+function writeBaseline(addr, list) {
+  const b = { savedAt: new Date().toISOString(), approvals: list.map((a) => ({ token: a.token, spender: a.spender })) };
+  localStorage.setItem(BASELINE_PREFIX + addr.toLowerCase(), JSON.stringify(b));
+  return b;
+}
+
+function updateStreak(setStreak) {
+  const today = todayISO();
+  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  const prev = localStorage.getItem(STREAK_KEY);
+  let n = 1;
+  if (prev) {
+    const [d, v] = prev.split("|");
+    if (d === today) n = Number(v); // already checked today
+    else if (d === yesterday) n = Number(v) + 1; // consecutive day
+    else n = 1; // broke the streak
+  }
+  localStorage.setItem(STREAK_KEY, `${today}|${n}`);
+  setStreak(n);
+}
+
+function diffAgainstBaseline(currentList, baseline) {
+  if (!baseline) return null;
+  const key = (a) => `${a.token}:${a.spender}`;
+  const baseSet = new Set(baseline.approvals.map(key));
+  const currentSet = new Set(currentList.map(key));
+  const added = currentList.filter((a) => !baseSet.has(key(a)));
+  const closed = baseline.approvals.filter((b) => !currentSet.has(key(b)));
+  return { added, closed, baseline };
+}
+
+function GuardInner() {
+  const sp = useSearchParams();
+  const [address, setAddress] = useState(sp.get("address") || "");
+  const [report, setReport] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState(null);
+  const [account, setAccount] = useState(null);
+  const [provider, setProvider] = useState(null);
+  const [baseline, setBaseline] = useState(null);
+  const [diff, setDiff] = useState(null);
+  const [streak, setStreak] = useState(0);
+
+  async function load(addr) {
+    setBusy(true);
+    setError(null);
+    setDiff(null);
+    try {
+      const res = await fetch("/api/gm", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ address: addr }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || data.detail || "Guard check failed");
+      setReport(data);
+      const b = readBaseline(addr);
+      setBaseline(b);
+      const d = diffAgainstBaseline(data.approvals.list, b);
+      setDiff(d);
+      updateStreak(setStreak);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (e) {
+      setError(String(e.message || e));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function saveBaseline() {
+    if (!report) return;
+    const b = writeBaseline(address, report.approvals.list);
+    setBaseline(b);
+    setDiff({ added: [], closed: [], baseline: b });
+  }
+
+  const isOwner = account && address && account.toLowerCase() === address.toLowerCase();
+  const shareUrl = address ? `/guard?address=${address}` : null;
+
+  return (
+    <main className="min-h-screen">
+      <nav className="max-w-4xl mx-auto px-6 flex items-center justify-between py-6">
+        <Link href="/"><Logo /></Link>
+        <div className="flex items-center gap-5">
+          <Link href="/audit" className="mono text-xs text-muted hover:text-vet transition-colors">audit</Link>
+          <Link href="/field" className="mono text-xs text-muted hover:text-vet transition-colors">field</Link>
+          <Link href="/" className="mono text-xs text-muted hover:text-vet transition-colors">← home</Link>
+        </div>
+      </nav>
+
+      <div className="max-w-3xl mx-auto px-6 pb-20">
+        <div className="overline mb-3">guard mode</div>
+        <h1 className="serif text-5xl sm:text-6xl font-light tracking-tight text-cream leading-none mb-3">
+          Your wallet, <em className="text-vet">watched.</em>
+        </h1>
+        <p className="text-muted text-sm leading-relaxed mb-8 max-w-xl">
+          The GM report every morning — balance, activity, open doors. Save a
+          baseline and every check tells you exactly what changed. New approvals
+          can't slip in unnoticed.
+        </p>
+
+        {/* input bar */}
+        <div className="panel p-5 mb-8 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
+          <div className="flex-1">
+            <label className="overline block mb-2">wallet on base</label>
+            <input
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="0x…"
+              className="w-full bg-[#0E0E15] border border-[#23232E] rounded-md px-4 py-3 text-sm mono outline-none focus:border-vet/60 placeholder:text-[#55555F]"
+            />
+          </div>
+          <div className="flex items-center gap-3 flex-wrap">
+            <button
+              disabled={busy || !/^0x[a-fA-F0-9]{40}$/.test(address.trim())}
+              onClick={() => load(address.trim())}
+              className="px-5 py-3 rounded-md bg-vet text-ink font-extrabold text-sm hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              {busy ? "RUNNING…" : "RUN CHECK →"}
+            </button>
+          </div>
+        </div>
+
+        {/* wallet bar */}
+        <div className="panel p-5 mb-8 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
+          <div className="flex flex-col gap-1">
+            <span className="overline">your wallet</span>
+            <span className="text-xs text-muted leading-snug">
+              Connect → guard your own wallet → dangerous approvals get the kill switch.
+            </span>
+          </div>
+          <div className="flex items-center gap-3 flex-wrap">
+            <ConnectWallet
+              account={account}
+              onConnect={({ account: acc, provider: p }) => {
+                setAccount(acc);
+                setProvider(p);
+                setAddress(acc);
+              }}
+              onDisconnect={() => {
+                setAccount(null);
+                setProvider(null);
+              }}
+            />
+            <button
+              disabled={busy || !account}
+              onClick={() => load(account)}
+              className="px-4 py-2.5 rounded-md bg-vet text-ink font-extrabold text-sm hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              GUARD MY WALLET →
+            </button>
+          </div>
+        </div>
+
+        {error && <div className="panel p-5 border-danger/40 text-danger text-sm mb-8">{error}</div>}
+
+        {busy && !report && (
+          <div className="panel p-12 text-center">
+            <div className="inline-block w-9 h-9 border-2 border-vet border-t-transparent rounded-full animate-spin mb-5" />
+            <p className="mono text-xs text-muted">reading Base → probing allowances → writing the GM report…</p>
+          </div>
+        )}
+
+        {report && (
+          <div className="space-y-6">
+            {/* GM report */}
+            <div className="paper panel p-7">
+              <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+                <div className="overline">gm report · {streak > 0 && `🔥 ${streak}-day streak`}</div>
+                <div className="mono text-[11px] text-muted">{new Date(report.ts).toLocaleString()}</div>
+              </div>
+              <div className="space-y-3 text-sm leading-relaxed text-soft">
+                {report.narrative.map((line, i) => (
+                  <p key={i} className={i === 0 ? "serif text-2xl text-cream font-light" : ""}>{line}</p>
+                ))}
+              </div>
+              <div className="mt-5 pt-5 border-t border-[#1E241F] grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {[
+                  ["Balance", report.balanceEth],
+                  ["Txs (7d)", report.activity.tx7d],
+                  ["Transfers (7d)", report.activity.transfers7d],
+                  ["Live approvals", report.approvals.total],
+                ].map(([k, v]) => (
+                  <div key={k}>
+                    <div className="text-xs text-muted mb-1">{k}</div>
+                    <div className="mono text-lg font-bold text-soft">{v}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* guard diff */}
+            <div className="panel p-6">
+              <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+                <div className="overline">guard baseline</div>
+                {baseline && (
+                  <span className="mono text-[11px] text-muted">saved {new Date(baseline.savedAt).toLocaleString()}</span>
+                )}
+              </div>
+
+              {diff && (
+                <div className="space-y-3 mb-5">
+                  {diff.added.length === 0 && diff.closed.length === 0 && (
+                    <p className="text-sm text-vet font-semibold">✓ No change since your baseline. Same doors, same locks.</p>
+                  )}
+                  {diff.added.length > 0 && (
+                    <div className="border border-danger/40 bg-danger/10 rounded-md p-4">
+                      <p className="text-danger font-extrabold text-sm mb-2">
+                        🚨 {diff.added.length} NEW approval(s) since your baseline:
+                      </p>
+                      <ul className="space-y-1.5">
+                        {diff.added.map((a, i) => (
+                          <li key={i} className="mono text-xs text-soft">
+                            {a.tokenSymbol || "token"} → {a.spenderName || a.spender.slice(0, 10) + "…"}
+                            <span className="text-danger"> — wasn&apos;t there before. Verify it or kill it.</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {diff.closed.length > 0 && (
+                    <div className="border border-vet/40 bg-vet/10 rounded-md p-4">
+                      <p className="text-vet font-extrabold text-sm mb-2">✓ {diff.closed.length} approval(s) closed since your baseline:</p>
+                      <ul className="space-y-1.5">
+                        {diff.closed.map((b, i) => (
+                          <li key={i} className="mono text-xs text-soft">
+                            {b.spender.slice(0, 10)}… — door closed.
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="flex items-center gap-3 flex-wrap">
+                <button
+                  onClick={saveBaseline}
+                  disabled={!report}
+                  className="px-4 py-2.5 rounded-md border border-vet/50 text-vet font-bold text-sm hover:bg-vet hover:text-ink transition-colors disabled:opacity-30"
+                >
+                  {baseline ? "RE-SAVE BASELINE" : "SAVE BASELINE"}
+                </button>
+                <button
+                  onClick={() => load(address)}
+                  disabled={busy}
+                  className="px-4 py-2.5 rounded-md bg-vet text-ink font-extrabold text-sm hover:opacity-90 transition-opacity disabled:opacity-30"
+                >
+                  {busy ? "CHECKING…" : "RUN GUARD CHECK →"}
+                </button>
+              </div>
+              <p className="text-[11px] text-muted mt-4 leading-snug">
+                Honest mechanics: guard checks run when you open this page — true 24/7 monitoring needs an
+                always-on backend, which is the next milestone. Until then, open Guard daily and the streak keeps score.
+                The baseline lives in <span className="mono">your browser</span>, nowhere else.
+              </p>
+            </div>
+
+            {/* approvals + kill switches */}
+            {report.approvals.list.length > 0 && (
+              <div>
+                <div className="overline mb-3">open doors — every one traces to a live onchain read</div>
+                <ol className="space-y-3">
+                  {report.approvals.list.map((a, i) => {
+                    const s = LEVEL_STYLE[a.level] || LEVEL_STYLE.info;
+                    return (
+                      <li key={i} className="panel p-5 border-l-2" style={{ borderLeftColor: s.bar }}>
+                        <div className="flex items-center gap-2.5 flex-wrap mb-2">
+                          <span className="mono text-xs text-[#3A3A47]">{String(i + 1).padStart(2, "0")}</span>
+                          <span className={`mono text-[10px] font-bold px-2 py-0.5 rounded border tracking-widest ${s.badge}`}>{s.label}</span>
+                          <span className="font-bold text-soft text-sm">{a.title}</span>
+                        </div>
+                        <p className="text-sm text-muted leading-relaxed mb-3 pl-6">{a.detail}</p>
+                        {a.action && (
+                          <div className="pl-6">
+                            <RevokeButton
+                              action={a.action}
+                              account={account}
+                              provider={provider}
+                              owner={report.address}
+                              onRevoked={() => load(address)}
+                            />
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
+            )}
+
+            {shareUrl && (
+              <p className="mono text-[11px] text-muted text-center">
+                share this report → <span className="text-vet">{shareUrl}</span>
+              </p>
+            )}
+          </div>
+        )}
+
+        {!report && !busy && !error && (
+          <div className="panel p-10 text-center text-muted text-sm">
+            <p className="mb-2">No report yet — connect your wallet, or paste any Base address above.</p>
+            <p className="mono text-xs text-muted">try the demo catch: 0x61e17391f084ad083FA5C199D4F0d350A4CF4282</p>
+          </div>
+        )}
+      </div>
+    </main>
+  );
+}
+
+export default function GuardPage() {
+  return (
+    <Suspense fallback={<div className="panel max-w-3xl mx-auto mt-24 p-10 text-center mono text-sm text-muted">loading guard…</div>}>
+      <GuardInner />
+    </Suspense>
+  );
+}

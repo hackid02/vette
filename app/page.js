@@ -44,6 +44,7 @@ export default async function Home() {
         <div className="flex items-center gap-7 text-sm text-muted">
           <Link href="/audit" className="hover:text-soft transition-colors">Audit</Link>
           <Link href="/field" className="hover:text-soft transition-colors">The Field</Link>
+          <Link href="/guard" className="hover:text-soft transition-colors">Guard</Link>
           <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">GitHub</a>
           <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">X</a>
           <Link href="/audit" className="px-4 py-2 rounded-md bg-vet text-ink font-extrabold hover:opacity-90 transition-opacity">
@@ -226,9 +227,9 @@ export default async function Home() {
               n: "02",
               icon: "🛡️",
               title: "GUARD",
-              status: "SHIPPING",
-              statusTone: "bg-warn/15 text-warn border-warn/40",
-              body: "Vette watches your wallet around the clock. A new approval, a sketchy spender, an unusual outflow — flagged in plain English with a severity score.",
+              status: "LIVE",
+              statusTone: "bg-vet/15 text-vet border-vet/40",
+              body: "Vette watches your wallet. The daily GM report greets you in plain English, and a saved baseline means new approvals can't slip in unnoticed — every guard check diffs the live chain against it.",
             },
             {
               n: "03",
@@ -302,6 +303,7 @@ export default async function Home() {
           <Logo size={22} />
           <p className="mono text-xs text-muted">Every claim traces to a tool call. Trust, but verified.</p>
           <div className="flex gap-6 text-sm text-muted">
+            <Link href="/guard" className="hover:text-vet transition-colors">Guard</Link>
             <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">X</a>
             <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">GitHub</a>
             <a href="https://discord.gg" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">Discord</a>

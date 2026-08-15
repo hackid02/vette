@@ -243,7 +243,11 @@ function AuditInner() {
     <main className="min-h-screen">
       <nav className="max-w-4xl mx-auto px-6 flex items-center justify-between py-6">
         <Link href="/"><Logo /></Link>
-        <Link href="/" className="mono text-xs text-muted hover:text-vet transition-colors">← home</Link>
+        <div className="flex items-center gap-5">
+          <Link href="/field" className="mono text-xs text-muted hover:text-vet transition-colors">field</Link>
+          <Link href="/guard" className="mono text-xs text-muted hover:text-vet transition-colors">guard</Link>
+          <Link href="/" className="mono text-xs text-muted hover:text-vet transition-colors">← home</Link>
+        </div>
       </nav>
 
       <div className="max-w-3xl mx-auto px-6 pb-20">

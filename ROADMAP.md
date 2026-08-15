@@ -20,17 +20,26 @@
   - Base chain auto-switch/add; receipt polling; tx link to Blockscout
   - only the owner can revoke (guard); auto re-audit after revoke
   - encoding verified onchain against the demo wallet's live spender (eth_call succeeds)
-- [ ] **GUARD**: live monitor + alert when a watched wallet gets a new approval
-- [ ] **GM Report**: morning digest page (reuses engine, cheap to build)
-- [ ] Demo video: 60–90s, script = audit → danger found → one-click kill → tx hash
+  - multi-wallet: EIP-6963 discovery + picker (fixed popup-storm bug + Trust Wallet guidance)
+- [x] **GUARD**: /guard page — GM report + baseline diff + streak (built, tested locally)
+  - /api/gm: morning digest — balance, 7d/30d activity, approval surface w/ risk levels, verdict line, kill actions
+  - baseline saved in the user's browser; every check diffs live chain vs baseline (new approvals red, closed green)
+  - daily streak counter; honest mechanics note (checks run on open; 24/7 backend is next milestone)
+- [x] **GM Report**: shipped inside Guard (the daily digest IS the GM report)
+- [ ] Demo video: 60–90s, script = audit → danger found → one-click kill → tx hash (script ready: DEMO_SCRIPT.md)
 
 ## Phase 3 — SHIP (Aug 24–26) · submission requirements
-- [ ] X account live (name/handle/bio — copy I'll write)
-- [ ] Discord or Telegram link live (free server — copy I'll write)
-- [ ] Website ✅ · GitHub ✅ · Demo link ✅ (the site IS the demo)
+- [x] Submission copy: name, description, category (risk), links (SUBMISSION.md)
+- [x] X copy: bio, pinned tweet, 5 launch posts, reply templates (CAMPAIGN.md)
+- [x] Discord/TG copy: server name, channels, welcome message (CAMPAIGN.md)
+- [x] Demo video script: 60–90s, 6-shot structure (DEMO_SCRIPT.md)
+- [x] GitHub repo content: README, MIT license, architecture diagram — committed locally (git)
+- [ ] X account live (user creates — copy ready)
+- [ ] Discord or Telegram link live (user creates — copy ready)
+- [ ] GitHub repo public (user: hackid02 — create empty repo `vette` + PAT for push)
+- [ ] Wire real social URLs into README/footer → redeploy
 - [ ] **SUBMIT** from the registered wallet (Oluwaseyifunmi)
 - [ ] Pay ignition fee (~$10 ETH)
-- [ ] Submission copy: name, description, category (safety/risk), links
 
 ## Phase 4 — WIN (Aug 26–Sep 2) · upvote campaign
 - [ ] Post the demo clip on X with the receipts angle ("Vette caught this wallet TODAY")
