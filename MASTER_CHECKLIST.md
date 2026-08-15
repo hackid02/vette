@@ -98,10 +98,12 @@
 |---|---|---|
 | 2.1 | **GUARD mode**: /guard page — GM report, baseline diff, streak, kill switches | ✅ live in production |
 | 2.2 | **GM Report**: /api/gm morning digest — balance, 7d/30d activity, approval surface, verdict line | ✅ live in production |
-| 2.3 | LLM narration upgrade (currently template-first) | ❌ nice-to-have |
+| 2.3 | **AUTONOMOUS AGENT**: daily 06:00 UTC cron re-checks the whole field on its own (/activity page, RUN NOW trigger, run log via GitHub API when PAT lands) | ✅ live in production |
+| 2.4 | LLM narration upgrade (currently template-first) | ❌ nice-to-have |
 
-> GUARD + GM are DONE. Only LLM narration remains, and it's purely optional —
-> the template narration is honest, fast, and key-free by design.
+> The agent now works alone: scheduled field re-checks, self-check page, on-demand
+> runs. The only autonomy upgrade left is the permanent run-log, which activates the
+> moment the GitHub repo + PAT exist (env vars GITHUB_PAT + GITHUB_REPO).
 
 ---
 
