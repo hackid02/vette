@@ -46,6 +46,7 @@ export default async function Home() {
           <Link href="/audit" className="hover:text-soft transition-colors">Audit</Link>
           <Link href="/field" className="hover:text-soft transition-colors">The Field</Link>
           <Link href="/guard" className="hover:text-soft transition-colors">Guard</Link>
+          <Link href="/activity" className="hover:text-soft transition-colors">Activity</Link>
           <a href="https://github.com/hackid02" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">GitHub</a>
           <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">X</a>
           <Link href="/audit" className="px-4 py-2 rounded-md bg-vet text-ink font-extrabold hover:opacity-90 transition-opacity">
@@ -359,6 +360,7 @@ export default async function Home() {
           <p className="mono text-xs text-muted">Every claim traces to a tool call. Trust, but verified.</p>
           <div className="flex gap-6 text-sm text-muted">
             <Link href="/guard" className="hover:text-vet transition-colors">Guard</Link>
+            <Link href="/activity" className="hover:text-vet transition-colors">Activity</Link>
             <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">X</a>
             <a href="https://github.com/hackid02" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">GitHub</a>
             <a href="https://discord.gg" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">Discord</a>
