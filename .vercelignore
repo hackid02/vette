@@ -1,0 +1,5 @@
+node_modules
+.next
+data/traces
+data/index.json
+.vercel

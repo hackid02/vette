@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+data/traces/
+data/index.json
+.env*
+!.env.example
+.DS_Store
+.vercel/
+.vercel

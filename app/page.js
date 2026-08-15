@@ -1,0 +1,314 @@
+import Link from "next/link";
+import Logo from "@/components/Logo";
+import VerdictBadge from "@/components/VerdictBadge";
+import HeroInput from "@/components/HeroInput";
+import { recentAudits } from "@/lib/trace";
+import { shortAddr } from "@/lib/providers";
+import demoData from "../data/demo.json";
+
+export const dynamic = "force-dynamic";
+
+function readDemo() {
+  return demoData || null;
+}
+
+function Flow({ children, label, tone = "neutral" }) {
+  const border = tone === "danger" ? "border-danger/40" : tone === "vet" ? "border-vet/40" : "border-[#1D1D26]";
+  return (
+    <div className={`panel border ${border} p-5 relative overflow-hidden`}>
+      <div className="overline mb-3">{label}</div>
+      {children}
+    </div>
+  );
+}
+
+function Arrow() {
+  return (
+    <div className="hidden lg:flex items-center justify-center text-[#33333F] font-black text-2xl select-none">
+      →
+    </div>
+  );
+}
+
+export default async function Home() {
+  const recent = recentAudits().slice(0, 3);
+  const demo = readDemo();
+  const top = demo?.targets?.find((t) => t.verdict === "DANGEROUS") || demo?.targets?.[0] || null;
+  const topFinding = demo?.topFinding || null;
+
+  return (
+    <main className="min-h-screen">
+      {/* NAV */}
+      <nav className="max-w-6xl mx-auto px-6 flex items-center justify-between py-6">
+        <Link href="/"><Logo /></Link>
+        <div className="flex items-center gap-7 text-sm text-muted">
+          <Link href="/audit" className="hover:text-soft transition-colors">Audit</Link>
+          <Link href="/field" className="hover:text-soft transition-colors">The Field</Link>
+          <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">GitHub</a>
+          <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">X</a>
+          <Link href="/audit" className="px-4 py-2 rounded-md bg-vet text-ink font-extrabold hover:opacity-90 transition-opacity">
+            Vet an agent
+          </Link>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <header className="relative hero-glow bg-grid border-b border-[#1D1D26]">
+        <div className="max-w-6xl mx-auto px-6 pt-16 pb-20 text-center">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1D1D26] bg-[#0E0E15] mb-8">
+            <span className="w-2 h-2 rounded-full bg-vet pulse-dot" />
+            <span className="mono text-[11px] tracking-[0.2em] text-muted">
+              LIVE ON BASE · ORION BUILDER HACKATHON ENTRY
+            </span>
+          </div>
+
+          <h1 className="serif text-[11vw] sm:text-8xl font-light tracking-tight leading-[1.02] text-cream">
+            VETTE is the agent<br />
+            <em className="text-vet">that vets</em> agents.
+          </h1>
+
+          <p className="max-w-2xl mx-auto mt-8 text-lg text-muted leading-relaxed">
+            Every AI agent makes promises. Vette checks the chain, delivers a verdict,
+            and kills the danger — <span className="text-soft font-semibold">one click</span>.
+            No vibes. No invention. Every claim traces to a real transaction.
+          </p>
+
+          <div className="flex justify-center mt-9">
+            <HeroInput />
+          </div>
+
+          <div className="mono text-xs text-muted mt-6 flex items-center justify-center gap-3 flex-wrap">
+            <span className="text-vet">✓ COMPLIANT</span>
+            <span className="text-[#33333F]">·</span>
+            <span className="text-warn">⚠ DEVIATED</span>
+            <span className="text-[#33333F]">·</span>
+            <span className="text-danger">🚨 DANGEROUS</span>
+            <span className="text-[#55555F]">— the three words an agent economy runs on</span>
+          </div>
+        </div>
+      </header>
+
+      {/* DEMO FLOW — the product working, Rigel-style */}
+      {top && (
+        <section className="max-w-6xl mx-auto px-6 -mt-0 py-14">
+          <div className="flex items-baseline justify-between mb-6">
+            <h2 className="text-2xl font-extrabold tracking-tight text-soft">The machine, mid-vet.</h2>
+            <span className="mono text-xs text-muted">target found on Base {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}</span>
+          </div>
+          <div className="grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 items-stretch">
+            <Flow label="01 · ENGINE">
+              <p className="mono text-3xl font-black text-soft">{top.score}/100</p>
+              <p className="text-sm text-muted mt-2 leading-relaxed">
+                Real reads only: balance, decoded transfers, approval events, live allowances, contract reputations.
+              </p>
+              <p className="mono text-xs text-muted mt-3">{shortAddr(top.address)}</p>
+            </Flow>
+            <Arrow />
+            <Flow label="02 · AGENT">
+              <p className="text-sm text-soft leading-relaxed">
+                {topFinding
+                  ? `Picked the scariest open door: ${topFinding.title.toLowerCase()}`
+                  : "Scans the surface, then decides what the first pass missed."}
+              </p>
+              <p className="mono text-xs text-muted mt-3">decides → looks → re-checks</p>
+            </Flow>
+            <Arrow />
+            <Flow label="03 · VERDICT" tone={top.verdict === "DANGEROUS" ? "danger" : top.verdict === "COMPLIANT" ? "vet" : "neutral"}>
+              <VerdictBadge verdict={top.verdict} size="lg" icon />
+              <p className="text-sm text-muted mt-3 leading-relaxed">
+                {top.verdict === "DANGEROUS"
+                  ? `${top.openApprovals} live approval(s) still open. A stranger's wallet, exposed right now.`
+                  : "Evidence, not opinion. Follow the trace."}
+              </p>
+              <p className="mono text-xs text-muted mt-3">every claim → a tx hash</p>
+            </Flow>
+            <Arrow />
+            <Flow label="04 · ACTION" tone="vet">
+              <p className="text-sm text-soft leading-relaxed">
+                Connect your wallet and the kill switch is <span className="font-bold text-vet">live</span>:
+                one click, one signature, the approval dies onchain. Vette doesn&apos;t warn — it <span className="font-bold text-vet">fixes</span>.
+              </p>
+              <Link href={`/audit?address=${top.address}`} className="inline-block mt-3 mono text-xs text-vet hover:underline">
+                re-run this audit live →
+              </Link>
+            </Flow>
+          </div>
+        </section>
+      )}
+
+      {/* CAUGHT LIVE */}
+      {demo?.targets && demo.targets.length > 0 && (
+        <section className="border-y border-[#1D1D26] bg-[#0D0D13]">
+          <div className="max-w-6xl mx-auto px-6 py-14">
+            <div className="flex items-baseline justify-between mb-7">
+              <h2 className="text-2xl font-extrabold tracking-tight text-soft">
+                Caught live on Base. <span className="serif italic font-normal text-muted">Real wallets, not actors.</span>
+              </h2>
+              <span className="mono text-xs text-muted hidden sm:block">mining real Approval events · {demo.foundAt ? new Date(demo.foundAt).toLocaleString() : ""}</span>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {demo.targets.map((t) => (
+                <Link
+                  key={t.address}
+                  href={`/audit?address=${t.address}`}
+                  className="panel p-5 hover:border-vet/40 transition-colors group"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <VerdictBadge verdict={t.verdict} icon />
+                    <span className="mono text-xl font-black text-soft">{t.score}/100</span>
+                  </div>
+                  <p className="mono text-sm text-soft">{shortAddr(t.address)}</p>
+                  <p className="text-xs text-muted mt-2 leading-relaxed">
+                    {t.verdict === "DANGEROUS"
+                      ? `${t.openApprovals} live approval(s) to unverified spenders`
+                      : `${t.openApprovals} open approval(s)`}
+                  </p>
+                  <p className="mono text-[11px] text-muted mt-3 group-hover:text-vet transition-colors">open the report →</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* THE FIELD */}
+      <section className="border-b border-[#1E241F]">
+        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
+          <div>
+            <div className="overline mb-3">the field</div>
+            <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
+              Every entry in this contest.
+              <em className="text-vet"> Under Vette.</em>
+            </h2>
+            <p className="text-muted leading-relaxed text-sm mt-5 max-w-xl">
+              The contest itself publishes every entry's registered wallet, words, and links.
+              Vette takes each one — the builder's own promises, their registered wallet, their
+              website — and rules on whether behavior matches the mandate. One page. The whole
+              field. Same lens the judges use.
+            </p>
+          </div>
+          <Link
+            href="/field"
+            className="panel p-8 hover:border-vet/50 transition-colors group flex flex-col gap-4"
+          >
+            <div className="flex items-center justify-between">
+              <span className="mono text-xs text-muted">live from the Orion API</span>
+              <span className="mono text-xs px-2.5 py-1 rounded border border-vet/40 text-vet">LIVE</span>
+            </div>
+            <p className="serif text-3xl font-light text-soft leading-snug">
+              BaseScout. Rigel.<br />
+              <em className="text-vet">And yours, when you submit.</em>
+            </p>
+            <p className="mono text-xs text-muted group-hover:text-vet transition-colors mt-auto">
+              open The Field →
+            </p>
+          </Link>
+        </div>
+      </section>
+
+      {/* THREE MOVES */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="overline mb-3">the moves</div>
+        <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-soft mb-10">
+          Watch. <span className="serif italic font-normal text-muted">Then act.</span>
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            {
+              n: "01",
+              icon: "🕵️",
+              title: "AUDIT",
+              status: "LIVE",
+              statusTone: "bg-vet/15 text-vet border-vet/40",
+              body: "Give Vette any agent — website, X, or wallet. It extracts the agent's own promises, pulls the real onchain history, and rules on whether behavior matches the mandate.",
+            },
+            {
+              n: "02",
+              icon: "🛡️",
+              title: "GUARD",
+              status: "SHIPPING",
+              statusTone: "bg-warn/15 text-warn border-warn/40",
+              body: "Vette watches your wallet around the clock. A new approval, a sketchy spender, an unusual outflow — flagged in plain English with a severity score.",
+            },
+            {
+              n: "03",
+              icon: "⚡",
+              title: "KILL",
+              status: "LIVE",
+              statusTone: "bg-vet/15 text-vet border-vet/40",
+              body: "One click, one signature, and a dangerous approval is revoked live on Base — preflight-simulated first, so you never sign a failing tx. Every other entry describes problems. Vette ends them.",
+            },
+          ].map((m) => (
+            <div key={m.n} className="panel p-7 flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <span className="mono text-4xl font-black text-[#23232E]">{m.n}</span>
+                <span className={`mono text-[10px] font-bold px-2.5 py-1 rounded-full border tracking-widest ${m.statusTone}`}>
+                  {m.status}
+                </span>
+              </div>
+              <h3 className="text-2xl font-extrabold tracking-tight text-soft">{m.title} <span className="text-lg">{m.icon}</span></h3>
+              <p className="text-sm text-muted leading-relaxed">{m.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ENGINE / RECEIPT */}
+      <section className="border-t border-[#1D1D26]">
+        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[1fr_1.4fr] gap-12">
+          <div>
+            <div className="overline mb-3">the engine</div>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-soft leading-tight">
+              It doesn&apos;t vibe-check.
+              <br />
+              <span className="serif italic font-normal text-muted">It checks.</span>
+            </h2>
+            <p className="text-muted mt-5 leading-relaxed text-sm">
+              The deterministic engine runs first and decides what is true. The model only
+              chooses where to look — and every sentence it writes cites a step you can open.
+              This is the receipt. Nothing on this page is an opinion that cannot be followed
+              back to a tool call.
+            </p>
+            {recent.length > 0 && (
+              <Link href={`/trace/${recent[0].id}`} className="inline-block mt-6 px-5 py-3 rounded-md border border-vet/40 text-vet font-bold hover:bg-vet hover:text-ink transition-colors">
+                Open a live trace →
+              </Link>
+            )}
+          </div>
+          <ol className="space-y-0">
+            {[
+              ["fetch_website()", "liveness · socials · published addresses · the agent's own words"],
+              ["rpc_balance() / rpc_code()", "ETH balance, is it a contract, Base mainnet"],
+              ["explorer_transactions()", "decoded history — what it actually did"],
+              ["rpc_allowance()", "live allowances probed onchain, right now"],
+              ["rule_engine()", "mandate-vs-behavior + wallet-safety heuristics"],
+              ["narrate() → verdict", "plain English, every sentence citing the steps above"],
+            ].map(([fn, desc], i) => (
+              <li key={fn} className="flex gap-5 py-4 hairline last:border-b-0">
+                <span className="mono text-xs text-[#3A3A47] w-6 shrink-0 pt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <div className="mono text-sm text-vet">{fn}</div>
+                  <div className="text-xs text-muted mt-1">{desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-[#1D1D26]">
+        <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <Logo size={22} />
+          <p className="mono text-xs text-muted">Every claim traces to a tool call. Trust, but verified.</p>
+          <div className="flex gap-6 text-sm text-muted">
+            <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">X</a>
+            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">GitHub</a>
+            <a href="https://discord.gg" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">Discord</a>
+            <Link href="/audit" className="hover:text-vet transition-colors">Audit</Link>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
+}
