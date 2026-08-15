@@ -77,11 +77,14 @@ function GuardInner() {
     setBusy(true);
     setError(null);
     setDiff(null);
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 90000);
     try {
       const res = await fetch("/api/gm", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ address: addr }),
+        signal: ctrl.signal,
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || data.detail || "Guard check failed");
@@ -93,8 +96,13 @@ function GuardInner() {
       updateStreak(setStreak);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (e) {
-      setError(String(e.message || e));
+      setError(
+        e.name === "AbortError"
+          ? "The check timed out after 90s — Base RPCs are slow right now. Try again in a moment."
+          : String(e.message || e)
+      );
     } finally {
+      clearTimeout(t);
       setBusy(false);
     }
   }
@@ -342,7 +350,20 @@ function GuardInner() {
 
 export default function GuardPage() {
   return (
-    <Suspense fallback={<div className="panel max-w-3xl mx-auto mt-24 p-10 text-center mono text-sm text-muted">loading guard…</div>}>
+    <Suspense fallback={
+      <main className="min-h-screen">
+        <div className="max-w-3xl mx-auto px-6 py-10">
+          <div className="flex items-center gap-3 mb-10">
+            <Logo size={24} />
+            <span className="overline">guard mode</span>
+          </div>
+          <div className="panel p-10 flex flex-col items-center gap-4">
+            <div className="w-8 h-8 border-2 border-vet border-t-transparent rounded-full animate-spin" />
+            <p className="mono text-xs text-muted">loading guard…</p>
+          </div>
+        </div>
+      </main>
+    }>
       <GuardInner />
     </Suspense>
   );

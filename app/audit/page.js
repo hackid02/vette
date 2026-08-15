@@ -214,19 +214,27 @@ function AuditInner() {
     setBusy(true);
     setError(null);
     setResult(null);
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 90000);
     try {
       const res = await fetch("/api/audit", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(body),
+        signal: ctrl.signal,
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || data.detail || "Audit failed");
       setResult(data);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (e) {
-      setError(String(e.message || e));
+      setError(
+        e.name === "AbortError"
+          ? "The audit timed out after 90s — Base RPCs are slow right now. Try again in a moment."
+          : String(e.message || e)
+      );
     } finally {
+      clearTimeout(t);
       setBusy(false);
     }
   }
@@ -384,7 +392,20 @@ function AuditInner() {
 
 export default function AuditPage() {
   return (
-    <Suspense fallback={<div className="panel max-w-3xl mx-auto mt-24 p-10 text-center mono text-sm text-muted">loading console…</div>}>
+    <Suspense fallback={
+      <main className="min-h-screen">
+        <div className="max-w-3xl mx-auto px-6 py-10">
+          <div className="flex items-center gap-3 mb-10">
+            <Logo size={24} />
+            <span className="overline">audit console</span>
+          </div>
+          <div className="panel p-10 flex flex-col items-center gap-4">
+            <div className="w-8 h-8 border-2 border-vet border-t-transparent rounded-full animate-spin" />
+            <p className="mono text-xs text-muted">loading the console…</p>
+          </div>
+        </div>
+      </main>
+    }>
       <AuditInner />
     </Suspense>
   );

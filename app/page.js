@@ -46,7 +46,7 @@ export default async function Home() {
           <Link href="/audit" className="hover:text-soft transition-colors">Audit</Link>
           <Link href="/field" className="hover:text-soft transition-colors">The Field</Link>
           <Link href="/guard" className="hover:text-soft transition-colors">Guard</Link>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">GitHub</a>
+          <a href="https://github.com/hackid02" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">GitHub</a>
           <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">X</a>
           <Link href="/audit" className="px-4 py-2 rounded-md bg-vet text-ink font-extrabold hover:opacity-90 transition-opacity">
             Vet an agent
@@ -85,7 +85,7 @@ export default async function Home() {
             <span className="text-warn">⚠ DEVIATED</span>
             <span className="text-[#33333F]">·</span>
             <span className="text-danger">🚨 DANGEROUS</span>
-            <span className="text-[#55555F]">— the three words an agent economy runs on</span>
+            <span className="text-[#55555F]">— and the honest fourth: UNVERIFIABLE. The words an agent economy runs on</span>
           </div>
         </div>
       </header>
@@ -95,7 +95,7 @@ export default async function Home() {
         <section className="max-w-6xl mx-auto px-6 -mt-0 py-14">
           <div className="flex items-baseline justify-between mb-6">
             <h2 className="text-2xl font-extrabold tracking-tight text-soft">The machine, mid-vet.</h2>
-            <span className="mono text-xs text-muted">target found on Base {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}</span>
+            <span className="mono text-xs text-muted">captured on Base {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""} — re-run any of these live below</span>
           </div>
           <div className="grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 items-stretch">
             <Flow label="01 · ENGINE">
@@ -144,9 +144,9 @@ export default async function Home() {
           <div className="max-w-6xl mx-auto px-6 py-14">
             <div className="flex items-baseline justify-between mb-7">
               <h2 className="text-2xl font-extrabold tracking-tight text-soft">
-                Caught live on Base. <span className="serif italic font-normal text-muted">Real wallets, not actors.</span>
+                Caught on Base. <span className="serif italic font-normal text-muted">Real wallets, not actors — captured {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}, re-auditable live.</span>
               </h2>
-              <span className="mono text-xs text-muted hidden sm:block">mining real Approval events · {demo.foundAt ? new Date(demo.foundAt).toLocaleString() : ""}</span>
+              <span className="mono text-xs text-muted hidden sm:block">mined from real Approval events · captured {demo.foundAt ? new Date(demo.foundAt).toLocaleString() : ""}</span>
             </div>
             <div className="grid sm:grid-cols-3 gap-4">
               {demo.targets.map((t) => (
@@ -360,7 +360,7 @@ export default async function Home() {
           <div className="flex gap-6 text-sm text-muted">
             <Link href="/guard" className="hover:text-vet transition-colors">Guard</Link>
             <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">X</a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">GitHub</a>
+            <a href="https://github.com/hackid02" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">GitHub</a>
             <a href="https://discord.gg" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">Discord</a>
             <Link href="/audit" className="hover:text-vet transition-colors">Audit</Link>
           </div>
