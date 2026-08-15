@@ -140,21 +140,19 @@ function GuardInner() {
         </p>
 
         {/* input bar */}
-        <div className="panel p-5 mb-8 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
-          <div className="flex-1">
-            <label className="overline block mb-2">wallet on base</label>
+        <div className="panel p-5 mb-8">
+          <label className="overline block mb-3">wallet on base</label>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <input
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="0x…"
-              className="w-full bg-[#0E0E15] border border-[#23232E] rounded-md px-4 py-3 text-sm mono outline-none focus:border-vet/60 placeholder:text-[#55555F]"
+              className="flex-1 w-full bg-[#0E0E15] border border-[#23232E] rounded-md px-4 py-3 text-sm mono outline-none focus:border-vet/60 placeholder:text-[#55555F]"
             />
-          </div>
-          <div className="flex items-center gap-3 flex-wrap">
             <button
               disabled={busy || !/^0x[a-fA-F0-9]{40}$/.test(address.trim())}
               onClick={() => load(address.trim())}
-              className="px-5 py-3 rounded-md bg-vet text-ink font-extrabold text-sm hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-full sm:w-auto shrink-0 px-5 py-3 rounded-md bg-vet text-ink font-extrabold text-sm hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
             >
               {busy ? "RUNNING…" : "RUN CHECK →"}
             </button>
@@ -169,7 +167,7 @@ function GuardInner() {
               Connect → guard your own wallet → dangerous approvals get the kill switch.
             </span>
           </div>
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-start gap-3 flex-wrap">
             <ConnectWallet
               account={account}
               onConnect={({ account: acc, provider: p }) => {

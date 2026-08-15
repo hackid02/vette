@@ -281,7 +281,7 @@ function AuditInner() {
               One click, one signature, threat dead.
             </span>
           </div>
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-start gap-3 flex-wrap">
             <ConnectWallet
               account={account}
               onConnect={({ account: acc, provider: p }) => {
