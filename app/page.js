@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import VerdictBadge from "@/components/VerdictBadge";
-import HeroInput from "@/components/HeroInput";
+import HeroVet from "@/components/HeroVet";
 import { recentAudits } from "@/lib/trace";
 import { shortAddr } from "@/lib/providers";
 import demoData from "../data/demo.json";
+import catchesData from "../data/catches.json";
 
 export const dynamic = "force-dynamic";
 
@@ -75,7 +76,7 @@ export default async function Home() {
           </p>
 
           <div className="flex justify-center mt-9">
-            <HeroInput />
+            <HeroVet />
           </div>
 
           <div className="mono text-xs text-muted mt-6 flex items-center justify-center gap-3 flex-wrap">
@@ -171,6 +172,60 @@ export default async function Home() {
           </div>
         </section>
       )}
+
+      {/* THE CATCH — the story, not the feature list */}
+      <section className="border-b border-[#1E241F]">
+        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[1fr_1.3fr] gap-10 items-start">
+          <div>
+            <div className="overline mb-3">the catch</div>
+            <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
+              Vette audited a top entry
+              <em className="text-vet"> in this contest.</em>
+            </h2>
+            <p className="text-muted leading-relaxed text-sm mt-5">
+              We gave Vette {catchesData.entry}&apos;s website. It pulled the address the agent
+              publishes as its wallet, checked it against Base, and the deterministic engine
+              returned a finding no human had flagged: the &quot;wallet&quot; is a token contract.
+              Every check behind it is in the public receipt.
+            </p>
+            <a
+              href={catchesData.website}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block mt-5 mono text-xs text-vet hover:underline"
+            >
+              re-run this audit yourself — paste the site in the hero ↑
+            </a>
+          </div>
+          <div className="paper panel p-7">
+            <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+              <span className="overline">vette report — {catchesData.entry}</span>
+              <span className="mono text-[11px] text-muted">{new Date(catchesData.caughtAt).toLocaleDateString()}</span>
+            </div>
+            <div className="flex items-center gap-3 flex-wrap mb-5">
+              <VerdictBadge verdict={catchesData.verdict} icon size="lg" />
+              <span className="mono text-3xl font-black text-soft">
+                {catchesData.score}
+                <span className="text-muted text-base">/100</span>
+              </span>
+            </div>
+            <div className="border border-[#1E241F] bg-[#0E0E15] rounded-md p-4 border-l-2" style={{ borderLeftColor: "#FFB020" }}>
+              <span className="mono text-[9px] font-bold px-2 py-0.5 rounded border tracking-widest bg-warn/15 text-warn border-warn/40">WARNING</span>
+              <p className="text-sm font-bold text-soft mt-2">{catchesData.findingTitle}</p>
+              <p className="text-sm text-muted leading-relaxed mt-2">{catchesData.findingDetail}</p>
+              <a
+                href={`https://base.blockscout.com/address/${catchesData.evidenceValue}`}
+                target="_blank"
+                rel="noreferrer"
+                className="mono text-[11px] text-vet hover:underline mt-3 inline-block"
+              >
+                ⟶ evidence: {catchesData.evidenceValue.slice(0, 14)}… on Blockscout
+              </a>
+            </div>
+            <p className="mono text-[11px] text-muted mt-4 leading-relaxed">{catchesData.note}</p>
+          </div>
+        </div>
+      </section>
 
       {/* THE FIELD */}
       <section className="border-b border-[#1E241F]">
@@ -309,6 +364,10 @@ export default async function Home() {
             <a href="https://discord.gg" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">Discord</a>
             <Link href="/audit" className="hover:text-vet transition-colors">Audit</Link>
           </div>
+        </div>
+        <div className="max-w-6xl mx-auto px-6 pb-6 mono text-[10px] text-[#55555F] leading-relaxed">
+          Vette is a security tool for the Base network. It never holds keys or custody — you sign every
+          transaction in your own wallet. Verdicts are evidence-based, not financial advice.
         </div>
       </footer>
     </main>

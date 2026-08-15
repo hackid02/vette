@@ -7,6 +7,7 @@ import Logo from "@/components/Logo";
 import VerdictBadge from "@/components/VerdictBadge";
 import ConnectWallet from "@/components/ConnectWallet";
 import RevokeButton from "@/components/RevokeButton";
+import ShareCard from "@/components/ShareCard";
 
 const LEVEL_STYLE = {
   critical: { badge: "bg-danger/15 text-danger border-danger/40", label: "CRITICAL" },
@@ -46,6 +47,9 @@ function Report({ a, account, provider, onRevoked }) {
             <VerdictBadge verdict={a.verdict} size="lg" icon />
             <p className="mono text-xs text-muted mt-4 break-all">{a.target}</p>
             <p className="mono text-[11px] text-muted mt-1">{new Date(a.ts).toLocaleString()}</p>
+            <div className="mt-4">
+              <ShareCard verdict={a.verdict} score={a.score} target={a.target} />
+            </div>
           </div>
           {a.score != null && (
             <div className="text-right">
@@ -187,9 +191,9 @@ function Report({ a, account, provider, onRevoked }) {
         <a href="#receipt" className="px-6 py-3.5 rounded-md bg-vet text-ink font-extrabold hover:opacity-90 transition-opacity">
           See the receipt ↓
         </a>
-        <Link href={`/trace/${a.traceId}`} className="mono text-xs text-muted hover:text-vet transition-colors">
-          standalone trace page →
-        </Link>
+        <span className="mono text-[11px] text-muted">
+          the receipt below is the canonical one — rendered from this very audit
+        </span>
       </div>
     </div>
   );

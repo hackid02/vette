@@ -96,12 +96,12 @@
 
 | # | Item | Status |
 |---|---|---|
-| 2.1 | **GUARD mode**: live watch + alert on new approvals | ❌ not built |
-| 2.2 | **GM Report**: daily morning digest for your wallet | ❌ not built |
+| 2.1 | **GUARD mode**: /guard page — GM report, baseline diff, streak, kill switches | ✅ live in production |
+| 2.2 | **GM Report**: /api/gm morning digest — balance, 7d/30d activity, approval surface, verdict line | ✅ live in production |
 | 2.3 | LLM narration upgrade (currently template-first) | ❌ nice-to-have |
 
-> These are NOT blockers. The product already works end-to-end without them.
-> Build after submission if time allows — the site is live and easy to update.
+> GUARD + GM are DONE. Only LLM narration remains, and it's purely optional —
+> the template narration is honest, fast, and key-free by design.
 
 ---
 
