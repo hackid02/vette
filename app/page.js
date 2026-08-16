@@ -91,11 +91,17 @@ export default async function Home() {
 
       {/* DEMO FLOW — the product working, Rigel-style */}
       {top && (
-        <section className="max-w-6xl mx-auto px-6 -mt-0 py-14">
-          <div className="flex items-baseline justify-between mb-6">
-            <h2 className="text-2xl font-extrabold tracking-tight text-soft">The machine, mid-vet.</h2>
-            <span className="mono text-xs text-muted">re-verified on Base {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""} — the chain moves, verdicts follow</span>
+        <section className="max-w-6xl mx-auto px-6 py-14">
+          <div className="overline mb-3">
+            live run · re-verified on Base {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}
           </div>
+          <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight mb-3">
+            The machine, <em className="text-vet">mid-vet.</em>
+          </h2>
+          <p className="text-sm text-muted leading-relaxed mb-8">
+            One real wallet, run through the engine today. The chain moves — click any card
+            below to see the live numbers.
+          </p>
           <div className="grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 items-stretch">
             <Flow label="01 · ENGINE">
               <p className="mono text-3xl font-black text-soft">{top.score}/100</p>
@@ -140,47 +146,50 @@ export default async function Home() {
       {/* CAUGHT LIVE */}
       {demo?.targets && demo.targets.length > 0 && (
         <section className="border-y border-[#1D1D26] bg-[#0D0D13]">
-          <div className="max-w-6xl mx-auto px-6 py-14">
-            <div className="flex items-baseline justify-between mb-7">
-              <h2 className="text-2xl font-extrabold tracking-tight text-soft">
-                Caught on Base. <span className="serif italic font-normal text-muted">Real wallets, not actors — re-auditable live.</span>
-              </h2>
-              <span className="mono text-xs text-muted hidden sm:block">
-                {demo.note ? demo.note.slice(0, 80) : `captured ${demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}`}
-              </span>
-            </div>
-            <div
-              className={`grid gap-4 ${
-                demo.targets.length === 2
-                  ? "sm:grid-cols-2 sm:max-w-4xl mx-auto"
-                  : demo.targets.length === 1
-                  ? "sm:max-w-md mx-auto"
-                  : "sm:grid-cols-3"
-              }`}
-            >
+          <div className="max-w-4xl mx-auto px-6 py-16">
+            <div className="overline mb-3">caught on base</div>
+            <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight mb-4">
+              Real wallets. <em className="text-vet">Not actors.</em>
+            </h2>
+            <p className="text-sm text-muted leading-relaxed mb-10">
+              Mined from real Approval events, re-verified on Base{" "}
+              {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}.
+              The chain keeps moving — open any card for today&apos;s live audit.
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-2">
               {demo.targets.map((t) => (
                 <Link
                   key={t.address}
                   href={`/audit?address=${t.address}`}
-                  className="panel p-5 hover:border-vet/40 transition-colors group"
+                  className="panel p-6 hover:border-vet/40 transition-colors group flex flex-col gap-5"
                 >
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between">
                     <VerdictBadge verdict={t.verdict} icon />
-                    <span className="mono text-xl font-black text-soft">{t.score}/100</span>
+                    <span className="mono text-2xl font-black text-soft">
+                      {t.score}
+                      <span className="text-muted text-sm font-normal">/100</span>
+                    </span>
                   </div>
-                  <p className="mono text-sm text-soft">{shortAddr(t.address)}</p>
-                  <p className="text-xs text-muted mt-2 leading-relaxed">
-                    {t.verdict === "DANGEROUS"
-                      ? `${t.openApprovals} live approval(s) — open the report for each door`
-                      : `${t.openApprovals} open approval(s)`}
-                  </p>
-                  <p className="mono text-[11px] text-muted mt-3 group-hover:text-vet transition-colors">open the report →</p>
+
+                  <div>
+                    <p className="mono text-sm text-soft">{shortAddr(t.address)}</p>
+                    <p className="text-xs text-muted mt-1.5 leading-relaxed">
+                      {t.verdict === "DANGEROUS"
+                        ? `${t.openApprovals} live approval(s) — each one a door.`
+                        : `${t.openApprovals} open approval(s).`}
+                    </p>
+                  </div>
+
+                  <div className="mt-auto pt-4 border-t border-[#1E241F] flex items-center justify-between">
+                    <span className="mono text-[11px] text-muted group-hover:text-vet transition-colors">
+                      open the report
+                    </span>
+                    <span className="mono text-[11px] text-vet">→</span>
+                  </div>
                 </Link>
               ))}
             </div>
-            <p className="mono text-[11px] text-muted text-center mt-4">
-              numbers re-verified {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""} — click any card to see today&apos;s live audit
-            </p>
           </div>
         </section>
       )}
