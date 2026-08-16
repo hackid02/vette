@@ -14,8 +14,9 @@ Live at **https://vette-nu.vercel.app**
    Base, and rules on whether behavior matches the promise:
    `COMPLIANT` / `DEVIATED` / `DANGEROUS` / `UNVERIFIABLE` — with a score and a
    public trace of every check behind every claim.
-2. **GUARD** 🛡️ — watches a wallet's approval surface and flags what's dangerous.
-   *(The Field ships first; live monitoring + GM Report are the next milestones.)*
+2. **GUARD** 🛡️ — the daily GM report: balance, activity, and approval surface
+   in plain English, plus a saved baseline that diffs the live chain. New
+   approvals can't slip in unnoticed.
 3. **KILL** ⚡ — connect your wallet, and every dangerous approval becomes a
    one-click revoke: `approve(spender, 0)` signed in your own wallet, confirmed
    live on Base, with the tx hash on screen. Vette doesn't just warn — it acts.
@@ -91,9 +92,10 @@ leaders: the keyless risk engine always runs.
 
 - [x] Registered wallet
 - [x] Website + demo (this app)
-- [x] X profile
-- [x] Discord link
-- [ ] GitHub repo (this one)
+- [x] GitHub repo — github.com/hackid02/vette
+- [x] Autonomous run-log (writes data/agent-log.json here via the GitHub API)
+- [ ] X profile
+- [ ] Discord link
 - [ ] Ignition fee at submission (~$10 ETH)
 - [ ] Submit before Sept 2, 23:59 UTC
 

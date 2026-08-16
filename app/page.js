@@ -45,7 +45,7 @@ export default async function Home() {
           <Link href="/field" className="hover:text-soft transition-colors">The Field</Link>
           <Link href="/guard" className="hover:text-soft transition-colors">Guard</Link>
           <Link href="/activity" className="hover:text-soft transition-colors">Activity</Link>
-          <a href="https://github.com/hackid02" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">GitHub</a>
+          <a href="https://github.com/hackid02/vette" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">GitHub</a>
           <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">X</a>
           <Link href="/audit" className="px-4 py-2 rounded-md bg-vet text-ink font-extrabold hover:opacity-90 transition-opacity">
             Vet an agent
@@ -385,7 +385,7 @@ export default async function Home() {
             <Link href="/guard" className="hover:text-vet transition-colors">Guard</Link>
             <Link href="/activity" className="hover:text-vet transition-colors">Activity</Link>
             <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">X</a>
-            <a href="https://github.com/hackid02" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">GitHub</a>
+            <a href="https://github.com/hackid02/vette" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">GitHub</a>
             <a href="https://discord.gg" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">Discord</a>
             <Link href="/audit" className="hover:text-vet transition-colors">Audit</Link>
           </div>
