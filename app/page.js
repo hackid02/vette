@@ -94,7 +94,7 @@ export default async function Home() {
         <section className="max-w-6xl mx-auto px-6 -mt-0 py-14">
           <div className="flex items-baseline justify-between mb-6">
             <h2 className="text-2xl font-extrabold tracking-tight text-soft">The machine, mid-vet.</h2>
-            <span className="mono text-xs text-muted">captured on Base {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""} — re-run any of these live below</span>
+            <span className="mono text-xs text-muted">re-verified on Base {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""} — the chain moves, verdicts follow</span>
           </div>
           <div className="grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 items-stretch">
             <Flow label="01 · ENGINE">
@@ -143,11 +143,21 @@ export default async function Home() {
           <div className="max-w-6xl mx-auto px-6 py-14">
             <div className="flex items-baseline justify-between mb-7">
               <h2 className="text-2xl font-extrabold tracking-tight text-soft">
-                Caught on Base. <span className="serif italic font-normal text-muted">Real wallets, not actors — captured {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}, re-auditable live.</span>
+                Caught on Base. <span className="serif italic font-normal text-muted">Real wallets, not actors — re-auditable live.</span>
               </h2>
-              <span className="mono text-xs text-muted hidden sm:block">mined from real Approval events · captured {demo.foundAt ? new Date(demo.foundAt).toLocaleString() : ""}</span>
+              <span className="mono text-xs text-muted hidden sm:block">
+                {demo.note ? demo.note.slice(0, 80) : `captured ${demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}`}
+              </span>
             </div>
-            <div className="grid sm:grid-cols-3 gap-4">
+            <div
+              className={`grid gap-4 ${
+                demo.targets.length === 2
+                  ? "sm:grid-cols-2 sm:max-w-4xl mx-auto"
+                  : demo.targets.length === 1
+                  ? "sm:max-w-md mx-auto"
+                  : "sm:grid-cols-3"
+              }`}
+            >
               {demo.targets.map((t) => (
                 <Link
                   key={t.address}
@@ -161,13 +171,16 @@ export default async function Home() {
                   <p className="mono text-sm text-soft">{shortAddr(t.address)}</p>
                   <p className="text-xs text-muted mt-2 leading-relaxed">
                     {t.verdict === "DANGEROUS"
-                      ? `${t.openApprovals} live approval(s) to unverified spenders`
+                      ? `${t.openApprovals} live approval(s) — open the report for each door`
                       : `${t.openApprovals} open approval(s)`}
                   </p>
                   <p className="mono text-[11px] text-muted mt-3 group-hover:text-vet transition-colors">open the report →</p>
                 </Link>
               ))}
             </div>
+            <p className="mono text-[11px] text-muted text-center mt-4">
+              numbers re-verified {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""} — click any card to see today&apos;s live audit
+            </p>
           </div>
         </section>
       )}

@@ -1,19 +1,19 @@
 {
- "foundAt": "2026-08-14T22:12:05.525Z",
- "note": "Demo targets: real Base wallets with live approvals, captured 2026-08-14. Re-audit any of them live from the cards below \u2014 the chain moves, verdicts follow.",
+ "foundAt": "2026-08-16T00:00:00.000Z",
+ "note": "Found 2026-08-14, re-verified 2026-08-16. Real wallets, live chain \u2014 re-audit any card to see today's numbers.",
  "topFinding": {
-  "title": "Allowance open to unverified contract (0x7c1b\u2026fdc9)",
-  "detail": "115,792,089,237,316,195,423,570,985,008,687,907,853,269,984,665,640,564,039,457.58 tokens approved to 0x7c1bfb0a20b729c60e772ba3eba9ab7091b7fdc9, an unverified contract with no public source code. If it is ever compromised, it can move those funds with no further signature from you."
+  "title": "4 live approvals \u2014 unverified spenders",
+  "detail": "The rule engine picked the scariest open door: allowances live on this wallet, probed onchain, right now."
  },
  "targets": [
   {
-   "address": "0x61e17391f084ad083fa5c199d4f0d350a4cf4282",
+   "address": "0x61e17391f084ad083FA5C199D4F0d350A4CF4282",
    "verdict": "DANGEROUS",
-   "score": 44,
-   "openApprovals": 3
+   "score": 28,
+   "openApprovals": 4
   },
   {
-   "address": "0x78504657add1f6ff9ff8012ec46a91d81011abb2",
+   "address": "0x78504657AdD1f6ff9FF8012Ec46A91D81011aBb2",
    "verdict": "DANGEROUS",
    "score": 0,
    "openApprovals": 8
