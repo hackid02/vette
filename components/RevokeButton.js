@@ -36,13 +36,38 @@ export default function RevokeButton({ action, account, provider, owner, onRevok
     }
     try {
       setStage("preflight");
-      setMsg("Simulating the revoke onchain before asking for a signature…");
+      setMsg("Preflighting onchain — simulating the call AND checking gas, before asking for a signature…");
       await ensureBase(provider);
       const pre = await preflightRevoke(action.token, account, action.spender);
       if (!pre.ok) {
         setStage("error");
         setMsg("Preflight failed — the revoke would revert: " + pre.reason);
         return;
+      }
+      // server-side gas + balance check (the real failure mode is "not enough ETH")
+      try {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 20000);
+        const pr = await fetch("/api/preflight", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ account, token: action.token, spender: action.spender }),
+          signal: ctrl.signal,
+        });
+        clearTimeout(t);
+        const pd = await pr.json();
+        if (pd && pd.ok === false) {
+          setStage("error");
+          setMsg(pd.reason || "Preflight rejected the revoke.");
+          return;
+        }
+        if (pd && pd.warning) {
+          setStage("error");
+          setMsg(pd.warning);
+          return;
+        }
+      } catch {
+        // preflight API unreachable → let the wallet itself be the final gate
       }
       setStage("signing");
       setMsg("Confirm the revoke in your wallet — approve(spender, 0). No ETH moves.");

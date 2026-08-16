@@ -37,6 +37,7 @@ export default function FieldEntryActions({ entry }) {
           url: entry.website || null,
           address: entry.wallet || null,
           claims: entry.description || null,
+          mandateExplicit: false, // contest copy is displayed, never ruled on
         }),
         signal: ctrl.signal,
       });

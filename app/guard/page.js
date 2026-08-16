@@ -16,7 +16,7 @@ const LEVEL_STYLE = {
 };
 
 const BASELINE_PREFIX = "vette.baseline.";
-const STREAK_KEY = "vette.streak";
+const STREAK_PREFIX = "vette.streak.";
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
@@ -36,10 +36,11 @@ function writeBaseline(addr, list) {
   return b;
 }
 
-function updateStreak(setStreak) {
+function updateStreak(addr, setStreak) {
   const today = todayISO();
   const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
-  const prev = localStorage.getItem(STREAK_KEY);
+  const key = STREAK_PREFIX + addr.toLowerCase();
+  const prev = localStorage.getItem(key);
   let n = 1;
   if (prev) {
     const [d, v] = prev.split("|");
@@ -47,18 +48,30 @@ function updateStreak(setStreak) {
     else if (d === yesterday) n = Number(v) + 1; // consecutive day
     else n = 1; // broke the streak
   }
-  localStorage.setItem(STREAK_KEY, `${today}|${n}`);
+  localStorage.setItem(key, `${today}|${n}`);
   setStreak(n);
 }
 
-function diffAgainstBaseline(currentList, baseline) {
+// "closed" is decided by LIVE allowance probes (baselineStatus from /api/gm),
+// never by a fresh log scan — a door absent from the window is not a closed door.
+function diffAgainstBaseline(report, baseline) {
   if (!baseline) return null;
-  const key = (a) => `${a.token}:${a.spender}`;
-  const baseSet = new Set(baseline.approvals.map(key));
-  const currentSet = new Set(currentList.map(key));
-  const added = currentList.filter((a) => !baseSet.has(key(a)));
-  const closed = baseline.approvals.filter((b) => !currentSet.has(key(b)));
-  return { added, closed, baseline };
+  const live = new Map((report.baselineStatus || []).map((s) => [`${s.token}:${s.spender}`, s]));
+  const added = report.approvals.list.filter((a) => {
+    const key = `${a.token}:${a.spender}`;
+    return !baseline.approvals.some((b) => `${b.token}:${b.spender}` === key);
+  });
+  const closed = baseline.approvals.filter((b) => {
+    const key = `${b.token}:${b.spender}`;
+    const status = live.get(key);
+    return status && status.open === false; // the chain says 0 right now
+  });
+  const stillOpenUnseen = baseline.approvals.filter((b) => {
+    const key = `${b.token}:${b.spender}`;
+    const status = live.get(key);
+    return !status || status.open === true; // open or unknown — never reported as closed
+  });
+  return { added, closed, stillOpenUnseen, baseline };
 }
 
 function GuardInner() {
@@ -80,20 +93,20 @@ function GuardInner() {
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), 90000);
     try {
+      const b = readBaseline(addr);
       const res = await fetch("/api/gm", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ address: addr }),
+        body: JSON.stringify({ address: addr, baseline: b?.approvals || null }),
         signal: ctrl.signal,
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || data.detail || "Guard check failed");
       setReport(data);
-      const b = readBaseline(addr);
       setBaseline(b);
-      const d = diffAgainstBaseline(data.approvals.list, b);
+      const d = diffAgainstBaseline(data, b);
       setDiff(d);
-      updateStreak(setStreak);
+      updateStreak(addr, setStreak);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (e) {
       setError(
@@ -111,7 +124,7 @@ function GuardInner() {
     if (!report) return;
     const b = writeBaseline(address, report.approvals.list);
     setBaseline(b);
-    setDiff({ added: [], closed: [], baseline: b });
+    setDiff({ added: [], closed: [], stillOpenUnseen: [], baseline: b });
   }
 
   const isOwner = account && address && account.toLowerCase() === address.toLowerCase();
@@ -239,7 +252,9 @@ function GuardInner() {
               {diff && (
                 <div className="space-y-3 mb-5">
                   {diff.added.length === 0 && diff.closed.length === 0 && (
-                    <p className="text-sm text-vet font-semibold">✓ No change since your baseline. Same doors, same locks.</p>
+                    <p className="text-sm text-vet font-semibold">
+                      ✓ No new approvals since your baseline (within the scanned window).
+                    </p>
                   )}
                   {diff.added.length > 0 && (
                     <div className="border border-danger/40 bg-danger/10 rounded-md p-4">
@@ -258,7 +273,9 @@ function GuardInner() {
                   )}
                   {diff.closed.length > 0 && (
                     <div className="border border-vet/40 bg-vet/10 rounded-md p-4">
-                      <p className="text-vet font-extrabold text-sm mb-2">✓ {diff.closed.length} approval(s) closed since your baseline:</p>
+                      <p className="text-vet font-extrabold text-sm mb-2">
+                        ✓ {diff.closed.length} approval(s) closed since your baseline — verified onchain, allowance reads 0 right now:
+                      </p>
                       <ul className="space-y-1.5">
                         {diff.closed.map((b, i) => (
                           <li key={i} className="mono text-xs text-soft">
@@ -266,6 +283,17 @@ function GuardInner() {
                           </li>
                         ))}
                       </ul>
+                    </div>
+                  )}
+                  {diff.stillOpenUnseen && diff.stillOpenUnseen.length > 0 && (
+                    <div className="border border-[#1E241F] bg-[#0E0E15] rounded-md p-4">
+                      <p className="text-muted font-bold text-sm mb-2">
+                        {diff.stillOpenUnseen.length} baseline approval(s) still open — unchanged, not closed.
+                      </p>
+                      <p className="text-[11px] text-muted leading-snug">
+                        A door that leaves the scan window is not a closed door. These were re-checked
+                        with live allowance probes; the chain still says open.
+                      </p>
                     </div>
                   )}
                 </div>

@@ -1,12 +1,17 @@
 "use client";
 
-// ShareCard — the verdict as a shareable OG card. One click copies the link
-// (post it on X/Discord and the verdict renders as an image preview).
+// ShareCard — the verdict as a shareable, SIGNED OG card. The link only
+// renders because the server signed it with the real audit result; a card
+// without a signature is rejected by the card endpoint (no fabrication).
 import { useState } from "react";
 
-export default function ShareCard({ verdict, score, target }) {
+export default function ShareCard({ verdict, score, target, cardSig }) {
   const [copied, setCopied] = useState(false);
-  const url = `/api/card?v=${encodeURIComponent(verdict)}${score != null ? `&s=${encodeURIComponent(score)}` : ""}&t=${encodeURIComponent(target || "")}`;
+
+  // No signature → no share card. Honest.
+  if (!cardSig) return null;
+
+  const url = `/api/card?v=${encodeURIComponent(verdict)}${score != null ? `&s=${encodeURIComponent(score)}` : ""}&t=${encodeURIComponent(target || "")}&sig=${encodeURIComponent(cardSig)}`;
   const full = typeof window !== "undefined" ? window.location.origin + url : url;
 
   function copy() {

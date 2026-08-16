@@ -2,7 +2,6 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import VerdictBadge from "@/components/VerdictBadge";
 import HeroVet from "@/components/HeroVet";
-import { recentAudits } from "@/lib/trace";
 import { shortAddr } from "@/lib/providers";
 import demoData from "../data/demo.json";
 import catchesData from "../data/catches.json";
@@ -32,7 +31,6 @@ function Arrow() {
 }
 
 export default async function Home() {
-  const recent = recentAudits().slice(0, 3);
   const demo = readDemo();
   const top = demo?.targets?.find((t) => t.verdict === "DANGEROUS") || demo?.targets?.[0] || null;
   const topFinding = demo?.topFinding || null;
@@ -107,13 +105,13 @@ export default async function Home() {
               <p className="mono text-xs text-muted mt-3">{shortAddr(top.address)}</p>
             </Flow>
             <Arrow />
-            <Flow label="02 · AGENT">
+            <Flow label="02 · ENGINE DECISION">
               <p className="text-sm text-soft leading-relaxed">
                 {topFinding
-                  ? `Picked the scariest open door: ${topFinding.title.toLowerCase()}`
-                  : "Scans the surface, then decides what the first pass missed."}
+                  ? `The rule engine picked the scariest open door: ${topFinding.title.toLowerCase()}`
+                  : "The rule engine scans the surface, then probes what matters most."}
               </p>
-              <p className="mono text-xs text-muted mt-3">decides → looks → re-checks</p>
+              <p className="mono text-xs text-muted mt-3">rules decide → probes verify → numbers only</p>
             </Flow>
             <Arrow />
             <Flow label="03 · VERDICT" tone={top.verdict === "DANGEROUS" ? "danger" : top.verdict === "COMPLIANT" ? "vet" : "neutral"}>
@@ -321,16 +319,15 @@ export default async function Home() {
               <span className="serif italic font-normal text-muted">It checks.</span>
             </h2>
             <p className="text-muted mt-5 leading-relaxed text-sm">
-              The deterministic engine runs first and decides what is true. The model only
-              chooses where to look — and every sentence it writes cites a step you can open.
+              The deterministic engine runs first and decides what is true. The rule engine
+              chooses where to look, every number traces to a live read, and the narration
+              is deterministic — an optional model hook can write the words, never the numbers.
               This is the receipt. Nothing on this page is an opinion that cannot be followed
               back to a tool call.
             </p>
-            {recent.length > 0 && (
-              <Link href={`/trace/${recent[0].id}`} className="inline-block mt-6 px-5 py-3 rounded-md border border-vet/40 text-vet font-bold hover:bg-vet hover:text-ink transition-colors">
-                Open a live trace →
-              </Link>
-            )}
+            <Link href="/activity" className="inline-block mt-6 px-5 py-3 rounded-md border border-vet/40 text-vet font-bold hover:bg-vet hover:text-ink transition-colors">
+              Watch it work on its own →
+            </Link>
           </div>
           <ol className="space-y-0">
             {[

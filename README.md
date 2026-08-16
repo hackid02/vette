@@ -69,7 +69,7 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
-- Landing: `/` · Audit console: `/audit` · The Field: `/field` · Receipt: `/trace/<id>`
+- Landing: `/` · Audit console: `/audit` · The Field: `/field` · The receipt is embedded in every report (canonical) · Activity: `/activity`
 - `POST /api/audit` with `{ url?, address?, claims? }` — full audit
 - `GET /api/agents/<addr>` — quick onchain audit
 - `GET /api/field` — live hackathon entries from the Orion API
@@ -78,8 +78,14 @@ npm run dev        # http://localhost:3000
 ## Stack
 
 Next.js 15 (App Router) · Tailwind · Base public RPC (fallback chain) ·
-Blockscout v2 API · deterministic rule engine · template-first narration with
-an LLM hook ready. No API keys required.
+Blockscout v2 API · deterministic rule engine · template-first narration.
+No API keys required.
+
+**Optional model narration:** set `ANTHROPIC_API_KEY` and the engine lets a model
+write the narrative *words* — never the numbers, levels, or verdicts (those are
+the deterministic engine's). Without the key, narration is a deterministic
+template; the report says which one wrote it. Same pattern as the contest
+leaders: the keyless risk engine always runs.
 
 ## Hackathon checklist
 

@@ -1,11 +1,22 @@
 import { NextResponse } from "next/server";
 import { runAudit } from "@/lib/engine";
 import { normalizeUrl } from "@/lib/providers";
+import { rateLimit, clientIp } from "@/lib/ratelimit";
+import { signCard, cardConfigured } from "@/lib/cardsig";
 
 export const maxDuration = 120;
 
-// POST { url?, address?, claims? } → full audit
+// POST { url?, address?, claims?, mandateExplicit? } → full audit
 export async function POST(req) {
+  const ip = clientIp(req);
+  const rl = rateLimit(ip, { limit: 8, windowMs: 60000 });
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: `Rate limited — ${rl.retryAfterSec}s. Vette does real onchain work per audit; slow down a little.` },
+      { status: 429 }
+    );
+  }
+
   let body = {};
   try {
     body = await req.json();
@@ -20,6 +31,7 @@ export async function POST(req) {
     address = body.url.trim().toLowerCase();
   }
   const claims = typeof body.claims === "string" ? body.claims.slice(0, 1000) : null;
+  const mandateExplicit = body.mandateExplicit === true && !!claims;
 
   if (!url && !address) {
     return NextResponse.json(
@@ -29,7 +41,10 @@ export async function POST(req) {
   }
 
   try {
-    const audit = await runAudit({ url, address, claims });
+    const audit = await runAudit({ url, address, claims, mandateExplicit });
+    if (cardConfigured()) {
+      audit.cardSig = signCard({ v: audit.verdict, s: audit.score, t: audit.target });
+    }
     return NextResponse.json(audit);
   } catch (e) {
     console.error("audit failed", e);

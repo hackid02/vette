@@ -46,6 +46,9 @@ function ResultCard({ a }) {
                 </span>
               )}
             </div>
+            {a.scopeLabel && a.wallet && (
+              <p className="mono text-[11px] text-muted mt-2">scope: {a.scopeLabel}</p>
+            )}
             <p className="mono text-xs text-muted mt-3 break-all">{a.target}</p>
           </div>
           <Link
@@ -93,7 +96,7 @@ function ResultCard({ a }) {
           <span className="mono text-[11px] text-muted">
             every claim → a tool call · {a.trace?.length || 0} checks in the receipt
           </span>
-          <ShareCard verdict={a.verdict} score={a.score} target={a.target} />
+          <ShareCard verdict={a.verdict} score={a.score} target={a.target} cardSig={a.cardSig} />
           {revokable > 0 && (
             <Link
               href={fullLink}

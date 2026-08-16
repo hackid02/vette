@@ -27,7 +27,7 @@ The deterministic engine runs first and decides what is true: it fetches the
 agent's own copy and extracts its stated mandate, then reads the wallet's real
 history — decoded transactions, token transfers, owner-scoped approval events,
 live allowances probed onchain, and contract reputations. A rule engine scores
-mandate-vs-behavior deviation and wallet safety. The model only chooses where to
+mandate-vs-behavior deviation and wallet safety. The rule engine chooses where to
 look; it never invents evidence. If a wallet is empty or unpublished, the verdict
 is UNVERIFIABLE — not flattering, and not fiction.
 
@@ -61,7 +61,7 @@ entry that acts instead of analyzing.
 **"Why should I trust Vette?"**
 You don't have to — that's the design. Every claim traces to a real tool call
 with a public receipt. Nothing is invented; unverifiable is a valid verdict.
-The engine is deterministic; the model only narrates.
+The engine is deterministic; narration is template-first, with an optional model hook that writes the words — never the numbers.
 
 **"What's next?"**
 Guard mode: live watch + daily GM Report for any wallet. Agents are coming;

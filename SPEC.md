@@ -94,7 +94,7 @@ PUBLIC TRACE PAGE
 └─ every tool call, every tx hash, every claim → evidence
 ```
 
-**Golden rule:** the model chooses where to look; the engine decides what's true.
+**Golden rule:** the rule engine chooses where to look; the engine decides what's true. Narration is deterministic (optional model hook for the words only).
 
 ---
 

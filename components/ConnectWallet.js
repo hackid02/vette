@@ -16,10 +16,18 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
   const [error, setError] = useState(null);
   const [wallets, setWallets] = useState([]);
   const [pickerOpen, setPickerOpen] = useState(false);
+  const [noWallet, setNoWallet] = useState(false);
+  const [sandboxed, setSandboxed] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  const [chainId, setChainId] = useState(null);
   const ref = useRef(null);
+  const listenersRef = useRef(null);
 
   useEffect(() => {
     setWallets(listWallets());
+    setNoWallet(typeof window !== "undefined" && listWallets().length === 0);
+    setSandboxed(isSandboxedFrame());
+    setMobile(isMobileDevice());
   }, []);
 
   useEffect(() => {
@@ -36,10 +44,29 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
     setError(null);
     try {
       const { account, chainId, provider } = await connectWallet(w);
-      provider.on?.("accountsChanged", (accs) => {
+      setChainId(chainId);
+      // detach previous listeners — no accumulation across reconnects
+      if (listenersRef.current) {
+        const prev = listenersRef.current;
+        prev.provider.off?.("accountsChanged", prev.onAcc);
+        prev.provider.off?.("chainChanged", prev.onChain);
+      }
+      const onAcc = (accs) => {
         if (accs && accs[0]) onConnect?.({ account: accs[0].toLowerCase(), chainId, provider });
         else onDisconnect?.();
-      });
+      };
+      const onChain = (cid) => {
+        const id = cid ? parseInt(cid, 16) : null;
+        setChainId(id);
+        if (id !== null && id !== 8453) {
+          setError("Connected wallet is not on Base — switch networks in the wallet, or the revoke will ask you to switch.");
+        } else {
+          setError(null);
+        }
+      };
+      provider.on?.("accountsChanged", onAcc);
+      provider.on?.("chainChanged", onChain);
+      listenersRef.current = { provider, onAcc, onChain };
       onConnect?.({ account, chainId, provider });
     } catch (e) {
       setError(String(e.message || e));
@@ -48,22 +75,23 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
     }
   }
 
-  // sandboxed frame / mobile → explain, don't dead-end
-  const blocked = isSandboxedFrame() || isMobileDevice();
+  // blocked only when a wallet truly cannot work here: sandboxed frame,
+  // or a mobile device with NO injected provider (in-wallet browsers work).
+  const blocked = sandboxed || (mobile && noWallet);
   if (blocked && !account) {
     return (
       <div className="text-xs leading-snug max-w-xs">
         <span className="text-warn font-bold">
-          {isMobileDevice()
-            ? "Wallet connect needs a desktop browser."
+          {mobile && noWallet
+            ? "No wallet found on this device."
             : "Wallet connect is blocked inside this preview frame."}
         </span>{" "}
         <span className="text-muted">
-          {isMobileDevice()
-            ? "Phone browsers can't run wallet extensions like MetaMask or Rabby. Open Vette on a desktop browser. (The audit itself works fine here — paste any address below.)"
+          {mobile && noWallet
+            ? "Phone browsers don't run wallet extensions, but in-wallet browsers (MetaMask/Coinbase/Rabby app) do inject a provider — open Vette from inside your wallet app. Or use a desktop browser. (Audits work fine here — paste any address below.)"
             : "Browser wallets refuse to inject inside embedded frames. Open Vette in a full browser tab:"}
         </span>{" "}
-        {!isMobileDevice() && (
+        {!(mobile && noWallet) && (
           <a
             href="https://vette-nu.vercel.app/audit"
             target="_blank"

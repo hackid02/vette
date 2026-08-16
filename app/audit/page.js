@@ -45,10 +45,13 @@ function Report({ a, account, provider, onRevoked }) {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div>
             <VerdictBadge verdict={a.verdict} size="lg" icon />
+            {a.scopeLabel && a.wallet && (
+              <p className="mono text-[11px] text-muted mt-2">scope: {a.scopeLabel}</p>
+            )}
             <p className="mono text-xs text-muted mt-4 break-all">{a.target}</p>
             <p className="mono text-[11px] text-muted mt-1">{new Date(a.ts).toLocaleString()}</p>
             <div className="mt-4">
-              <ShareCard verdict={a.verdict} score={a.score} target={a.target} />
+              <ShareCard verdict={a.verdict} score={a.score} target={a.target} cardSig={a.cardSig} />
             </div>
           </div>
           {a.score != null && (
@@ -117,7 +120,10 @@ function Report({ a, account, provider, onRevoked }) {
 
       {/* narrative */}
       <div className="panel p-6">
-        <div className="overline mb-4">the verdict, in plain english</div>
+        <div className="overline mb-4">
+          the verdict, in plain english
+          {a.narrationBy === "model" ? " · written by a model, numbers by the engine" : " · deterministic narration"}
+        </div>
         <div className="space-y-3 text-sm leading-relaxed text-soft">
           {a.narrative.map((line, i) => <p key={i}>{line}</p>)}
         </div>
@@ -324,7 +330,7 @@ function AuditInner() {
             />
           </div>
           <div>
-            <label className="overline block mb-2">the agent&apos;s own promises (its mandate)</label>
+            <label className="overline block mb-2">the mandate you want checked (optional — deviations only run on what YOU paste)</label>
             <textarea
               value={claims}
               onChange={(e) => setClaims(e.target.value)}
@@ -332,6 +338,9 @@ function AuditInner() {
               placeholder='e.g. "never sells below entry, only trades top-20 tokens, never risks more than 10% of the wallet"'
               className="w-full bg-[#0E0E15] border border-[#23232E] rounded-md px-4 py-3 text-sm outline-none focus:border-vet/60 placeholder:text-[#55555F] resize-none"
             />
+            <p className="text-[11px] text-muted mt-1.5">
+              Marketing copy from a site is displayed, never ruled on — deviation findings only run on a mandate you supply here.
+            </p>
           </div>
 
           <div className="flex items-center justify-between flex-wrap gap-3 pt-1">
@@ -353,7 +362,12 @@ function AuditInner() {
             </div>
             <button
               disabled={busy || (!url.trim() && !address.trim())}
-              onClick={() => run({ url: url.trim() || null, address: address.trim() || null, claims: claims.trim() || null })}
+              onClick={() => run({
+                url: url.trim() || null,
+                address: address.trim() || null,
+                claims: claims.trim() || null,
+                mandateExplicit: !!claims.trim(),
+              })}
               className="px-6 py-3 rounded-md bg-vet text-ink font-extrabold hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
             >
               {busy ? "VETTING…" : "VET THIS →"}
