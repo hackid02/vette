@@ -91,18 +91,18 @@ export default async function Home() {
 
       {/* DEMO FLOW — the product working, Rigel-style */}
       {top && (
-        <section className="max-w-6xl mx-auto px-6 py-14">
+        <section className="max-w-6xl mx-auto px-6 py-16">
           <div className="overline mb-3">
             live run · re-verified on Base {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}
           </div>
-          <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight mb-3">
+          <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
             The machine, <em className="text-vet">mid-vet.</em>
           </h2>
-          <p className="text-sm text-muted leading-relaxed mb-8">
+          <p className="text-muted leading-relaxed text-sm mt-5">
             One real wallet, run through the engine today. The chain moves — click any card
             below to see the live numbers.
           </p>
-          <div className="grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 items-stretch">
+          <div className="grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 items-stretch mt-10">
             <Flow label="01 · ENGINE">
               <p className="mono text-3xl font-black text-soft">{top.score}/100</p>
               <p className="text-sm text-muted mt-2 leading-relaxed">
@@ -146,18 +146,18 @@ export default async function Home() {
       {/* CAUGHT LIVE */}
       {demo?.targets && demo.targets.length > 0 && (
         <section className="border-y border-[#1D1D26] bg-[#0D0D13]">
-          <div className="max-w-4xl mx-auto px-6 py-16">
+          <div className="max-w-6xl mx-auto px-6 py-16">
             <div className="overline mb-3">caught on base</div>
-            <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight mb-4">
+            <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
               Real wallets. <em className="text-vet">Not actors.</em>
             </h2>
-            <p className="text-sm text-muted leading-relaxed mb-10">
+            <p className="text-muted leading-relaxed text-sm mt-5">
               Mined from real Approval events, re-verified on Base{" "}
               {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}.
               The chain keeps moving — open any card for today&apos;s live audit.
             </p>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 mt-10">
               {demo.targets.map((t) => (
                 <Link
                   key={t.address}
@@ -286,10 +286,10 @@ export default async function Home() {
       {/* THREE MOVES */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="overline mb-3">the moves</div>
-        <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-soft mb-10">
-          Watch. <span className="serif italic font-normal text-muted">Then act.</span>
+        <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
+          Watch. <em className="text-vet">Then act.</em>
         </h2>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 mt-10">
           {[
             {
               n: "01",
@@ -335,10 +335,10 @@ export default async function Home() {
         <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[1fr_1.4fr] gap-12">
           <div>
             <div className="overline mb-3">the engine</div>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-soft leading-tight">
+            <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
               It doesn&apos;t vibe-check.
               <br />
-              <span className="serif italic font-normal text-muted">It checks.</span>
+              <em className="text-vet">It checks.</em>
             </h2>
             <p className="text-muted mt-5 leading-relaxed text-sm">
               The deterministic engine runs first and decides what is true. The rule engine
