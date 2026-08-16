@@ -225,10 +225,14 @@ export default async function Home() {
             </div>
             <div className="flex items-center gap-3 flex-wrap mb-5">
               <VerdictBadge verdict={catchesData.verdict} icon size="lg" />
-              <span className="mono text-3xl font-black text-soft">
-                {catchesData.score}
-                <span className="text-muted text-base">/100</span>
-              </span>
+              {catchesData.score != null ? (
+                <span className="mono text-3xl font-black text-soft">
+                  {catchesData.score}
+                  <span className="text-muted text-base">/100</span>
+                </span>
+              ) : (
+                <span className="mono text-xs text-muted">no wallet declared — no score issued</span>
+              )}
             </div>
             <div className="border border-[#1E241F] bg-[#0E0E15] rounded-md p-4 border-l-2" style={{ borderLeftColor: "#FFB020" }}>
               <span className="mono text-[9px] font-bold px-2 py-0.5 rounded border tracking-widest bg-warn/15 text-warn border-warn/40">WARNING</span>

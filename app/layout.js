@@ -4,7 +4,7 @@ export const metadata = {
   metadataBase: new URL("https://vette-nu.vercel.app"),
   title: "VETTE — the agent that vets agents",
   description:
-    "VETTE audits any AI agent against its own promises, guards your wallet 24/7, and kills dangerous approvals with one click. Every claim traces to a real transaction. Built for the Orion Builder Hackathon.",
+    "VETTE audits any AI agent against its own promises, keeps a daily watch on your wallet, and kills dangerous approvals with one click. Every claim traces to a real transaction. Built for the Orion Builder Hackathon.",
   openGraph: {
     title: "VETTE — the agent that vets agents",
     description:

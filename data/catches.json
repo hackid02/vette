@@ -1,13 +1,13 @@
 {
-  "caughtAt": "2026-08-14T23:00:00.000Z",
+  "caughtAt": "2026-08-16T00:00:00.000Z",
   "entry": "BaseScout",
   "builder": "Shriyash Soni",
   "website": "https://base-scout-seven.vercel.app/",
-  "verdict": "COMPLIANT",
-  "score": 90,
-  "findingTitle": "Published wallet is a CONTRACT, not a standard EOA wallet",
-  "findingDetail": "The address on this agent's page has bytecode deployed. Most agent wallets are EOAs. If the agent claims this is its trading wallet, verify what the contract actually is and who controls it — publishing a token or protocol contract as 'the wallet' is a common disclosure miss.",
+  "verdict": "UNVERIFIABLE",
+  "score": null,
+  "findingTitle": "No wallet declared — the only address on the page is a CONTRACT",
+  "findingDetail": "Vette read BaseScout's site looking for a wallet. The only address published is a token contract (the AERO contract). A contract found in site copy is not an auditable wallet, so no wallet verdict is issued — the disclosure miss itself is the finding.",
   "evidenceType": "wallet",
   "evidenceValue": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
-  "note": "Vette pulled the address published on BaseScout's own site and checked it against Base: bytecode present, contract verified as the AERO token contract. Verdict scored on real reads — every check in the public receipt."
+  "note": "Verdict: UNVERIFIABLE. Vette will not score a wallet that was never declared. Re-run it yourself — paste the site in the hero — and watch the engine refuse to invent a wallet."
 }
