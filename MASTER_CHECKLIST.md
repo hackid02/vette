@@ -89,6 +89,10 @@
 | 1.42 | Revoke action labels (spender name + symbol) | ✅ |
 | 1.43 | All-wallets-popping-up bug (connectAnyWallet removed) | ✅ |
 | 1.44 | Trust Wallet misleading error message | ✅ |
+| 1.45 | v1 external audit (23 findings) — S0/S1 all fixed: const→let, failed-scan→UNVERIFIABLE, signed cards, mandate gating, SSRF, rate limits, guard live-probe diff, gas preflight, cap wording, UNPROVEN, outage-vs-empty, trace route, mobile wallet, listener/chainId hygiene, info=0 | ✅ |
+| 1.46 | v2 rescore (21/30) — remaining items fixed: `??` nullish in scoreFindings, metadata "24/7" dropped, cron POST rate-limit+secret gate, derived-contract → UNVERIFIABLE (BaseScout catch honest), 16-window scan, agents route rate limit | ✅ |
+| 1.47 | VETTE_CARD_SECRET set in Vercel prod (signed cards live) | ✅ verified |
+| 1.48 | ANTHROPIC_API_KEY — optional by design; deterministic narration labeled honestly (keyless default like the contest leader) | ⏳ user's choice |
 
 ---
 
