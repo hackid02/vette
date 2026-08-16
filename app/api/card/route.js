@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { verifyCard, cardConfigured } from "@/lib/cardsig";
+import { rateLimit, clientIp } from "@/lib/ratelimit";
 
 export const runtime = "nodejs";
 
@@ -14,6 +15,13 @@ const COLORS = {
 };
 
 export async function GET(req) {
+  const rl = rateLimit(clientIp(req), { limit: 30, windowMs: 60000 });
+  if (!rl.ok) {
+    return new Response(
+      JSON.stringify({ error: `Rate limited — ${rl.retryAfterSec}s.` }),
+      { status: 429, headers: { "content-type": "application/json" } }
+    );
+  }
   const { searchParams } = new URL(req.url);
   const v = String(searchParams.get("v") || "").toUpperCase();
   const s = searchParams.get("s");

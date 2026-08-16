@@ -9,12 +9,14 @@
 **On screen:** the hero — "VETTE is the agent that vets agents."
 **Voice:** "Every AI agent makes promises. Vette checks the chain."
 
-### Shot 2 — THE CATCH (5–20s)
+### Shot 2 — THE REFUSAL (5–20s) · open the demo on this
 **On screen:** paste `base-scout-seven.vercel.app` (a real contest entry) → VET IT →
-the report loads → scroll to the finding.
-**Voice:** "I asked Vette to audit a real entry in this hackathon. It pulled the
-agent's own words, its registered wallet… and caught this: the published 'wallet'
-is actually a token contract. Not vibes — every finding links to onchain evidence."
+the report loads → read the verdict line: UNVERIFIABLE → the finding.
+**Voice:** "I asked Vette to audit a real entry in this hackathon. Watch what it
+does: it loads the site, reads the copy — and then *refuses to score it.* The only
+address on the page is a token contract, not a wallet. No wallet declared, no
+verdict issued. The refusal IS the finding. Vette doesn't invent evidence —
+even when inventing one would look better."
 
 ### Shot 3 — THE FIELD (20–35s)
 **On screen:** nav → The Field → the entry cards → one verdict expanded.
