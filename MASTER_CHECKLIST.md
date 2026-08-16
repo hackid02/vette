@@ -93,6 +93,8 @@
 | 1.46 | v2 rescore (21/30) — remaining items fixed: `??` nullish in scoreFindings, metadata "24/7" dropped, cron POST rate-limit+secret gate, derived-contract → UNVERIFIABLE (BaseScout catch honest), 16-window scan, agents route rate limit | ✅ |
 | 1.47 | VETTE_CARD_SECRET set in Vercel prod (signed cards live) | ✅ verified |
 | 1.48 | ANTHROPIC_API_KEY — optional by design; deterministic narration labeled honestly (keyless default like the contest leader) | ⏳ user's choice |
+| 1.49 | v3 rescore (24/30) — remaining items fixed: site-derived addresses never audited (published ≠ declared), disclosure-miss contract check kept, card+status rate limits, limiter eviction sweep, CSP headers; UNVERIFIABLE-rate verified 5/5 scans complete | ✅ |
+| 1.50 | Demo script updated: Shot 2 leads with THE REFUSAL (BaseScout UNVERIFIABLE catch) — reviewer's advice | ✅ |
 
 ---
 
