@@ -15,11 +15,6 @@ const TYPE_COLORS = {
   LAUNCH: "#C6FF4A",
 };
 
-function shortAddr(a) {
-  if (!a) return "";
-  return `${a.slice(0, 6)}…${a.slice(-4)}`;
-}
-
 function feedToItems(feed) {
   const items = [];
   for (const e of feed || []) {
@@ -108,7 +103,7 @@ export default function LiveTicker() {
             {all.map((it, i) => (
               <span key={`${dup}-${i}`} className="flex items-center gap-2 mx-5">
                 <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: it.color }} />
-                <span className="mono text-[11px] text-muted" style={{ color: it.color === "#FF5A65" ? "#FF5A65" : it.color === "#FFB020" ? "#FFB020" : "#9AA09A" }}>
+                <span className="mono text-[11px]" style={{ color: it.color }}>
                   {it.text}
                 </span>
               </span>
