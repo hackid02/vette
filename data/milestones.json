@@ -1,0 +1,67 @@
+{
+  "milestones": [
+    {
+      "date": "2026-08-16",
+      "type": "LOG",
+      "title": "First autonomous run committed to the public repo",
+      "detail": "run-msvqdvx4 checked the field and wrote its own history to github.com/hackid02/vette/data/agent-log.json. The agent now audits itself the way it audits everyone else — daily runs continue from the cron.",
+      "links": [
+        { "label": "the log file", "href": "https://github.com/hackid02/vette/blob/main/data/agent-log.json" }
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "type": "DRIFT",
+      "title": "The chain moved — 0x61e1…4282: DANGEROUS 44 → DANGEROUS 28",
+      "detail": "The same wallet, re-audited: four live approvals now instead of three. Vette reports the chain as it is, not as it was. Verdicts drift because reality drifts.",
+      "links": [
+        { "label": "live re-audit", "href": "/audit?address=0x61e17391f084ad083FA5C199D4F0d350A4CF4282" }
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "type": "SCORE",
+      "title": "Three external AI audits: 13 → 21 → 24 out of 30",
+      "detail": "Independent AI code reviews found 23 findings across three passes and rescored twice. Every finding is fixed and verified in production — including the ones that said a failed scan must never read as clean.",
+      "links": [
+        { "label": "the audit trail", "href": "/activity" }
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "type": "REFUSAL",
+      "title": "The refusal: BaseScout publishes a contract, Vette refuses to score it",
+      "detail": "The only address on a top contest entry's page is the AERO token contract, not a wallet. No wallet declared, no verdict issued. The refusal is the finding — and it is the strongest thing Vette has ever done.",
+      "links": [
+        { "label": "evidence on Blockscout", "href": "https://base.blockscout.com/address/0x940181a94A35A4569E4529A3CDfB74e38FD98631" }
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "type": "CATCH",
+      "title": "Caught on Base: unlimited USDC open to an unverified spender",
+      "detail": "0x61e1…4282, mined from real Approval events. DANGEROUS 44/100. One click ends each door.",
+      "links": [
+        { "label": "live re-audit", "href": "/audit?address=0x61e17391f084ad083FA5C199D4F0d350A4CF4282" }
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "type": "CATCH",
+      "title": "Caught on Base: 8 live approvals, DANGEROUS 0/100",
+      "detail": "0x7850…abb2 — eight doors open, zero points. The worst score Vette has issued to date.",
+      "links": [
+        { "label": "live re-audit", "href": "/audit?address=0x78504657AdD1f6ff9FF8012Ec46A91D81011aBb2" }
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "type": "LAUNCH",
+      "title": "Vette goes live on Base",
+      "detail": "AUDIT, GUARD and KILL shipped in one build: the deterministic engine, the public receipt, and the one-click kill switch — live at vette-nu.vercel.app.",
+      "links": [
+        { "label": "the site", "href": "https://vette-nu.vercel.app" }
+      ]
+    }
+  ]
+}
