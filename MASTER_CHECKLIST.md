@@ -104,8 +104,9 @@
 |---|---|---|
 | 2.1 | **GUARD mode**: /guard page — GM report, baseline diff, streak, kill switches | ✅ live in production |
 | 2.2 | **GM Report**: /api/gm morning digest — balance, 7d/30d activity, approval surface, verdict line | ✅ live in production |
-| 2.3 | **AUTONOMOUS AGENT**: daily 06:00 UTC cron re-checks the whole field on its own (/activity page, RUN NOW trigger, run log via GitHub API when PAT lands) | ✅ live in production |
-| 2.4 | LLM narration upgrade (currently template-first) | ❌ nice-to-have |
+| 2.3 | **AUTONOMOUS AGENT**: daily 06:00 UTC cron re-checks the whole field on its own (/activity page, RUN NOW trigger, run log via GitHub API) | ✅ live in production |
+| 2.4 | **THE LEDGER**: /feed public timeline — machine runs from the GitHub log, run-to-run drift, curated milestones with evidence links; grows on its own every day | ✅ live in production |
+| 2.5 | LLM narration upgrade (currently template-first) | ❌ nice-to-have |
 
 > The agent now works alone: scheduled field re-checks, self-check page, on-demand
 > runs. The only autonomy upgrade left is the permanent run-log, which activates the
