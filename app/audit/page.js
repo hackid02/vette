@@ -8,6 +8,7 @@ import VerdictBadge from "@/components/VerdictBadge";
 import ConnectWallet from "@/components/ConnectWallet";
 import RevokeButton from "@/components/RevokeButton";
 import ShareCard from "@/components/ShareCard";
+import ScoreRing from "@/components/ScoreRing";
 
 const LEVEL_STYLE = {
   critical: { badge: "bg-danger/15 text-danger border-danger/40", label: "CRITICAL" },
@@ -54,12 +55,11 @@ function Report({ a, account, provider, onRevoked }) {
               <ShareCard verdict={a.verdict} score={a.score} target={a.target} cardSig={a.cardSig} />
             </div>
           </div>
-          {a.score != null && (
-            <div className="text-right">
-              <div className="mono text-6xl font-black text-soft leading-none">{a.score}</div>
-              <div className="overline mt-2">/ 100</div>
+          <div className="text-right">
+            <div className="flex flex-col items-end gap-2">
+              <ScoreRing score={a.score} verdict={a.verdict} size={150} />
             </div>
-          )}
+          </div>
         </div>
       </div>
 

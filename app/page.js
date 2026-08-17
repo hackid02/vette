@@ -2,6 +2,8 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import VerdictBadge from "@/components/VerdictBadge";
 import HeroVet from "@/components/HeroVet";
+import LiveTicker from "@/components/LiveTicker";
+import ScoreRing from "@/components/ScoreRing";
 import { shortAddr } from "@/lib/providers";
 import demoData from "../data/demo.json";
 import catchesData from "../data/catches.json";
@@ -52,6 +54,9 @@ export default async function Home() {
           </Link>
         </div>
       </nav>
+
+      {/* LIVE TICKER — the moving proof */}
+      <LiveTicker />
 
       {/* HERO */}
       <header className="relative hero-glow bg-grid border-b border-[#1D1D26]">
@@ -104,7 +109,7 @@ export default async function Home() {
           </p>
           <div className="grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 items-stretch mt-10">
             <Flow label="01 · ENGINE">
-              <p className="mono text-3xl font-black text-soft">{top.score}/100</p>
+              <ScoreRing score={top.score} verdict={top.verdict} size={110} />
               <p className="text-sm text-muted mt-2 leading-relaxed">
                 Real reads only: balance, decoded transfers, approval events, live allowances, contract reputations.
               </p>
