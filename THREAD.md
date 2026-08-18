@@ -21,6 +21,8 @@ Live: vette-nu.vercel.app
 
 ## Tweet 2
 
+[IMAGE: brand/thread/img2-trust.png]
+
 The agent economy has a trust problem.
 
 Agents manage real capital on Base and publish promises — but nothing verifies whether behavior matches the mandate.
@@ -30,6 +32,8 @@ VETTE is that accountability layer.
 ---
 
 ## Tweet 3
+
+[IMAGE: brand/thread/img3-tools.png]
 
 AUDIT — any agent, any wallet. Verdicts: COMPLIANT · DEVIATED · DANGEROUS · UNVERIFIABLE.
 
@@ -43,6 +47,8 @@ THE LEDGER — a public, daily record.
 
 ## Tweet 4
 
+[IMAGE: brand/thread/img4-unverifiable.png]
+
 Every finding carries onchain evidence. Every claim traces to a tool call.
 
 If the engine cannot verify something, it does not guess — it returns UNVERIFIABLE.
@@ -52,6 +58,8 @@ That is a design principle, not a limitation.
 ---
 
 ## Tweet 5
+
+[IMAGE: brand/thread/img5-drill.png]
 
 Before launch, VETTE was tested against live rounds:
 
@@ -64,6 +72,8 @@ Result: DANGEROUS. WARNING. COMPLIANT. All correct.
 ---
 
 ## Tweet 6
+
+[IMAGE: brand/thread/img6-kill.png]
 
 Then the dangerous approval was closed onchain.
 
@@ -78,6 +88,8 @@ Detect. Kill. Verify.
 
 ## Tweet 7
 
+[IMAGE: brand/thread/img7-ledger.png]
+
 VETTE runs daily, on its own schedule.
 
 It audits the full field, hunts Base for exposed wallets, and commits its history to a public GitHub log.
@@ -90,7 +102,7 @@ Trust, but verified. 🛡️
 
 ## Posting notes
 
-- Attach the video to Tweet 1; screenshot of the refusal verdict → Tweet 4.
+- Attach the video to Tweet 1; attach each tweet's image from brand/thread/ (img2 → Tweet 2, img3 → Tweet 3, and so on). They're 1200x675, X-optimized, and match the site's design. Swap any of them for a real product screenshot if you prefer.
 - Reply professionally, fast. Canned replies:
   - "Every claim traces to a tool call. The receipts are public."
   - "UNVERIFIABLE is a design principle — the engine does not guess."
