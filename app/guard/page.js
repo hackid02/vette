@@ -120,6 +120,32 @@ function GuardInner() {
     }
   }
 
+  async function guardMyWallet() {
+    setError(null);
+    try {
+      // Read whichever account is active in the wallet RIGHT NOW
+      let current = account;
+      if (provider) {
+        const { getCurrentAccount } = await import("@/lib/wallet");
+        const fresh = await getCurrentAccount(provider);
+        if (fresh) {
+          if (fresh !== account) {
+            setAccount(fresh);
+            setAddress(fresh);
+          }
+          current = fresh;
+        }
+      }
+      if (!current) {
+        setError("Connect your wallet first — Vette reads whichever account is active in the wallet.");
+        return;
+      }
+      await load(current);
+    } catch (e) {
+      setError(String(e.message || e));
+    }
+  }
+
   function saveBaseline() {
     if (!report) return;
     const b = writeBaseline(address, report.approvals.list);
@@ -195,7 +221,7 @@ function GuardInner() {
             />
             <button
               disabled={busy || !account}
-              onClick={() => load(account)}
+              onClick={guardMyWallet}
               className="px-4 py-2.5 rounded-md bg-vet text-ink font-extrabold text-sm hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
             >
               GUARD MY WALLET →

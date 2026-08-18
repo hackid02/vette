@@ -246,11 +246,31 @@ function AuditInner() {
   }
 
   async function vetMyWallet() {
-    if (!account) return; // connect happens in the ConnectWallet picker, nowhere else
     setError(null);
-    setAddress(account);
-    setUrl("");
-    await run({ address: account, url: null, claims: null });
+    try {
+      // Read the account ACTIVE IN THE WALLET right now — the user may have
+      // switched wallets inside OKX, and that's the one they want vetted.
+      let current = account;
+      if (provider) {
+        const { getCurrentAccount } = await import("@/lib/wallet");
+        const fresh = await getCurrentAccount(provider);
+        if (fresh) {
+          if (fresh !== account) {
+            setAccount(fresh);
+          }
+          current = fresh;
+        }
+      }
+      if (!current) {
+        setError("Connect your wallet first — Vette reads whichever account is active in the wallet.");
+        return;
+      }
+      setAddress(current);
+      setUrl("");
+      await run({ address: current, url: null, claims: null });
+    } catch (e) {
+      setError(String(e.message || e));
+    }
   }
 
   function handleRevoked() {

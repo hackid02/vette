@@ -39,6 +39,29 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
+  // Follow wallet-side account switches: wallets like OKX don't always emit
+  // accountsChanged when you switch accounts in their UI. Re-reading
+  // eth_accounts whenever the page regains focus catches the switch.
+  useEffect(() => {
+    if (!account) return;
+    let stale = false;
+    async function refresh() {
+      const prev = listenersRef.current;
+      if (!prev?.provider) return;
+      const { getCurrentAccount } = await import("@/lib/wallet");
+      const cur = await getCurrentAccount(prev.provider);
+      if (!stale && cur && cur !== account) {
+        setChainId(null);
+        onConnect?.({ account: cur, chainId: null, provider: prev.provider });
+      }
+    }
+    window.addEventListener("focus", refresh);
+    return () => {
+      stale = true;
+      window.removeEventListener("focus", refresh);
+    };
+  }, [account, onConnect]);
+
   async function doConnect(w) {
     setPickerOpen(false);
     setBusy(true);
@@ -185,9 +208,10 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
         </p>
       )}
       {disconnectedHint && !error && (
-        <p className="text-[11px] text-vet leading-snug max-w-xs">
-          ✓ disconnected — the wallet has forgotten Vette. Connect again and the wallet
-          will show its account picker, so you can switch to a different wallet.
+        <p className="text-[11px] text-muted leading-snug max-w-xs">
+          ✓ disconnected from Vette&apos;s side. Your wallet keeps its own authorization
+          (that&apos;s the wallet&apos;s choice). To switch wallets: <span className="text-soft">switch accounts inside
+          OKX</span>, then hit CONNECT or VET MY WALLET — Vette reads whichever account is active.
         </p>
       )}
       {error && (
