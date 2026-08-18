@@ -47,7 +47,7 @@
 | 1.16 | Audit console: VETTE REPORT document layout | ✅ |
 | 1.17 | Receipt: inline in report + standalone trace page | ✅ |
 | 1.18 | Favicon + OG share card (X/Discord previews) | ✅ |
-| 1.19 | Mobile responsive | ✅ (verify once more on your phone) |
+| 1.19 | Mobile responsive — hamburger nav (SiteNav), wrapped hero badge + footer links, overflow-x clip safety net | ✅ live in production |
 
 ### The Field
 | # | Item | Status |
