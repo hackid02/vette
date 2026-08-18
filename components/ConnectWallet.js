@@ -21,6 +21,7 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
   const [mobile, setMobile] = useState(false);
   const [chainId, setChainId] = useState(null);
   const [disconnectedHint, setDisconnectedHint] = useState(false);
+  const [synced, setSynced] = useState(false);
   const ref = useRef(null);
   const listenersRef = useRef(null);
 
@@ -124,6 +125,26 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
     onDisconnect?.();
   }
 
+  // Re-read whichever account is active in the wallet right now — the button
+  // that makes wallet-side account switches visible without any popup.
+  async function doSync() {
+    const prev = listenersRef.current;
+    if (!prev?.provider) return;
+    try {
+      const { getCurrentAccount } = await import("@/lib/wallet");
+      const cur = await getCurrentAccount(prev.provider);
+      if (cur && cur !== account) {
+        setChainId(null);
+        onConnect?.({ account: cur, chainId: null, provider: prev.provider });
+      } else if (cur === account) {
+        setSynced(true);
+        setTimeout(() => setSynced(false), 2000);
+      }
+    } catch {
+      /* wallet busy — next click retries */
+    }
+  }
+
   // blocked only when a wallet truly cannot work here: sandboxed frame,
   // or a mobile device with NO injected provider (in-wallet browsers work).
   const blocked = sandboxed || (mobile && noWallet);
@@ -156,17 +177,30 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
 
   if (account) {
     return (
-      <div className="flex items-center gap-2">
-        <span className="mono text-xs px-3 py-2 rounded-md border border-vet/40 bg-vet/10 text-vet font-bold">
-          <span className="w-1.5 h-1.5 rounded-full bg-vet inline-block mr-1.5 pulse-dot" />
-          {short(account)}
-        </span>
-        <button
-          onClick={doDisconnect}
-          className="mono text-[11px] text-muted hover:text-soft transition-colors px-1"
-        >
-          disconnect
-        </button>
+      <div className="flex flex-col gap-1.5 items-start">
+        <div className="flex items-center gap-2">
+          <span className="mono text-xs px-3 py-2 rounded-md border border-vet/40 bg-vet/10 text-vet font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-vet inline-block mr-1.5 pulse-dot" />
+            {short(account)}
+          </span>
+          <button
+            onClick={doSync}
+            title="Switched accounts inside your wallet? Click to re-read the active account"
+            className="mono text-[11px] text-vet border border-vet/40 rounded-md px-2 py-1 hover:bg-vet hover:text-ink transition-colors"
+          >
+            {synced ? "✓ synced" : "↻ sync"}
+          </button>
+          <button
+            onClick={doDisconnect}
+            className="mono text-[11px] text-muted hover:text-soft transition-colors px-1"
+          >
+            disconnect
+          </button>
+        </div>
+        <p className="text-[11px] text-muted leading-snug max-w-xs">
+          switched wallets inside OKX? click <span className="text-vet">↻ sync</span> or VET MY WALLET
+          — Vette reads whichever account is active.
+        </p>
       </div>
     );
   }
