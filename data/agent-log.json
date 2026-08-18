@@ -2,6 +2,55 @@
   "agent": "VETTE",
   "runs": [
     {
+      "id": "run-msy8kh84",
+      "reason": "manual",
+      "at": "2026-08-18T05:42:37.876Z",
+      "entriesChecked": 3,
+      "block": 50121206,
+      "checks": [
+        {
+          "name": "Rigel",
+          "website": "https://rigel-ten.vercel.app",
+          "wallet": {
+            "txCount": 5,
+            "balanceWei": "0x39c91a1007047",
+            "note": "active"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "BaseScout",
+          "website": "https://base-scout-seven.vercel.app/",
+          "wallet": {
+            "txCount": 4,
+            "balanceWei": "0xb9ed16ae",
+            "note": "active"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "Drift-d",
+          "website": "https://drift-divergence.netlify.app/",
+          "wallet": {
+            "txCount": 2,
+            "balanceWei": "0x1de4735de2a9f",
+            "note": "active"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        }
+      ],
+      "persisted": null
+    },
+    {
       "id": "run-msvqdvx4",
       "reason": "manual",
       "at": "2026-08-16T11:38:04.888Z",
