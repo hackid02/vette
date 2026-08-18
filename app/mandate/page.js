@@ -220,7 +220,14 @@ export default function MandatePage() {
 
             {deviationFindings.length > 0 ? (
               <div>
-                <div className="overline mb-3">breaches — every one carries evidence</div>
+                <div className="flex items-end gap-3 mb-4">
+                  <span className="mono text-6xl font-black text-danger leading-none">
+                    {result.breachCount ?? deviationFindings.length}
+                  </span>
+                  <span className="overline pb-1">
+                    breach{result.breachCount === 1 ? "" : "es"} — every one carries evidence
+                  </span>
+                </div>
                 <ol className="space-y-3">
                   {deviationFindings.map((f, i) => {
                     const s = LEVEL_STYLE[f.level] || LEVEL_STYLE.info;
