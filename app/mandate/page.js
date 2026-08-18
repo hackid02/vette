@@ -105,12 +105,17 @@ export default function MandatePage() {
 
       <div className="max-w-3xl mx-auto px-6 pb-20">
         <div className="overline mb-3">the mandate</div>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#1D1D26] bg-[#0E0E15] mb-5">
+          <span className="w-1.5 h-1.5 rounded-full bg-vet pulse-dot" />
+          <span className="mono text-[10px] tracking-[0.15em] text-muted">LIVE ON BASE · MAINNET</span>
+        </div>
         <h1 className="serif text-5xl sm:text-6xl font-light tracking-tight text-cream leading-none mb-4">
           Write the rules. <em className="text-vet">Then prove them.</em>
         </h1>
         <p className="text-muted leading-relaxed text-sm max-w-2xl mb-10">
           Every agent needs a constitution — the rules it must never break. Pick yours
-          below, Vette writes it, and the chain answers: did the wallet keep the promise?
+          below, Vette writes it, and <span className="text-soft font-semibold">the Base chain answers</span>:
+          did the wallet keep the promise? Every check reads Base mainnet directly.
         </p>
 
         {/* RULE BUILDER */}
@@ -171,11 +176,11 @@ export default function MandatePage() {
 
         {/* WALLET */}
         <div className="panel p-6 mb-8 space-y-5">
-          <div className="overline mb-1">step 2 · whose wallet keeps the promise</div>
+          <div className="overline mb-1">step 2 · whose wallet keeps the promise · on Base</div>
           <input
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            placeholder="0x…"
+            placeholder="0x… (any wallet on Base mainnet)"
             className="w-full bg-[#0E0E15] border border-[#23232E] rounded-md px-4 py-3 text-sm mono outline-none focus:border-vet/60 placeholder:text-[#55555F]"
           />
           <button
@@ -199,7 +204,7 @@ export default function MandatePage() {
         {result && (
           <div className="space-y-5">
             <div className="paper panel p-6">
-              <div className="overline mb-3">mandate ruling</div>
+              <div className="overline mb-3">mandate ruling · base mainnet</div>
               <div className="flex items-center gap-3 flex-wrap">
                 <VerdictBadge verdict={result.verdict} size="lg" icon stamp />
                 {result.score != null && (
@@ -254,7 +259,7 @@ export default function MandatePage() {
             )}
 
             <p className="mono text-[11px] text-muted text-center">
-              every breach traces to a tool call — the receipt is in the full report
+              every breach traces to a tool call on Base — the receipt is in the full report
             </p>
           </div>
         )}
