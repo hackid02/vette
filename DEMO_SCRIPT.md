@@ -1,53 +1,50 @@
-# VETTE — Demo Video Script (60–90s)
+# VETTE — Demo Video Script (60–90s, current product)
 
-> Record the screen with OBS/QuickTime at 1080p. No face needed — the product is the star.
-> Keep every shot on https://vette-nu.vercel.app
+> Record with OBS/QuickTime at 1080p. The product is the star — no face needed.
+> Every shot on https://vette-nu.vercel.app
 
-## The arc: promise → catch → kill → proof
+## The arc: refusal → audit → mandate → kill → proof
 
 ### Shot 1 — HOOK (0–5s)
 **On screen:** the hero — "VETTE is the agent that vets agents."
 **Voice:** "Every AI agent makes promises. Vette checks the chain."
 
 ### Shot 2 — THE REFUSAL (5–20s) · open the demo on this
-**On screen:** paste `base-scout-seven.vercel.app` (a real contest entry) → VET IT →
-the report loads → read the verdict line: UNVERIFIABLE → the finding.
+**On screen:** paste `base-scout-seven.vercel.app` → VET IT → the report → the verdict.
 **Voice:** "I asked Vette to audit a real entry in this hackathon. Watch what it
 does: it loads the site, reads the copy — and then *refuses to score it.* The only
 address on the page is a token contract, not a wallet. No wallet declared, no
-verdict issued. The refusal IS the finding. Vette doesn't invent evidence —
-even when inventing one would look better."
+verdict issued. The refusal IS the finding."
 
-### Shot 3 — THE FIELD (20–35s)
-**On screen:** nav → The Field → the entry cards → one verdict expanded.
-**Voice:** "And it does this for the whole field. Every entry, its registered
-wallet, its own promises — one lens, one click. Builders check what Vette says
-about them. Judges get their rubric automated."
+### Shot 3 — THE MANDATE (20–40s)
+**On screen:** nav → The Mandate → type `ETH, BTC` in "only trades" → paste
+`0x61e17391f084ad083FA5C199D4F0d350A4CF4282` → VERIFY → the breach report.
+**Voice:** "This is The Mandate. Write your agent's constitution — the rules it must
+never break — and the Base chain proves whether it kept them. I wrote 'only ETH and
+BTC'. This wallet traded USDC. Seventeen breaches. Every one with the transaction."
 
-### Shot 4 — THE KILL (35–60s) ⚡ the money shot
-**On screen:** audit page → CONNECT WALLET → picker → connect → VET MY WALLET →
-a dangerous approval appears → click REVOKE → wallet popup (approve 0) → confirm
-→ "WAITING ONCHAIN…" → "✓ REVOKED — VIEW TX" → Blockscout tx page.
-**Voice:** "Now the part nobody else built. Vette finds a dangerous approval in
-your wallet — and kills it. One click, one signature, preflight-simulated first
-so you never sign a failing transaction. The threat dies onchain. Here's the tx."
+### Shot 4 — THE KILL (40–65s) ⚡ the money shot
+**On screen:** The Ledger → scroll to the drill entry → the kill tx link → Blockscout.
+**Voice:** "Then the part most agents skip: we fired live rounds at Vette. Three
+fresh wallets, four real Base transactions — unlimited USDC, a thousand USDC to an
+unverified contract, and a clean approve-then-close. Vette caught all three:
+DANGEROUS. WARNING. COMPLIANT. And then it closed the dangerous door onchain.
+Here's the transaction."
 
-### Shot 5 — THE RECEIPT (60–75s)
-**On screen:** scroll the receipt — tool calls, real inputs, real outputs —
-land on the final line.
-**Voice:** "Every claim traces to a tool call. Real inputs, real outputs, public.
-That's the receipt — verified by a deterministic engine, not vibes."
+### Shot 5 — THE LEDGER (65–80s)
+**On screen:** /feed — the timeline, pointing at machine-written entries.
+**Voice:** "Every day the agent runs by itself: checks the field, hunts fresh exposure,
+writes its diary to a public log on GitHub. Today's catches, today's refusals —
+all machine-written, all evidence-linked."
 
-### Shot 6 — OUTRO (75–90s)
+### Shot 6 — OUTRO (80–90s)
 **On screen:** hero again; the URL large.
 **Voice:** "Every other entry tells you what's wrong. Vette fixes it.
 Vette — the agent that vets agents. vette-nu.vercel.app"
 
 ## Production notes
-- If recording on a wallet with no dangerous approvals, use the demo target:
-  audit 0x61e17391f084ad083FA5C199D4F0d350A4CF4282 (DANGEROUS 44/100, live
-  USDC approvals) — the kill-switch UI shows with owner-only messaging, which
-  is honest on camera. A clean real-wallet revoke is the gold take if available.
-- One take per shot, cut tight. No music needed; if any, low ambient.
-- Caption everything (most judges watch muted).
-- End card: logo + URL + "Orion Builder Hackathon · Built by Oluwaseyifunmi"
+- No wallet needed for any shot — Shot 4 uses the drill's already-fired kill tx.
+  If you want the UI kill too: connect a wallet with an open approval and click
+  REVOKE (the flow is: report → connect row → revoke → tx hash).
+- Caption everything (judges watch muted).
+- End card: logo + URL + "Orion Builder Hackathon · built by Oluwaseyifunmi"
