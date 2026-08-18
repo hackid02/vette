@@ -120,32 +120,6 @@ function GuardInner() {
     }
   }
 
-  async function guardMyWallet() {
-    setError(null);
-    try {
-      // Read whichever account is active in the wallet RIGHT NOW
-      let current = account;
-      if (provider) {
-        const { getCurrentAccount } = await import("@/lib/wallet");
-        const fresh = await getCurrentAccount(provider);
-        if (fresh) {
-          if (fresh !== account) {
-            setAccount(fresh);
-            setAddress(fresh);
-          }
-          current = fresh;
-        }
-      }
-      if (!current) {
-        setError("Connect your wallet first — Vette reads whichever account is active in the wallet.");
-        return;
-      }
-      await load(current);
-    } catch (e) {
-      setError(String(e.message || e));
-    }
-  }
-
   function saveBaseline() {
     if (!report) return;
     const b = writeBaseline(address, report.approvals.list);
@@ -194,37 +168,6 @@ function GuardInner() {
               className="w-full sm:w-auto shrink-0 px-5 py-3 rounded-md bg-vet text-ink font-extrabold text-sm hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
             >
               {busy ? "RUNNING…" : "RUN CHECK →"}
-            </button>
-          </div>
-        </div>
-
-        {/* wallet bar */}
-        <div className="panel p-5 mb-8 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
-          <div className="flex flex-col gap-1">
-            <span className="overline">your wallet</span>
-            <span className="text-xs text-muted leading-snug">
-              Connect → guard your own wallet → dangerous approvals get the kill switch.
-            </span>
-          </div>
-          <div className="flex items-start gap-3 flex-wrap">
-            <ConnectWallet
-              account={account}
-              onConnect={({ account: acc, provider: p }) => {
-                setAccount(acc);
-                setProvider(p);
-                setAddress(acc);
-              }}
-              onDisconnect={() => {
-                setAccount(null);
-                setProvider(null);
-              }}
-            />
-            <button
-              disabled={busy || !account}
-              onClick={guardMyWallet}
-              className="px-4 py-2.5 rounded-md bg-vet text-ink font-extrabold text-sm hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
-            >
-              GUARD MY WALLET →
             </button>
           </div>
         </div>
@@ -352,6 +295,25 @@ function GuardInner() {
             {report.approvals.list.length > 0 && (
               <div>
                 <div className="overline mb-3">open doors — every one traces to a live onchain read</div>
+                {report.actions.some((x) => x.type === "revoke") && !account && (
+                  <div className="flex items-center justify-between flex-wrap gap-3 mb-4 border border-vet/30 bg-vet/5 rounded-md p-3">
+                    <span className="text-xs text-muted leading-snug">
+                      these doors are real. connect your wallet to arm the kill switch —
+                      one click, one signature, door closed onchain.
+                    </span>
+                    <ConnectWallet
+                      account={account}
+                      onConnect={({ account: acc, provider: p }) => {
+                        setAccount(acc);
+                        setProvider(p);
+                      }}
+                      onDisconnect={() => {
+                        setAccount(null);
+                        setProvider(null);
+                      }}
+                    />
+                  </div>
+                )}
                 <ol className="space-y-3">
                   {report.approvals.list.map((a, i) => {
                     const s = LEVEL_STYLE[a.level] || LEVEL_STYLE.info;
