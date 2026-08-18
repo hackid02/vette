@@ -4,6 +4,9 @@ export const alt = "VETTE — the agent that vets agents";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Crop-safe layout: every element sits inside the central 700px band
+// (x 250–950), so the card survives the square/narrow crops mobile
+// link previews apply. Landscape (16:9) shows the full frame.
 export default function OG() {
   return new ImageResponse(
     (
@@ -13,30 +16,31 @@ export default function OG() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
-          padding: "0 88px",
           background: "#0A0D0B",
           color: "#E4E7DF",
           fontFamily: "sans-serif",
           position: "relative",
         }}
       >
-        {/* top band: wordmark left, shield right — one SVG, nothing clips */}
+        {/* top band — centered within the safe zone */}
         <div
           style={{
             position: "absolute",
-            top: 52,
-            left: 88,
-            right: 88,
+            top: 54,
+            left: 250,
+            right: 250,
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "center",
+            gap: 18,
           }}
         >
-          <div style={{ fontSize: 24, letterSpacing: "0.4em", color: "#7E857C", display: "flex" }}>
+          <div style={{ display: "flex", fontSize: 23, letterSpacing: "0.4em", color: "#7E857C" }}>
             {"VETTE"}
           </div>
-          <svg width="60" height="72" viewBox="0 0 24 28" style={{ display: "flex" }}>
+          <svg width="38" height="46" viewBox="0 0 24 28" style={{ display: "flex" }}>
             <path
               d="M12 1.5 L21.5 5.2 V13.4 C21.5 19.6 17.8 24.4 12 26.5 C6.2 24.4 2.5 19.6 2.5 13.4 V5.2 Z"
               fill="#C6FF4A"
@@ -52,24 +56,25 @@ export default function OG() {
           </svg>
         </div>
 
-        {/* headline — explicit strings + rowGap so words can never collapse */}
+        {/* headline — centered, safe width */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            rowGap: 12,
-            marginTop: 44,
+            alignItems: "center",
+            rowGap: 10,
+            marginTop: 40,
           }}
         >
-          <div style={{ display: "flex", fontSize: 72, fontWeight: 800, lineHeight: 1.12 }}>
+          <div style={{ display: "flex", fontSize: 64, fontWeight: 800, lineHeight: 1.1 }}>
             {"The agent"}
           </div>
           <div
             style={{
               display: "flex",
-              fontSize: 72,
+              fontSize: 64,
               fontWeight: 800,
-              lineHeight: 1.12,
+              lineHeight: 1.1,
               color: "#C6FF4A",
             }}
           >
@@ -77,29 +82,39 @@ export default function OG() {
           </div>
         </div>
 
-        {/* tagline */}
-        <div style={{ display: "flex", fontSize: 26, color: "#7E857C", marginTop: 34, maxWidth: 860, lineHeight: 1.4 }}>
+        {/* tagline — centered, safe width */}
+        <div
+          style={{
+            display: "flex",
+            fontSize: 24,
+            color: "#7E857C",
+            marginTop: 28,
+            lineHeight: 1.4,
+            textAlign: "center",
+          }}
+        >
           {"Every claim traces to a tool call. Trust, but verified."}
         </div>
 
-        {/* bottom band */}
+        {/* bottom band — centered within the safe zone */}
         <div
           style={{
             position: "absolute",
-            bottom: 48,
-            left: 88,
-            right: 88,
+            bottom: 50,
+            left: 285,
+            right: 285,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            gap: 16,
             borderTop: "1px solid #1E241F",
-            paddingTop: 20,
+            paddingTop: 18,
           }}
         >
-          <span style={{ display: "flex", fontSize: 20, color: "#7E857C", fontFamily: "monospace" }}>
-            {"built for the Orion Builder Hackathon"}
+          <span style={{ display: "flex", fontSize: 18, color: "#7E857C", fontFamily: "monospace" }}>
+            {"Orion Builder Hackathon"}
           </span>
-          <span style={{ display: "flex", fontSize: 23, color: "#C6FF4A", fontFamily: "monospace" }}>
+          <span style={{ display: "flex", fontSize: 19, color: "#C6FF4A", fontFamily: "monospace" }}>
             {"vette-nu.vercel.app"}
           </span>
         </div>
