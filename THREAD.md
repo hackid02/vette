@@ -102,7 +102,7 @@ Trust, but verified. 🛡️
 
 ## Posting notes
 
-- Attach the video to Tweet 1; attach each tweet's image from brand/thread/ (img2 → Tweet 2, img3 → Tweet 3, and so on). They're 1200x675, X-optimized, and match the site's design. Swap any of them for a real product screenshot if you prefer.
+- Attach the video to Tweet 1; attach each tweet's image from brand/thread/ (img2 → Tweet 2, img3 → Tweet 3, and so on). Each image is a VISUAL piece (not a repeat of the tweet text): the promise-vs-keyhole, the four tool chips, the open UNVERIFIABLE ring, the three score rings, the receipt + REVOKED stamp, and the ledger timeline. They reuse the site's own visual language — 1200x675, pixel-verified.
 - Reply professionally, fast. Canned replies:
   - "Every claim traces to a tool call. The receipts are public."
   - "UNVERIFIABLE is a design principle — the engine does not guess."
