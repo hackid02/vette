@@ -151,7 +151,7 @@ export default function HeroVet() {
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="paste an agent's website, X, or wallet — e.g. base-scout-seven.vercel.app"
+          placeholder="paste any Base agent, website, or wallet — e.g. aixbt.tech"
           className="flex-1 bg-transparent outline-none text-sm text-soft placeholder:text-[#55555F] min-w-0"
         />
         <button

@@ -336,10 +336,10 @@ function AuditInner() {
             <div className="flex items-center gap-2 text-xs">
               <button
                 disabled={busy}
-                onClick={() => { setUrl("https://base-scout-seven.vercel.app/"); setAddress(""); }}
+                onClick={() => { setUrl("https://aixbt.tech"); setAddress(""); }}
                 className="mono px-3 py-1.5 rounded-md border border-[#23232E] text-muted hover:border-vet/50 hover:text-vet transition-colors disabled:opacity-40"
               >
-                ↳ try: a live contest entry
+                ↳ try: a famous Base agent
               </button>
               <button
                 disabled={busy}
