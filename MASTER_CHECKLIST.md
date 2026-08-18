@@ -121,7 +121,7 @@
 | 3.1 | Registered wallet | ✅ |
 | 3.2 | Website | ✅ vette-nu.vercel.app |
 | 3.3 | Demo link | ✅ /audit (the site IS the demo) |
-| 3.4 | **X profile** | ❌ 🙋 create it (copy ready in CAMPAIGN.md) |
+| 3.4 | **X profile** | ✅ x.com/vetteagents — wired into site header/footer + README + SUBMISSION.md, live in prod |
 | 3.5 | **Discord or Telegram link** | ❌ 🙋 create it (copy ready) |
 | 3.6 | **GitHub repo public** | ⏳ 🙋 create empty repo `vette` + give me a PAT → I push (code committed locally, README/LICENSE/diagram ready) |
 | 3.7 | Wire real social URLs into site footer + README | ⏳ after 3.4–3.6 |
