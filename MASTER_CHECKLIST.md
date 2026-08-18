@@ -106,6 +106,7 @@
 | 2.2 | **GM Report**: /api/gm morning digest — balance, 7d/30d activity, approval surface, verdict line | ✅ live in production |
 | 2.3 | **AUTONOMOUS AGENT**: daily 06:00 UTC cron re-checks the whole field on its own (/activity page, RUN NOW trigger, run log via GitHub API) | ✅ live in production |
 | 2.4 | **THE LEDGER**: /feed public timeline — machine runs from the GitHub log, run-to-run drift, curated milestones with evidence links; grows on its own every day | ✅ live in production |
+| 2.4b | **DAILY AUTONOMOUS SWEEP**: every cron run hunts Base for fresh exposed wallets (paginated emitter logs → contract-skip → live allowance probes) and writes machine CATCH entries to the Ledger with evidence tx | ✅ live — verified: caught 0x6619… unverified AERO spender, persisted to repo, rendered on /feed |
 | 2.5 | LLM narration upgrade (currently template-first) | ❌ nice-to-have |
 
 > The agent now works alone: scheduled field re-checks, self-check page, on-demand
