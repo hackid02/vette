@@ -89,3 +89,32 @@ html, body {
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
+
+/* the verdict stamp — slams in like a rubber stamp on paper */
+@keyframes stamp-in {
+  0% { transform: scale(1.8) rotate(-10deg); opacity: 0; }
+  55% { transform: scale(0.92) rotate(1.5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.stamp-in {
+  animation: stamp-in 0.42s cubic-bezier(0.16, 1.2, 0.3, 1) both;
+  transform-origin: center;
+}
+
+/* gentle float for the hero shield watermark */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+.float-slow {
+  animation: float-slow 9s ease-in-out infinite;
+}
+
+/* receipt slide-up */
+@keyframes receipt-in {
+  from { transform: translateY(14px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.receipt-in {
+  animation: receipt-in 0.6s ease-out both;
+}

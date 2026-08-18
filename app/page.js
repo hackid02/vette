@@ -47,89 +47,97 @@ export default async function Home() {
       <LiveTicker />
 
       {/* HERO */}
-      <header className="relative hero-glow bg-grid border-b border-[#1D1D26]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-20 text-center">
-          <div className="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1D1D26] bg-[#0E0E15] mb-8 max-w-full">
+      <header className="relative hero-glow bg-grid border-b border-[#1D1D26] overflow-hidden">
+        {/* floating shield watermark — the mark, not text */}
+        <svg
+          viewBox="0 0 24 28"
+          className="absolute right-[6%] top-[12%] w-40 h-48 sm:w-56 sm:h-64 opacity-[0.07] float-slow pointer-events-none"
+          aria-hidden
+        >
+          <path d="M12 1.5 L21.5 5.2 V13.4 C21.5 19.6 17.8 24.4 12 26.5 C6.2 24.4 2.5 19.6 2.5 13.4 V5.2 Z" fill="#C6FF4A" />
+          <path d="M7.2 13.8 L10.4 17 L17 9.4" stroke="#0A0D0B" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        </svg>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-28 text-center">
+          <div className="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1D1D26] bg-[#0E0E15] mb-10 max-w-full">
             <span className="w-2 h-2 rounded-full bg-vet pulse-dot shrink-0" />
             <span className="mono text-[10px] sm:text-[11px] tracking-[0.15em] text-muted leading-snug">
               LIVE ON BASE · ORION BUILDER HACKATHON ENTRY
             </span>
           </div>
 
-          <h1 className="serif text-[11vw] sm:text-8xl font-light tracking-tight leading-[1.02] text-cream">
+          <h1 className="serif text-[11vw] sm:text-8xl font-light tracking-tight leading-[1.04] text-cream">
             VETTE is the agent<br />
             <em className="text-vet">that vets</em> agents.
           </h1>
 
-          <p className="max-w-2xl mx-auto mt-8 text-lg text-muted leading-relaxed">
-            Every AI agent makes promises. Vette checks the chain, delivers a verdict,
-            and kills the danger — <span className="text-soft font-semibold">one click</span>.
-            No vibes. No invention. Every claim traces to a real transaction.
+          <p className="max-w-xl mx-auto mt-10 text-base sm:text-lg text-muted leading-8">
+            Every agent makes promises. Vette checks the chain, stamps a verdict,
+            and closes the danger — <span className="text-soft font-semibold">one click</span>.
           </p>
 
-          <div className="flex justify-center mt-9">
+          <div className="flex justify-center mt-12">
             <HeroVet />
           </div>
 
-          <div className="mono text-xs text-muted mt-6 flex items-center justify-center gap-3 flex-wrap">
-            <span className="text-vet">✓ COMPLIANT</span>
-            <span className="text-[#33333F]">·</span>
-            <span className="text-warn">⚠ DEVIATED</span>
-            <span className="text-[#33333F]">·</span>
-            <span className="text-danger">🚨 DANGEROUS</span>
-            <span className="text-[#55555F]">— and the honest fourth: UNVERIFIABLE. The words an agent economy runs on</span>
+          <div className="mt-12 flex items-center justify-center gap-3 flex-wrap">
+            <VerdictBadge verdict="COMPLIANT" stamp />
+            <VerdictBadge verdict="DEVIATED" stamp />
+            <VerdictBadge verdict="DANGEROUS" stamp />
+            <VerdictBadge verdict="UNVERIFIABLE" stamp />
+            <span className="mono text-[11px] text-muted w-full sm:w-auto mt-2 sm:mt-0">
+              the words an agent economy runs on
+            </span>
           </div>
         </div>
       </header>
 
       {/* DEMO FLOW — the product working, Rigel-style */}
       {top && (
-        <section className="max-w-6xl mx-auto px-6 py-16">
+        <section className="max-w-6xl mx-auto px-6 py-24">
           <div className="overline mb-3">
             live run · re-verified on Base {demo.foundAt ? new Date(demo.foundAt).toLocaleDateString() : ""}
           </div>
           <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
             The machine, <em className="text-vet">mid-vet.</em>
           </h2>
-          <p className="text-muted leading-relaxed text-sm mt-5">
-            One real wallet, run through the engine today. The chain moves — click any card
-            below to see the live numbers.
+          <p className="text-muted leading-relaxed text-sm mt-6">
+            One real wallet, through the engine today.
           </p>
-          <div className="grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 items-stretch mt-10">
+          <div className="grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-4 items-stretch mt-12">
             <Flow label="01 · ENGINE">
               <ScoreRing score={top.score} verdict={top.verdict} size={110} />
               <p className="text-sm text-muted mt-2 leading-relaxed">
-                Real reads only: balance, decoded transfers, approval events, live allowances, contract reputations.
+                Real reads only.
               </p>
               <p className="mono text-xs text-muted mt-3">{shortAddr(top.address)}</p>
             </Flow>
             <Arrow />
-            <Flow label="02 · ENGINE DECISION">
+            <Flow label="02 · DECISION">
               <p className="text-sm text-soft leading-relaxed">
                 {topFinding
-                  ? `The rule engine picked the scariest open door: ${topFinding.title.toLowerCase()}`
-                  : "The rule engine scans the surface, then probes what matters most."}
+                  ? `Picked the scariest open door: ${topFinding.title.toLowerCase()}`
+                  : "Probes what matters most."}
               </p>
-              <p className="mono text-xs text-muted mt-3">rules decide → probes verify → numbers only</p>
+              <p className="mono text-xs text-muted mt-3">rules decide → probes verify</p>
             </Flow>
             <Arrow />
             <Flow label="03 · VERDICT" tone={top.verdict === "DANGEROUS" ? "danger" : top.verdict === "COMPLIANT" ? "vet" : "neutral"}>
-              <VerdictBadge verdict={top.verdict} size="lg" icon />
+              <VerdictBadge verdict={top.verdict} size="lg" icon stamp />
               <p className="text-sm text-muted mt-3 leading-relaxed">
                 {top.verdict === "DANGEROUS"
-                  ? `${top.openApprovals} live approval(s) still open. A stranger's wallet, exposed right now.`
-                  : "Evidence, not opinion. Follow the trace."}
+                  ? `${top.openApprovals} live door(s) still open.`
+                  : "Evidence, not opinion."}
               </p>
               <p className="mono text-xs text-muted mt-3">every claim → a tx hash</p>
             </Flow>
             <Arrow />
             <Flow label="04 · ACTION" tone="vet">
               <p className="text-sm text-soft leading-relaxed">
-                Connect your wallet and the kill switch is <span className="font-bold text-vet">live</span>:
-                one click, one signature, the approval dies onchain. Vette doesn&apos;t warn — it <span className="font-bold text-vet">fixes</span>.
+                One click, one signature. The door dies onchain.
               </p>
               <Link href={`/audit?address=${top.address}`} className="inline-block mt-3 mono text-xs text-vet hover:underline">
-                re-run this audit live →
+                re-run live →
               </Link>
             </Flow>
           </div>
@@ -139,7 +147,7 @@ export default async function Home() {
       {/* CAUGHT LIVE */}
       {demo?.targets && demo.targets.length > 0 && (
         <section className="border-y border-[#1D1D26] bg-[#0D0D13]">
-          <div className="max-w-6xl mx-auto px-6 py-16">
+          <div className="max-w-6xl mx-auto px-6 py-24">
             <div className="overline mb-3">caught on base</div>
             <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
               Real wallets. <em className="text-vet">Not actors.</em>
@@ -158,7 +166,7 @@ export default async function Home() {
                   className="panel p-6 hover:border-vet/40 transition-colors group flex flex-col gap-5"
                 >
                   <div className="flex items-center justify-between">
-                    <VerdictBadge verdict={t.verdict} icon />
+                    <VerdictBadge verdict={t.verdict} icon stamp />
                     <span className="mono text-2xl font-black text-soft">
                       {t.score}
                       <span className="text-muted text-sm font-normal">/100</span>
@@ -189,7 +197,7 @@ export default async function Home() {
 
       {/* THE CATCH — the story, not the feature list */}
       <section className="border-b border-[#1E241F]">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[1fr_1.3fr] gap-10 items-start">
+        <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-[1fr_1.3fr] gap-10 items-start">
           <div>
             <div className="overline mb-3">the catch</div>
             <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
@@ -211,13 +219,13 @@ export default async function Home() {
               re-run this audit yourself — paste the site in the hero ↑
             </a>
           </div>
-          <div className="paper panel p-7">
+          <div className="paper panel p-7 receipt-in">
             <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
               <span className="overline">vette report — {catchesData.entry}</span>
               <span className="mono text-[11px] text-muted">{new Date(catchesData.caughtAt).toLocaleDateString()}</span>
             </div>
             <div className="flex items-center gap-3 flex-wrap mb-5">
-              <VerdictBadge verdict={catchesData.verdict} icon size="lg" />
+              <VerdictBadge verdict={catchesData.verdict} icon size="lg" stamp />
               {catchesData.score != null ? (
                 <span className="mono text-3xl font-black text-soft">
                   {catchesData.score}
@@ -247,7 +255,7 @@ export default async function Home() {
 
       {/* THE FIELD */}
       <section className="border-b border-[#1E241F]">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
+        <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
           <div>
             <div className="overline mb-3">the field</div>
             <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
@@ -281,7 +289,7 @@ export default async function Home() {
       </section>
 
       {/* THREE MOVES */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
+      <section className="max-w-6xl mx-auto px-6 py-24">
         <div className="overline mb-3">the moves</div>
         <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
           Watch. <em className="text-vet">Then act.</em>
@@ -329,7 +337,7 @@ export default async function Home() {
 
       {/* ENGINE / RECEIPT */}
       <section className="border-t border-[#1D1D26]">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[1fr_1.4fr] gap-12">
+        <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-[1fr_1.4fr] gap-12">
           <div>
             <div className="overline mb-3">the engine</div>
             <h2 className="serif text-4xl sm:text-5xl font-light tracking-tight text-cream leading-tight">
@@ -348,24 +356,36 @@ export default async function Home() {
               Watch it work on its own →
             </Link>
           </div>
-          <ol className="space-y-0">
-            {[
-              ["fetch_website()", "liveness · socials · published addresses · the agent's own words"],
-              ["rpc_balance() / rpc_code()", "ETH balance, is it a contract, Base mainnet"],
-              ["explorer_transactions()", "decoded history — what it actually did"],
-              ["rpc_allowance()", "live allowances probed onchain, right now"],
-              ["rule_engine()", "mandate-vs-behavior + wallet-safety heuristics"],
-              ["narrate() → verdict", "plain English, every sentence citing the steps above"],
-            ].map(([fn, desc], i) => (
-              <li key={fn} className="flex gap-5 py-4 hairline last:border-b-0">
-                <span className="mono text-xs text-[#3A3A47] w-6 shrink-0 pt-0.5">{String(i + 1).padStart(2, "0")}</span>
-                <div>
-                  <div className="mono text-sm text-vet">{fn}</div>
-                  <div className="text-xs text-muted mt-1">{desc}</div>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <div className="paper panel p-7 receipt-in relative">
+            <div className="flex items-center justify-between mb-2">
+              <span className="overline">vette receipt · engine trace</span>
+              <span className="mono text-[10px] text-muted">№ {top?.address ? shortAddr(top.address) : "live"}</span>
+            </div>
+            <ol className="space-y-0">
+              {[
+                ["fetch_website()", "liveness · socials · published addresses"],
+                ["rpc_balance() / rpc_code()", "ETH balance, is it a contract"],
+                ["explorer_transactions()", "decoded history — what it actually did"],
+                ["rpc_allowance()", "live allowances probed onchain, right now"],
+                ["rule_engine()", "safety + mandate heuristics"],
+                ["narrate() → verdict", "every sentence cites the steps above"],
+              ].map(([fn, desc], i) => (
+                <li key={fn} className="flex gap-5 py-3.5 hairline last:border-b-0">
+                  <span className="mono text-xs text-[#3A3A47] w-6 shrink-0 pt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <div className="mono text-sm text-vet">{fn}</div>
+                    <div className="text-xs text-muted mt-1">{desc}</div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div className="absolute -bottom-4 right-6 rotate-[-6deg]">
+              <VerdictBadge verdict="COMPLIANT" stamp />
+            </div>
+            <p className="mono text-[10px] text-muted text-center mt-6">
+              — end of trace — verified by a deterministic engine, not vibes
+            </p>
+          </div>
         </div>
       </section>
 
