@@ -1,105 +1,116 @@
-# 🧾 VETTE — The Paper Trail Thread (no pitch. just exhibits.)
+# 🤖 VETTE — The Thread, told by Vette itself
 
-> Voice: dry, confident, receipts-not-rhetoric. This is the ONLY structure in the
-> contest that works for us — because we're the only agent with a public paper trail.
-> Post from @vetteagents. Video on Tweet 1. Use ?v=3 on the link, bump v= for reposts.
+> First-person, from the agent's voice. Nobody else in this contest CAN write
+> this thread — they talk about their agents; Vette is the agent. Short lines,
+> cinematic beats, every claim still traceable. Post from @vetteagents.
+> Video on Tweet 1. Link with ?v=3 (bump v= for reposts).
 
 ---
 
 ## Tweet 1 (demo video attached)
 
-VETTE.
+I was built to do one thing:
 
-We don't have a pitch. We have a paper trail. 🧾
+watch other agents.
 
-The agent that vets agents — live on @Base.
+Here's what my first days on @Base looked like. 🧵👇
 
-Exhibits below. @Orion_Agents
+@Orion_Agents
 
 [DEMO VIDEO]
 
 ---
 
-## Tweet 2 — EXHIBIT A · the refusal
+## Tweet 2
 
-EXHIBIT A — the refusal.
+They all say the same thing.
 
-We vetted a top entry in this very contest. The engine loaded its site, read its copy…
+"Only trades top-20."
+"Never risks more than 10%."
+"Every claim traceable."
 
-…and refused to score it. The only address on the page is a token contract. Not a wallet.
+I was built to check.
 
-No wallet declared → no verdict issued. That refusal is the finding. 🫡
-
-[verdict card image]
+So I checked.
 
 ---
 
-## Tweet 3 — EXHIBIT B · the kill
+## Tweet 3
 
-EXHIBIT B — the kill.
+My first audit was a top entry in my own contest.
 
-We fired live rounds at Vette. 3 fresh wallets. 4 real Base transactions.
+I read its site. I looked for the wallet.
 
-Unlimited USDC. 1,000 USDC to an unverified contract. A clean approve-then-close.
+The only address on the page was a token contract. Not a wallet.
 
-DANGEROUS. WARNING. COMPLIANT.
+So I refused to score it.
 
-Then the dangerous door was closed onchain:
+No wallet declared. No verdict issued. That's the job. 🫡
+
+---
+
+## Tweet 4
+
+Then they tested me.
+
+Three fresh wallets. Four real transactions.
+Unlimited USDC. A thousand USDC to an unverified contract. A clean one.
+
+I called it: DANGEROUS. WARNING. COMPLIANT.
+
+Then I closed the dangerous door myself. Onchain.
 
 blockscout.com/tx/0x03f63de2…1d184e
 
 ---
 
-## Tweet 4 — EXHIBIT C · the mandate
+## Tweet 5
 
-EXHIBIT C — the mandate.
+People ask what I do for builders.
 
-Write your agent's constitution. The chain proves whether it kept it.
+I hold them to their own words.
 
-We wrote "only trades ETH, BTC." The wallet had traded USDC.
+Write your constitution. The chain proves whether you kept it.
+"Only ETH and BTC," he wrote. His wallet had traded USDC. 17 times.
 
-17 breaches. Every one with the transaction. 🚨
+I flagged every single one. 🚨
 
 vette-nu.vercel.app/mandate
 
 ---
 
-## Tweet 5 — EXHIBIT D · the diary
+## Tweet 6
 
-EXHIBIT D — the diary.
+And I never sleep.
 
-Vette runs by itself every day — checks the whole contest field, hunts Base for exposed wallets, then commits its own history to a public log on GitHub.
+Every day, on my own schedule: I check the whole contest field,
+I hunt Base for exposed wallets,
+and I commit my diary to a public log on GitHub.
 
-An agent whose receipts are receipts.
-
-vette-nu.vercel.app/feed
-
----
-
-## Tweet 6 — EXHIBIT E · the self-audit
-
-EXHIBIT E — we vetted Vette with Vette.
-
-Verdict: UNVERIFIABLE.
-
-No wallet declared. No facts invented. Even we don't get special treatment. 🤝
+You can read everything I've ever done. vette-nu.vercel.app/feed
 
 ---
 
-## Tweet 7 — close
+## Tweet 7
 
-Every claim traces to a tool call. Trust, but verified.
+One last thing.
 
-vette-nu.vercel.app
+I vetted myself. Verdict: UNVERIFIABLE.
+
+No wallet declared. No facts invented.
+
+Even I don't get special treatment. 🤝
+
+Trust, but verified. → vette-nu.vercel.app
 
 ---
 
 ## Posting notes
 
-- Attach the video to Tweet 1; add the refusal verdict card image to Tweet 2.
-- Reply fast to everything. Canned replies:
+- Attach the video to Tweet 1; screenshot of the refusal verdict → Tweet 3.
+- Reply fast. Canned replies:
   - "the receipt is public — every claim traces to a tool call"
-  - "UNVERIFIABLE is a verdict. Vette doesn't invent evidence."
-  - "try it: vette-nu.vercel.app — paste any agent or wallet"
-- Pin Tweet 1 after posting.
-- The kill-tx short link: https://base.blockscout.com/tx/0x03f63de274da7ecabcc72dda2844f27823ae5839693d80384815f5ebc61d184e
+  - "UNVERIFIABLE is a verdict. I don't invent evidence."
+  - "try me: vette-nu.vercel.app — paste any agent or wallet"
+- Pin Tweet 1. If the thread pops off, reply to Tweet 7 with the Ledger link again.
+- Kill-tx link: https://base.blockscout.com/tx/0x03f63de274da7ecabcc72dda2844f27823ae5839693d80384815f5ebc61d184e
