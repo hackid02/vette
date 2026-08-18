@@ -34,7 +34,7 @@ function pretty(v) {
   return s.length > 160 ? s.slice(0, 160) + "…" : s;
 }
 
-function Report({ a, account, provider, onRevoked }) {
+function Report({ a, account, provider, onRevoked, onWallet }) {
   return (
     <div className="space-y-6">
       {/* report header */}
@@ -133,6 +133,21 @@ function Report({ a, account, provider, onRevoked }) {
       {a.actions.length > 0 && (
         <div className="panel p-6">
           <div className="overline mb-4">what vette would do next</div>
+          {a.actions.some((x) => x.type === "revoke") && !account && (
+            <div className="flex items-center justify-between flex-wrap gap-3 mb-4 border border-vet/30 bg-vet/5 rounded-md p-3">
+              <span className="text-xs text-muted leading-snug">
+                these doors are real. connect your wallet to arm the kill switch —
+                one click, one signature, door closed onchain.
+              </span>
+              <ConnectWallet
+                account={account}
+                onConnect={({ account: acc, provider: p }) => {
+                  onWallet?.({ account: acc, provider: p });
+                }}
+                onDisconnect={() => onWallet?.({ account: null, provider: null })}
+              />
+            </div>
+          )}
           <ul className="space-y-4">
             {a.actions.map((act, i) =>
               act.type === "revoke" ? (
@@ -259,34 +274,6 @@ function AuditInner() {
     }
   }
 
-  async function vetMyWallet() {
-    setError(null);
-    try {
-      // Read the account ACTIVE IN THE WALLET right now — the user may have
-      // switched wallets inside OKX, and that's the one they want vetted.
-      let current = account;
-      if (provider) {
-        const { getCurrentAccount } = await import("@/lib/wallet");
-        const fresh = await getCurrentAccount(provider);
-        if (fresh) {
-          if (fresh !== account) {
-            setAccount(fresh);
-          }
-          current = fresh;
-        }
-      }
-      if (!current) {
-        setError("Connect your wallet first — Vette reads whichever account is active in the wallet.");
-        return;
-      }
-      setAddress(current);
-      setUrl("");
-      await run({ address: current, url: null, claims: null });
-    } catch (e) {
-      setError(String(e.message || e));
-    }
-  }
-
   function handleRevoked() {
     if (account) run({ address: account, url: null, claims: null });
   }
@@ -311,32 +298,6 @@ function AuditInner() {
           Website, X, or wallet — with the agent&apos;s own promises if you have them. Real
           fetches, real RPC. 10–30 seconds. No shortcuts, no invention.
         </p>
-
-        {/* wallet strip — one quiet line, one job: the kill switch */}
-        <div className="panel p-4 mb-6 flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
-          <span className="overline shrink-0">kill switch</span>
-          <div className="flex items-start gap-3 flex-wrap">
-            <ConnectWallet
-              account={account}
-              onConnect={({ account: acc, provider: p }) => {
-                setAccount(acc);
-                setProvider(p);
-              }}
-              onDisconnect={() => {
-                setAccount(null);
-                setProvider(null);
-              }}
-            />
-            <button
-              disabled={busy || !account}
-              onClick={vetMyWallet}
-              title={!account ? "Connect your wallet first" : "Audit the connected wallet"}
-              className="px-4 py-2.5 rounded-md bg-vet text-ink font-extrabold text-sm hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
-            >
-              VET MY WALLET →
-            </button>
-          </div>
-        </div>
 
         <div className="panel p-6 space-y-5 mb-8">
           <div>
@@ -425,6 +386,10 @@ function AuditInner() {
             account={account}
             provider={provider}
             onRevoked={handleRevoked}
+            onWallet={({ account: acc, provider: p }) => {
+              setAccount(acc);
+              setProvider(p);
+            }}
           />
         )}
       </div>
