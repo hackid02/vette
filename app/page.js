@@ -4,6 +4,7 @@ import VerdictBadge from "@/components/VerdictBadge";
 import HeroVet from "@/components/HeroVet";
 import LiveTicker from "@/components/LiveTicker";
 import ScoreRing from "@/components/ScoreRing";
+import SiteNav from "@/components/SiteNav";
 import { shortAddr } from "@/lib/providers";
 import demoData from "../data/demo.json";
 import catchesData from "../data/catches.json";
@@ -40,30 +41,17 @@ export default async function Home() {
   return (
     <main className="min-h-screen">
       {/* NAV */}
-      <nav className="max-w-6xl mx-auto px-6 flex items-center justify-between py-6">
-        <Link href="/"><Logo /></Link>
-        <div className="flex items-center gap-7 text-sm text-muted">
-          <Link href="/audit" className="hover:text-soft transition-colors">Audit</Link>
-          <Link href="/field" className="hover:text-soft transition-colors">The Field</Link>
-          <Link href="/guard" className="hover:text-soft transition-colors">Guard</Link>
-          <Link href="/feed" className="hover:text-soft transition-colors">The Ledger</Link>
-          <a href="https://github.com/hackid02/vette" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">GitHub</a>
-          <a href="https://x.com/vetteagents" target="_blank" rel="noreferrer" className="hover:text-soft transition-colors">X</a>
-          <Link href="/audit" className="px-4 py-2 rounded-md bg-vet text-ink font-extrabold hover:opacity-90 transition-opacity">
-            Vet an agent
-          </Link>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* LIVE TICKER — the moving proof */}
       <LiveTicker />
 
       {/* HERO */}
       <header className="relative hero-glow bg-grid border-b border-[#1D1D26]">
-        <div className="max-w-6xl mx-auto px-6 pt-16 pb-20 text-center">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1D1D26] bg-[#0E0E15] mb-8">
-            <span className="w-2 h-2 rounded-full bg-vet pulse-dot" />
-            <span className="mono text-[11px] tracking-[0.2em] text-muted">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-20 text-center">
+          <div className="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1D1D26] bg-[#0E0E15] mb-8 max-w-full">
+            <span className="w-2 h-2 rounded-full bg-vet pulse-dot shrink-0" />
+            <span className="mono text-[10px] sm:text-[11px] tracking-[0.15em] text-muted leading-snug">
               LIVE ON BASE · ORION BUILDER HACKATHON ENTRY
             </span>
           </div>
@@ -386,7 +374,7 @@ export default async function Home() {
         <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
           <Logo size={22} />
           <p className="mono text-xs text-muted">Every claim traces to a tool call. Trust, but verified.</p>
-          <div className="flex gap-6 text-sm text-muted">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-muted">
             <Link href="/guard" className="hover:text-vet transition-colors">Guard</Link>
             <Link href="/feed" className="hover:text-vet transition-colors">The Ledger</Link>
             <Link href="/activity" className="hover:text-vet transition-colors">Activity</Link>
