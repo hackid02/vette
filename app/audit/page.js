@@ -194,7 +194,7 @@ function Report({ a, account, provider, onRevoked, onWallet }) {
       {/* inline receipt — survives any deployment */}
       {a.trace && a.trace.length > 0 && (
         <div id="receipt" className="panel p-6">
-          <div className="overline mb-4">the receipt — every tool call, real input, real output</div>
+          <div className="overline mb-4">the receipt — every check, real input, real output</div>
           <ol className="space-y-3">
             {a.trace.map((s) => (
               <li key={s.i} className="border border-[#1E241F] bg-[#0E0E15] rounded-md p-4">

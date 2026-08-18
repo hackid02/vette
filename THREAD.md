@@ -49,7 +49,7 @@ THE LEDGER — a public, daily record.
 
 [IMAGE: brand/thread/img4-unverifiable.png]
 
-Every finding carries onchain evidence. Every claim traces to a tool call.
+Every finding carries onchain evidence. Every verdict is a receipt.
 
 If the engine cannot verify something, it does not guess — it returns UNVERIFIABLE.
 
@@ -106,7 +106,7 @@ Trust, but verified. 🛡️
 
 - Attach the video to Tweet 1; attach each tweet's image from brand/thread/ (img2 → Tweet 2, img3 → Tweet 3, and so on). Each image is a VISUAL piece (not a repeat of the tweet text): the promise-vs-keyhole, the four tool chips, the open UNVERIFIABLE ring, the three score rings, the receipt + REVOKED stamp, and the ledger timeline. They reuse the site's own visual language — 1200x675, pixel-verified.
 - Reply professionally, fast. Canned replies:
-  - "Every claim traces to a tool call. The receipts are public."
+  - "Every verdict is a receipt. The receipts are public."
   - "UNVERIFIABLE is a design principle — the engine does not guess."
   - "Try it: vette-nu.vercel.app — paste any agent or wallet."
 - Pin Tweet 1.

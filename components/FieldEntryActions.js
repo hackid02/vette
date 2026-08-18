@@ -109,7 +109,7 @@ export default function FieldEntryActions({ entry }) {
             })}
           </div>
           <p className="mono text-[11px] text-muted">
-            every claim → a tool call · target wallet: {result.address ? short(result.address) : "none published"}
+            every verdict → a receipt · target wallet: {result.address ? short(result.address) : "none published"}
           </p>
         </div>
       )}

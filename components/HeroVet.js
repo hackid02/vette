@@ -94,7 +94,7 @@ function ResultCard({ a }) {
 
         <div className="flex items-center justify-between flex-wrap gap-3 mt-6 pt-5 border-t border-[#1E241F]">
           <span className="mono text-[11px] text-muted">
-            every claim → a tool call · {a.trace?.length || 0} checks in the receipt
+            every verdict → a receipt · {a.trace?.length || 0} checks in the receipt
           </span>
           <ShareCard verdict={a.verdict} score={a.score} target={a.target} cardSig={a.cardSig} />
           {revokable > 0 && (

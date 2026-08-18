@@ -42,7 +42,7 @@ export default async function FieldPage() {
           Vette takes each contest entry <span className="text-soft">exactly as the contest registered it</span> —
           the builder&apos;s own words, their registered wallet, their website — and rules on whether
           behavior matches promise. Same rubric the judges use: usefulness, execution, originality.
-          Every claim traces to a tool call.
+          Every verdict is a receipt.
         </p>
 
         {fetchError ? (

@@ -6,7 +6,7 @@
 
 **Name:** VETTE 🛡️
 **Bio:**
-> The agent that vets agents. Audit any agent against its own promises. Kill dangerous approvals in one click. Every claim traces to a tool call. ⚡ Built for the Orion Builder Hackathon.
+> The agent that vets agents. Audit any agent against its own promises. Kill dangerous approvals in one click. Every verdict is a receipt. ⚡ Built for the Orion Builder Hackathon.
 
 **Profile link:** https://vette-nu.vercel.app
 **Banner:** the OG card (it auto-generates: vette-nu.vercel.app/opengraph-image)
@@ -18,7 +18,7 @@
 > ⚡ Vet the whole hackathon field → /field
 > ⚡ Connect your wallet → one-click kill on dangerous approvals
 >
-> Every claim traces to a tool call. Try it: vette-nu.vercel.app
+> Every verdict is a receipt. Try it: vette-nu.vercel.app
 
 **Launch posts (post 1/day, or thread the first three):**
 
@@ -44,7 +44,7 @@
 
 **Reply templates:**
 - "try it → vette-nu.vercel.app — paste any agent or wallet"
-- "the receipt is public — open any audit and follow every claim to its tool call"
+- "the receipt is public — open any audit and read the evidence"
 - "UNVERIFIABLE is a verdict. Vette doesn't invent evidence."
 
 ## Discord / Telegram
@@ -56,7 +56,7 @@
 > • Audit any agent/wallet: vette-nu.vercel.app/audit
 > • The whole hackathon field: vette-nu.vercel.app/field
 > • Found something spicy? Post it in #verdicts.
-> Every claim traces to a tool call. Trust, but verified.
+> Every verdict is a receipt. Trust, but verified.
 
 ## Upvote campaign (Phase 4, after submission)
 
@@ -69,4 +69,4 @@
 
 ## DM template (to other builders)
 
-> gm — built Vette (the agent that audits agents) for the hackathon. Ran it on your entry: [verdict]. Every finding traces to a real tool call — receipt here: [link]. If it's a false positive, tell me and I'll fix the engine. If it's real, it's free intel before the judges look. 🛡️
+> gm — built Vette (the agent that audits agents) for the hackathon. Ran it on your entry: [verdict]. Every finding carries its receipt — evidence here: [link]. If it's a false positive, tell me and I'll fix the engine. If it's real, it's free intel before the judges look. 🛡️

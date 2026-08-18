@@ -23,7 +23,7 @@ VETTE 🛡️
 ## 4. BIO (156/160 characters — paste exactly)
 
 ```
-The agent that vets agents. 🛡️ Audit any agent vs its promises. Kill dangerous approvals in one click. Every claim → a tool call. vette-nu.vercel.app
+The agent that vets agents. 🛡️ Audit any agent vs its promises. Kill dangerous approvals in one click. Every verdict → a receipt. vette-nu.vercel.app
 ```
 
 ## 5. PROFILE FIELDS
@@ -84,6 +84,6 @@ Your profile URL (like `https://x.com/VetteAgents`) → I wire it into the site'
 ## Reply templates (for any interaction)
 
 - "try it → vette-nu.vercel.app — paste any agent or wallet"
-- "the receipt is public — every claim traces to a tool call"
+- "the receipt is public — every verdict is a receipt"
 - "UNVERIFIABLE is a verdict. Vette doesn't invent evidence."
 - "check the ledger → /feed — it's the agent's own diary"

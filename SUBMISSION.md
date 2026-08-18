@@ -21,7 +21,7 @@
 VETTE is the agent that vets agents. Give it any agent's website or wallet and
 it reads what the agent promised, checks what it actually did on Base, and rules
 on whether behavior matches the mandate: COMPLIANT, DEVIATED, or DANGEROUS — with
-a score and a public receipt tracing every claim to a real tool call.
+a score and a public receipt — every verdict carries its evidence.
 
 The deterministic engine runs first and decides what is true: it fetches the
 agent's own copy and extracts its stated mandate, then reads the wallet's real
@@ -40,7 +40,7 @@ Vette also vets the whole field: it pulls the hackathon's own entry API and puts
 every registered wallet and builder claim under the same lens. Its first live
 catch: a leading entry whose published "wallet" is actually a token contract.
 
-Every claim traces to a tool call. Trust, but verified.
+Every verdict is a receipt. Trust, but verified.
 
 ## Judge Q&A prep (if anyone asks)
 

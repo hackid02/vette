@@ -78,7 +78,7 @@ export default async function Home() {
           <div className="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full border border-[#1D1D26] bg-[#0E0E15] mb-10 max-w-full">
             <span className="w-2 h-2 rounded-full bg-vet pulse-dot shrink-0" />
             <span className="mono text-[10px] sm:text-[11px] tracking-[0.15em] text-muted leading-snug">
-              LIVE ON BASE · ORION BUILDER HACKATHON ENTRY
+              VETTING LIVE ON BASE · ORION HACKATHON ENTRY
             </span>
           </div>
 
@@ -383,8 +383,7 @@ export default async function Home() {
               The deterministic engine runs first and decides what is true. The rule engine
               chooses where to look, every number traces to a live read, and the narration
               is deterministic — an optional model hook can write the words, never the numbers.
-              This is the receipt. Nothing on this page is an opinion that cannot be followed
-              back to a tool call.
+              This is the receipt. Nothing on this page is an opinion without one.
             </p>
             <Link href="/activity" className="inline-block mt-6 px-5 py-3 rounded-md border border-vet/40 text-vet font-bold hover:bg-vet hover:text-ink transition-colors">
               Watch it work on its own →
@@ -427,7 +426,7 @@ export default async function Home() {
       <footer className="border-t border-[#1D1D26]">
         <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
           <Logo size={22} />
-          <p className="mono text-xs text-muted">Every claim traces to a tool call. Trust, but verified.</p>
+          <p className="mono text-xs text-muted">Receipts, not opinions. Trust, but verified.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-muted">
             <Link href="/mandate" className="hover:text-vet transition-colors">The Mandate</Link>
             <Link href="/feed" className="hover:text-vet transition-colors">The Ledger</Link>

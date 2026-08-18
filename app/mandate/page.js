@@ -259,7 +259,7 @@ export default function MandatePage() {
             )}
 
             <p className="mono text-[11px] text-muted text-center">
-              every breach traces to a tool call on Base — the receipt is in the full report
+              every breach carries a receipt on Base — the evidence is in the full report
             </p>
           </div>
         )}

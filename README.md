@@ -46,7 +46,7 @@ DETERMINISTIC ENGINE (always first)
 VERDICT — score /100 + plain-English narrative. Every sentence cites a check.
    │
    ▼
-PUBLIC RECEIPT — every tool call, its real input and output. Nothing invented.
+PUBLIC RECEIPT — every check, its real input and output. Nothing invented.
 ```
 
 Golden rules:

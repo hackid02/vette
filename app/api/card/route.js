@@ -131,7 +131,7 @@ export async function GET(req) {
         {/* bottom line */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontSize: 22, color: "#7E857C", fontFamily: "monospace" }}>
-            every claim → a tool call
+            every verdict → a receipt
           </span>
           <span style={{ fontSize: 22, color: c.accent, fontFamily: "monospace" }}>vette-nu.vercel.app</span>
         </div>
