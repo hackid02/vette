@@ -14,62 +14,82 @@ export default function OG() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "0 90px",
+          padding: "0 88px",
           background: "#0A0D0B",
           color: "#E4E7DF",
           fontFamily: "sans-serif",
           position: "relative",
         }}
       >
-        {/* shield */}
-        <div style={{ position: "absolute", top: 60, right: 80, width: 90, height: 108, background: "#C6FF4A", clipPath: "polygon(50% 0%, 100% 16%, 100% 52%, 50% 100%, 0% 52%, 0% 16%)" }} />
+        {/* top band: wordmark left, shield right */}
         <div
           style={{
             position: "absolute",
-            top: 84,
-            right: 96,
-            width: 64,
-            height: 56,
+            top: 56,
+            left: 88,
+            right: 88,
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "space-between",
           }}
         >
-          <svg width="56" height="40" viewBox="0 0 56 40">
-            <path d="M10 20 L24 34 L46 8" stroke="#0A0D0B" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-          </svg>
+          <div style={{ fontSize: 24, letterSpacing: "0.4em", color: "#7E857C" }}>VETTE</div>
+          <div
+            style={{
+              width: 46,
+              height: 55,
+              background: "#C6FF4A",
+              clipPath: "polygon(50% 0%, 100% 16%, 100% 52%, 50% 100%, 0% 52%, 0% 16%)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <svg width="26" height="20" viewBox="0 0 26 20">
+              <path
+                d="M5 10 L11 16 L21 4"
+                stroke="#0A0D0B"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg>
+          </div>
         </div>
 
-        <div style={{ fontSize: 26, letterSpacing: "0.35em", color: "#7E857C", marginBottom: 28 }}>
-          VETTE
+        {/* headline — two deliberate lines */}
+        <div style={{ display: "flex", flexDirection: "column", marginTop: 48 }}>
+          <div style={{ fontSize: 76, fontWeight: 800, lineHeight: 1.08 }}>The agent</div>
+          <div style={{ fontSize: 76, fontWeight: 800, lineHeight: 1.08, color: "#C6FF4A" }}>
+            that vets agents.
+          </div>
         </div>
-        <div style={{ fontSize: 84, fontWeight: 800, lineHeight: 1.05, display: "flex" }}>
-          The agent
-          <span style={{ color: "#C6FF4A" }}> that vets </span>
-          agents.
-        </div>
-        <div style={{ fontSize: 30, color: "#7E857C", marginTop: 28 }}>
+
+        {/* tagline */}
+        <div style={{ fontSize: 27, color: "#7E857C", marginTop: 36, maxWidth: 860, lineHeight: 1.4 }}>
           Every claim traces to a tool call. Trust, but verified.
         </div>
+
+        {/* bottom band */}
         <div
           style={{
             position: "absolute",
-            bottom: 48,
-            left: 90,
+            bottom: 52,
+            left: 88,
+            right: 88,
             display: "flex",
-            gap: 24,
-            fontSize: 24,
-            fontFamily: "monospace",
+            alignItems: "center",
+            justifyContent: "space-between",
+            borderTop: "1px solid #1E241F",
+            paddingTop: 22,
           }}
         >
-          <span style={{ display: "flex", alignItems: "center", gap: 8, color: "#C6FF4A" }}>
-            <span style={{ width: 14, height: 14, background: "#C6FF4A" }} /> COMPLIANT
+          <span style={{ fontSize: 21, color: "#7E857C", fontFamily: "monospace" }}>
+            built for the Orion Builder Hackathon
           </span>
-          <span style={{ display: "flex", alignItems: "center", gap: 8, color: "#FFB020" }}>
-            <span style={{ width: 14, height: 14, background: "#FFB020" }} /> DEVIATED
-          </span>
-          <span style={{ display: "flex", alignItems: "center", gap: 8, color: "#FF5A65" }}>
-            <span style={{ width: 14, height: 14, background: "#FF5A65" }} /> DANGEROUS
+          <span style={{ fontSize: 24, color: "#C6FF4A", fontFamily: "monospace" }}>
+            vette-nu.vercel.app
           </span>
         </div>
       </div>
