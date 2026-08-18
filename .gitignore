@@ -8,3 +8,4 @@ data/index.json
 .DS_Store
 .vercel/
 .vercel
+data/staging.json
