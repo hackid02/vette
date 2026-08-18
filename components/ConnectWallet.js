@@ -2,7 +2,7 @@
 
 // ConnectWallet — pick your wallet, one permission (see your address). Nothing else.
 import { useState, useEffect, useRef } from "react";
-import { connectWallet, listWallets, isSandboxedFrame, isMobileDevice } from "@/lib/wallet";
+import { connectWallet, listWallets, isSandboxedFrame, isMobileDevice, disconnectWallet } from "@/lib/wallet";
 
 const short = (a) => (a ? `${a.slice(0, 6)}…${a.slice(-4)}` : "");
 
@@ -20,6 +20,7 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
   const [sandboxed, setSandboxed] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [chainId, setChainId] = useState(null);
+  const [disconnectedHint, setDisconnectedHint] = useState(false);
   const ref = useRef(null);
   const listenersRef = useRef(null);
 
@@ -42,6 +43,7 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
     setPickerOpen(false);
     setBusy(true);
     setError(null);
+    setDisconnectedHint(false);
     try {
       const { account, chainId, provider } = await connectWallet(w);
       setChainId(chainId);
@@ -73,6 +75,30 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
     } finally {
       setBusy(false);
     }
+  }
+
+  // Real teardown, in the right order:
+  //   1. detach OUR listeners first — the stale accountsChanged listener was
+  //      what auto-reconnected Vette every time the wallet switched accounts
+  //   2. revoke the wallet's permission (EIP-2255) — so the wallet forgets the
+  //      site and the NEXT connect shows the wallet's account picker again
+  //   3. only then clear the parent state
+  async function doDisconnect() {
+    const prev = listenersRef.current;
+    if (prev) {
+      prev.provider.off?.("accountsChanged", prev.onAcc);
+      prev.provider.off?.("chainChanged", prev.onChain);
+      listenersRef.current = null;
+      try {
+        await disconnectWallet(prev.provider);
+      } catch {
+        /* revoke is best-effort — listener detach already stops the reconnect */
+      }
+    }
+    setChainId(null);
+    setError(null);
+    setDisconnectedHint(true);
+    onDisconnect?.();
   }
 
   // blocked only when a wallet truly cannot work here: sandboxed frame,
@@ -113,10 +139,7 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
           {short(account)}
         </span>
         <button
-          onClick={() => {
-            onDisconnect?.();
-            setError(null);
-          }}
+          onClick={doDisconnect}
           className="mono text-[11px] text-muted hover:text-soft transition-colors px-1"
         >
           disconnect
@@ -159,6 +182,12 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
       {wallets.length === 0 && !busy && (
         <p className="text-[11px] text-muted">
           no wallet extension detected — install MetaMask, Rabby, or Coinbase Wallet
+        </p>
+      )}
+      {disconnectedHint && !error && (
+        <p className="text-[11px] text-vet leading-snug max-w-xs">
+          ✓ disconnected — the wallet has forgotten Vette. Connect again and the wallet
+          will show its account picker, so you can switch to a different wallet.
         </p>
       )}
       {error && (
