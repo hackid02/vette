@@ -2,6 +2,18 @@
   "agent": "VETTE",
   "runs": [
     {
+      "id": "run-msz5xjgc",
+      "reason": "manual",
+      "at": "2026-08-18T21:16:34.620Z",
+      "entriesChecked": 0,
+      "fieldError": "Orion API HTTP 404",
+      "block": 50149223,
+      "checks": [],
+      "catches": [],
+      "sweepNote": "sweep failed — explorer busy",
+      "persisted": null
+    },
+    {
       "id": "run-msz1ic0o",
       "reason": "manual",
       "at": "2026-08-18T19:12:46.680Z",
