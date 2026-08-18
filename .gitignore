@@ -9,3 +9,5 @@ data/index.json
 .vercel/
 .vercel
 data/staging.json
+brand/thread/raw/
+brand/thread/raw2/
