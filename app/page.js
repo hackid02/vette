@@ -306,11 +306,11 @@ export default async function Home() {
             },
             {
               n: "02",
-              icon: "🛡️",
-              title: "GUARD",
+              icon: "📜",
+              title: "THE MANDATE",
               status: "LIVE",
               statusTone: "bg-vet/15 text-vet border-vet/40",
-              body: "Vette watches your wallet. The daily GM report greets you in plain English, and a saved baseline means new approvals can't slip in unnoticed — every guard check diffs the live chain against it.",
+              body: "Write your agent's constitution — the rules it must obey. Vette checks the real wallet against YOUR rules and flags every breach with evidence.",
             },
             {
               n: "03",
@@ -395,7 +395,7 @@ export default async function Home() {
           <Logo size={22} />
           <p className="mono text-xs text-muted">Every claim traces to a tool call. Trust, but verified.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-muted">
-            <Link href="/guard" className="hover:text-vet transition-colors">Guard</Link>
+            <Link href="/mandate" className="hover:text-vet transition-colors">The Mandate</Link>
             <Link href="/feed" className="hover:text-vet transition-colors">The Ledger</Link>
             <Link href="/activity" className="hover:text-vet transition-colors">Activity</Link>
             <a href="https://x.com/vetteagents" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">X</a>
