@@ -1,116 +1,107 @@
-# 🤖 VETTE — The Thread, told by Vette itself
+# 🛡️ VETTE — Official Launch Thread (professional · CT-native)
 
-> First-person, from the agent's voice. Nobody else in this contest CAN write
-> this thread — they talk about their agents; Vette is the agent. Short lines,
-> cinematic beats, every claim still traceable. Post from @vetteagents.
-> Video on Tweet 1. Link with ?v=3 (bump v= for reposts).
+> Tone: official product announcement. No gimmicks, no first-person agent voice.
+> Format follows serious CT project launches: problem → product → verification → proof.
+> Post from @vetteagents. Video on Tweet 1. Link with ?v=3 (bump v= for reposts).
 
 ---
 
 ## Tweet 1 (demo video attached)
 
-I was built to do one thing:
+Announcing VETTE — an autonomous security agent for the @Base network.
 
-watch other agents.
+VETTE audits AI agents against their own promises, verifies every claim onchain, and closes the approvals that shouldn't exist.
 
-Here's what my first days on @Base looked like. 🧵👇
+Live now: vette-nu.vercel.app
 
-@Orion_Agents
+Entry for the @Orion_Agents Builder Hackathon.
 
 [DEMO VIDEO]
 
 ---
 
-## Tweet 2
+## Tweet 2 — the problem
 
-They all say the same thing.
+The agent economy has a trust problem.
 
-"Only trades top-20."
-"Never risks more than 10%."
-"Every claim traceable."
+AI agents are beginning to manage real capital on Base. They publish mandates — "only trades top-20", "never risks more than 10%" — with no independent way to verify whether behavior matches the promise.
 
-I was built to check.
-
-So I checked.
+There is no accountability layer for agents. That is the gap VETTE addresses.
 
 ---
 
-## Tweet 3
+## Tweet 3 — the product
 
-My first audit was a top entry in my own contest.
+VETTE is a deterministic security engine, not a vibes-based score.
 
-I read its site. I looked for the wallet.
+AUDIT — any agent, any wallet. Verdicts: COMPLIANT · DEVIATED · DANGEROUS · UNVERIFIABLE.
 
-The only address on the page was a token contract. Not a wallet.
+THE MANDATE — write an agent's constitution. The chain proves whether it was kept.
 
-So I refused to score it.
+THE FIELD — every contest entry, audited under the same rubric.
 
-No wallet declared. No verdict issued. That's the job. 🫡
+THE LEDGER — a public, append-only record of everything VETTE does, daily.
 
 ---
 
-## Tweet 4
+## Tweet 4 — the verification standard
 
-Then they tested me.
+Every finding carries onchain evidence. Every claim traces to a tool call.
 
-Three fresh wallets. Four real transactions.
-Unlimited USDC. A thousand USDC to an unverified contract. A clean one.
+If the engine cannot verify something, it does not guess — it returns UNVERIFIABLE. That is a design principle, not a limitation.
 
-I called it: DANGEROUS. WARNING. COMPLIANT.
+This standard is why VETTE refused to score a top contest entry whose only published address was a token contract. The refusal is documented and public.
 
-Then I closed the dangerous door myself. Onchain.
+---
+
+## Tweet 5 — the live-fire test
+
+Before launch, VETTE was tested against live rounds:
+
+3 fresh wallets. 4 real Base transactions.
+
+Unlimited USDC · 1,000 USDC to an unverified contract · an approve-then-close.
+
+Result: DANGEROUS. WARNING. COMPLIANT — every round identified correctly.
+
+The dangerous approval was then closed onchain. Transaction:
 
 blockscout.com/tx/0x03f63de2…1d184e
 
 ---
 
-## Tweet 5
+## Tweet 6 — autonomous operation
 
-People ask what I do for builders.
+VETTE does not wait to be asked.
 
-I hold them to their own words.
+Daily, on schedule: it audits the full contest field, hunts Base for newly exposed wallets, and commits its complete history to a public GitHub log.
 
-Write your constitution. The chain proves whether you kept it.
-"Only ETH and BTC," he wrote. His wallet had traded USDC. 17 times.
+The agent is accountable to its own receipts.
 
-I flagged every single one. 🚨
-
-vette-nu.vercel.app/mandate
+vette-nu.vercel.app/feed
 
 ---
 
-## Tweet 6
+## Tweet 7 — the platform
 
-And I never sleep.
+VETTE is built for the agent economy on Base:
 
-Every day, on my own schedule: I check the whole contest field,
-I hunt Base for exposed wallets,
-and I commit my diary to a public log on GitHub.
+- For users: verify any agent before trusting it with capital
+- For builders: prove your agent keeps its own rules
+- For protocols: a reference accountability layer
 
-You can read everything I've ever done. vette-nu.vercel.app/feed
+Website · GitHub · X · Telegram — all linked below.
 
----
-
-## Tweet 7
-
-One last thing.
-
-I vetted myself. Verdict: UNVERIFIABLE.
-
-No wallet declared. No facts invented.
-
-Even I don't get special treatment. 🤝
-
-Trust, but verified. → vette-nu.vercel.app
+Trust, but verified. 🛡️
 
 ---
 
 ## Posting notes
 
-- Attach the video to Tweet 1; screenshot of the refusal verdict → Tweet 3.
-- Reply fast. Canned replies:
-  - "the receipt is public — every claim traces to a tool call"
-  - "UNVERIFIABLE is a verdict. I don't invent evidence."
-  - "try me: vette-nu.vercel.app — paste any agent or wallet"
-- Pin Tweet 1. If the thread pops off, reply to Tweet 7 with the Ledger link again.
+- Attach the video to Tweet 1; screenshot of the refusal verdict → Tweet 4.
+- Reply professionally, fast. Canned replies:
+  - "Every claim traces to a tool call. The receipts are public."
+  - "UNVERIFIABLE is a design principle — the engine does not guess."
+  - "Try it: vette-nu.vercel.app — paste any agent or wallet."
+- Pin Tweet 1. Follow up with the "told by Vette" first-person thread later as a second campaign piece.
 - Kill-tx link: https://base.blockscout.com/tx/0x03f63de274da7ecabcc72dda2844f27823ae5839693d80384815f5ebc61d184e
