@@ -94,7 +94,7 @@ leaders: the keyless risk engine always runs.
 - [x] Website + demo (this app)
 - [x] GitHub repo — github.com/hackid02/vette
 - [x] Autonomous run-log (writes data/agent-log.json here via the GitHub API)
-- [ ] X profile
+- [x] X profile — x.com/vetteagents
 - [ ] Discord link
 - [ ] Ignition fee at submission (~$10 ETH)
 - [ ] Submit before Sept 2, 23:59 UTC

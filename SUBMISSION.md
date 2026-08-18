@@ -12,7 +12,7 @@
 | **Chain** | base |
 | **Website** | https://vette-nu.vercel.app |
 | **Demo link** | https://vette-nu.vercel.app/audit |
-| **X** | (your X profile URL — create it, then paste) |
+| **X** | https://x.com/vetteagents |
 | **GitHub** | https://github.com/hackid02/vette |
 | **Discord or Telegram** | (your invite link — create it, then paste) |
 
