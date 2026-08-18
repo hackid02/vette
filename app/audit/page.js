@@ -153,6 +153,20 @@ function Report({ a, account, provider, onRevoked }) {
               )
             )}
           </ul>
+          {a.actions.some((x) => x.type === "revoke") && (
+            <p className="text-[11px] text-muted mt-4 leading-snug">
+              wallet fighting you?{" "}
+              <a
+                href={`https://revoke.cash/base/${a.address}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-vet hover:underline"
+              >
+                revoke manually with this address pre-filled →
+              </a>
+              {" "}same approve(0), different tool. Vette still caught the door — that part never changes.
+            </p>
+          )}
           {account && a.address && account.toLowerCase() !== a.address.toLowerCase() && (
             <p className="text-[11px] text-muted mt-4 leading-snug">
               You&apos;re auditing someone else&apos;s wallet — only the owner&apos;s signature can revoke.
@@ -298,15 +312,9 @@ function AuditInner() {
           fetches, real RPC. 10–30 seconds. No shortcuts, no invention.
         </p>
 
-        {/* wallet bar — audit yourself + the kill switch */}
-        <div className="panel p-5 mb-6 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
-          <div className="flex flex-col gap-1">
-            <span className="overline">your wallet</span>
-            <span className="text-xs text-muted leading-snug">
-              Connect → Vette audits YOU → dangerous approvals get a kill switch.
-              One click, one signature, threat dead.
-            </span>
-          </div>
+        {/* wallet strip — one quiet line, one job: the kill switch */}
+        <div className="panel p-4 mb-6 flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
+          <span className="overline shrink-0">kill switch</span>
           <div className="flex items-start gap-3 flex-wrap">
             <ConnectWallet
               account={account}

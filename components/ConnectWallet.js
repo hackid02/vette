@@ -198,8 +198,7 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
           </button>
         </div>
         <p className="text-[11px] text-muted leading-snug max-w-xs">
-          switched wallets inside OKX? click <span className="text-vet">↻ sync</span> or VET MY WALLET
-          — Vette reads whichever account is active.
+          switched accounts? <span className="text-vet">↻ sync</span>
         </p>
       </div>
     );
@@ -243,9 +242,7 @@ export default function ConnectWallet({ account, onConnect, onDisconnect }) {
       )}
       {disconnectedHint && !error && (
         <p className="text-[11px] text-muted leading-snug max-w-xs">
-          ✓ disconnected from Vette&apos;s side. Your wallet keeps its own authorization
-          (that&apos;s the wallet&apos;s choice). To switch wallets: <span className="text-soft">switch accounts inside
-          OKX</span>, then hit CONNECT or VET MY WALLET — Vette reads whichever account is active.
+          ✓ disconnected. To use a different account, switch it inside your wallet, then connect — Vette reads whichever account is active.
         </p>
       )}
       {error && (
