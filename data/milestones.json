@@ -3,8 +3,8 @@
   {
    "date": "2026-08-18",
    "type": "CATCH",
-   "title": "Live-fire drill: 3 burners, 4 real txs, every door caught \u2014 then killed",
-   "detail": "We staged real approvals on three fresh Base wallets: unlimited USDC to a router, 1,000 USDC to an unverified contract, and an approve-then-close. Vette: DANGEROUS 82 \u00b7 WARNING \u00b7 COMPLIANT. Then the dangerous one was killed onchain (0x03f63de2\u2026) and re-audited: COMPLIANT 100. The drill also caught two engine bugs, now fixed.",
+   "title": "Live-fire drill: 3 burners, 4 real txs \u2014 DANGEROUS 82 \u2192 killed \u2192 COMPLIANT 100",
+   "detail": "We staged real approvals on three fresh Base wallets: unlimited USDC to a router, 1,000 USDC to an unverified contract, and an approve-then-close. Vette called all three correctly, then the dangerous door was closed onchain (0x03f63de2...) and re-audited: COMPLIANT 100. The drill also surfaced the score-floor rule \u2014 a live danger finding caps the verdict at DANGEROUS regardless of score (82 with an open unverified door is still DANGEROUS).",
    "links": [
     {
      "label": "the kill tx",
@@ -43,8 +43,8 @@
   {
    "date": "2026-08-16",
    "type": "SCORE",
-   "title": "Three external AI audits: 13 \u2192 21 \u2192 24 out of 30",
-   "detail": "Independent AI code reviews found 23 findings across three passes and rescored twice. Every finding is fixed and verified in production \u2014 including the ones that said a failed scan must never read as clean.",
+   "title": "Three AI-assisted review passes: 13 \u2192 21 \u2192 24 out of 30",
+   "detail": "Three rounds of AI-assisted code review raised 23 findings across the passes; the fixes are in production and the open items are tracked in the repo's checklist. Honest ledger entry: the remaining known items are the Telegram link (pending) and the optional model-narration key (off by design).",
    "links": [
     {
      "label": "the audit trail",

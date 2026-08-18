@@ -38,6 +38,22 @@ export default async function Home() {
   const top = demo?.targets?.find((t) => t.verdict === "DANGEROUS") || demo?.targets?.[0] || null;
   const topFinding = demo?.topFinding || null;
 
+  // The Field section badge reflects ACTUAL reachability — checked right now,
+  // with a short timeout so a slow contest API can't stall the homepage.
+  let fieldLive = false;
+  let fieldCount = 0;
+  try {
+    const { fetchEntries } = await import("@/lib/orion");
+    const entries = await Promise.race([
+      fetchEntries(),
+      new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 6000)),
+    ]);
+    fieldLive = true;
+    fieldCount = entries.length;
+  } catch {
+    fieldLive = false;
+  }
+
   return (
     <main className="min-h-screen">
       {/* NAV */}
@@ -274,12 +290,30 @@ export default async function Home() {
             className="panel p-8 hover:border-vet/50 transition-colors group flex flex-col gap-4"
           >
             <div className="flex items-center justify-between">
-              <span className="mono text-xs text-muted">live from the Orion API</span>
-              <span className="mono text-xs px-2.5 py-1 rounded border border-vet/40 text-vet">LIVE</span>
+              <span className="mono text-xs text-muted">
+                {fieldLive ? "live from the Orion API" : "checked right now — Orion API unreachable"}
+              </span>
+              <span
+                className={`mono text-xs px-2.5 py-1 rounded border ${
+                  fieldLive ? "border-vet/40 text-vet" : "border-warn/40 text-warn"
+                }`}
+              >
+                {fieldLive ? "LIVE" : "OFFLINE"}
+              </span>
             </div>
             <p className="serif text-3xl font-light text-soft leading-snug">
-              BaseScout. Rigel.<br />
-              <em className="text-vet">And yours, when you submit.</em>
+              {fieldLive ? (
+                <>
+                  BaseScout. Rigel.<br />
+                  <em className="text-vet">And yours, when you submit.</em>
+                </>
+              ) : (
+                <>
+                  The contest's entry API is down right now.
+                  <br />
+                  <em className="text-warn">Vette's own engine is fine — check back.</em>
+                </>
+              )}
             </p>
             <p className="mono text-xs text-muted group-hover:text-vet transition-colors mt-auto">
               open The Field →
@@ -380,7 +414,7 @@ export default async function Home() {
               ))}
             </ol>
             <div className="absolute -bottom-4 right-6 rotate-[-6deg]">
-              <VerdictBadge verdict="COMPLIANT" stamp />
+              <VerdictBadge verdict={top?.verdict || "UNVERIFIABLE"} stamp />
             </div>
             <p className="mono text-[10px] text-muted text-center mt-6">
               — end of trace — verified by a deterministic engine, not vibes

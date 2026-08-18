@@ -75,7 +75,9 @@ Result: DANGEROUS. WARNING. COMPLIANT. All correct.
 
 [IMAGE: brand/thread/img6-kill.png]
 
-Then the dangerous approval was closed onchain.
+Then VETTE handed us the kill switch.
+
+One signature — approve(0) — and the door died onchain:
 
 Transaction:
 blockscout.com/tx/0x03f63de2…1d184e
