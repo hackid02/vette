@@ -92,6 +92,26 @@ export default function RunAgentButton() {
                 </div>
               </div>
             ))}
+            {Array.isArray(run.catches) && run.catches.length > 0 && (
+              <div className="border border-danger/40 bg-danger/10 rounded-md p-4">
+                <p className="text-danger font-extrabold text-sm mb-2">
+                  🎯 SWEEP CAUGHT {run.catches.length}:
+                </p>
+                <ul className="space-y-1.5">
+                  {run.catches.map((c, i) => (
+                    <li key={i} className="mono text-xs text-soft">
+                      {c.address.slice(0, 6)}…{c.address.slice(-4)} → {c.spenderName || "unverified"} ({c.tokenSymbol}){" "}
+                      <a href={`https://base.blockscout.com/tx/${c.tx}`} target="_blank" rel="noreferrer" className="text-vet hover:underline">
+                        [tx ↗]
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {Array.isArray(run.catches) && run.catches.length === 0 && (
+              <p className="mono text-[11px] text-muted">{run.sweepNote || "sweep: nothing reportable"}</p>
+            )}
           </div>
         </div>
       )}

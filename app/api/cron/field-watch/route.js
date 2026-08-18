@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { autonomousRun } from "@/lib/agentrun";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
 
-export const maxDuration = 60;
+export const maxDuration = 120;
 export const dynamic = "force-dynamic";
 
 // Vercel cron calls this daily at 06:00 UTC (see vercel.json).

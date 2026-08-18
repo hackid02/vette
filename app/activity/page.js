@@ -90,6 +90,7 @@ export default async function ActivityPage() {
               ["fetch_field()", `read the contest API (${entries} entries right now)`],
               ["check_site()", "is every entry's website still up?"],
               ["check_wallet()", "registered wallets: activity, balance, approval surface"],
+              ["sweep()", "hunt fresh exposure — mine live Base approvals, verify every catch onchain"],
               ["report()", "the run summary — visible below when you trigger one"],
               ["repeat", "every day at 06:00 UTC, scheduled by vercel.json — until the contest ends"],
             ].map(([fn, desc], i) => (
