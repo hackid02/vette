@@ -2,6 +2,39 @@
   "agent": "VETTE",
   "runs": [
     {
+      "id": "run-msz1ic0o",
+      "reason": "manual",
+      "at": "2026-08-18T19:12:46.680Z",
+      "entriesChecked": 0,
+      "fieldError": "Orion API HTTP 404",
+      "block": 50145509,
+      "checks": [],
+      "catches": [
+        {
+          "address": "0x9Fc92D6e07DC1E2EBFea06a382E09A21F36B4199",
+          "token": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+          "tokenSymbol": "AERO",
+          "spender": "0x0000000000001fF3684f28c67538d4D072C22734",
+          "spenderName": "AllowanceHolder",
+          "spenderVerified": true,
+          "allowanceWei": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "tx": "0x18b01715510d545e0c6182a8949fb83d06e253bfb760e020114883e97c7f03ad"
+        },
+        {
+          "address": "0x26C5D27ad07E0572BCCf655f70719C8B9519Bd96",
+          "token": "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+          "tokenSymbol": "AERO",
+          "spender": "0x0000000000001fF3684f28c67538d4D072C22734",
+          "spenderName": "AllowanceHolder",
+          "spenderVerified": true,
+          "allowanceWei": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "tx": "0xb3d3d11029f8619b9a75ff96e2393adfbc4e0b986eba56348c6c53bae02a7c6c"
+        }
+      ],
+      "sweepNote": "sweep found live exposure",
+      "persisted": null
+    },
+    {
       "id": "run-msyjl347",
       "reason": "manual",
       "at": "2026-08-18T10:51:02.023Z",
