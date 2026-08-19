@@ -80,7 +80,7 @@ the finding."
 2. In "only trades" type: `ETH, BTC`
 3. Paste the wallet: `0x61e17391f084ad083FA5C199D4F0d350A4CF4282`
 4. Click **VERIFY THE MANDATE**
-5. Wait for the breach report → the big breach count on the ruling (**17**)
+5. Wait for the breach report → the big breach count on the ruling (the live number — 17 with the explorer's full history, fewer while the explorer is down and the RPC fallback scans ~3 days)
 
 **On screen:** rule builder → breach report → **17 breaches**, each with its
 transaction.

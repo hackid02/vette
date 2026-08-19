@@ -4,7 +4,7 @@ import { normalizeUrl } from "@/lib/providers";
 import { rateLimit, clientIp } from "@/lib/ratelimit";
 import { signCard, cardConfigured } from "@/lib/cardsig";
 
-export const maxDuration = 120;
+export const maxDuration = 180;
 
 // POST { url?, address?, claims?, mandateExplicit? } → full audit
 export async function POST(req) {

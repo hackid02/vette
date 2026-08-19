@@ -250,7 +250,7 @@ function AuditInner() {
     setError(null);
     setResult(null);
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 90000);
+    const t = setTimeout(() => ctrl.abort(), 150000);
     try {
       const res = await fetch("/api/audit", {
         method: "POST",
@@ -265,7 +265,7 @@ function AuditInner() {
     } catch (e) {
       setError(
         e.name === "AbortError"
-          ? "The audit timed out after 90s — Base RPCs are slow right now. Try again in a moment."
+          ? "The audit timed out after 150s — Base RPCs are slow right now. Try again in a moment."
           : String(e.message || e)
       );
     } finally {

@@ -62,7 +62,7 @@ export default function MandatePage() {
     setMandateText(mandate);
     setBusy(true);
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 90000);
+    const t = setTimeout(() => ctrl.abort(), 150000);
     try {
       const res = await fetch("/api/audit", {
         method: "POST",
@@ -80,7 +80,7 @@ export default function MandatePage() {
     } catch (e) {
       setError(
         e.name === "AbortError"
-          ? "The check timed out after 90s — Base RPCs are slow right now. Try again."
+          ? "The check timed out after 150s — Base RPCs are unusually slow right now. Try again."
           : String(e.message || e)
       );
     } finally {
@@ -89,8 +89,10 @@ export default function MandatePage() {
     }
   }
 
-  const deviationFindings = (result?.findings || []).filter((f) =>
-    /mandate|whitelist|top-|cap|never|outside/i.test(f.title + " " + (f.detail || ""))
+  const deviationFindings = (result?.findings || []).filter(
+    (f) =>
+      f.kind !== "deviation-incomplete" &&
+      /mandate|whitelist|top-|cap|never|outside/i.test(f.title + " " + (f.detail || ""))
   );
 
   return (
@@ -218,10 +220,31 @@ export default function MandatePage() {
               <p className="serif text-lg text-cream leading-snug mt-4">“{mandateText}”</p>
             </div>
 
-            {deviationFindings.length > 0 ? (
+            {result.deviationCheckIncomplete && deviationFindings.length === 0 ? (
+              <div className="panel p-6 border-[#E8A33D]/40 bg-[#E8A33D]/5">
+                <p className="text-sm text-[#E8A33D] font-bold">
+                  ⚠ The breach scan could not complete — the wallet's transfer history was unreachable (explorer rate limit or outage).
+                </p>
+                <p className="text-sm text-muted leading-relaxed mt-2">
+                  No "kept the promise" claim is made from missing data. This is an
+                  incomplete check, not a clean one — re-run it in a moment.
+                </p>
+              </div>
+            ) : deviationFindings.length > 0 ? (
               <div>
+                {result.breachLowerBound && (
+                  <div className="panel p-4 border-[#E8A33D]/40 bg-[#E8A33D]/5 mb-4">
+                    <p className="text-sm text-[#E8A33D] font-bold">
+                      ⚠ Partial scan — the explorer was unreachable, so transfer history came from a ~3-day RPC log scan.
+                    </p>
+                    <p className="text-sm text-muted leading-relaxed mt-1">
+                      At least these breaches exist — older activity may not be shown.
+                    </p>
+                  </div>
+                )}
                 <div className="flex items-end gap-3 mb-4">
                   <span className="mono text-6xl font-black text-danger leading-none">
+                    {result.breachLowerBound && result.breachCount > 0 ? "≥" : ""}
                     {result.breachCount ?? deviationFindings.length}
                   </span>
                   <span className="overline pb-1">
@@ -257,7 +280,9 @@ export default function MandatePage() {
             ) : (
               <div className="panel p-6 border-vet/30 bg-vet/5">
                 <p className="text-sm text-vet font-bold">
-                  ✓ No breaches found in the scanned window — the wallet kept the promise.
+                  {result.deviationCheckIncomplete
+                    ? "✓ Deviation check skipped — see the incomplete-check note above."
+                    : "✓ No breaches found in the scanned window — the wallet kept the promise."}
                 </p>
                 <p className="mono text-[11px] text-muted mt-2">
                   {result.scopeLabel ? `scope: ${result.scopeLabel}` : ""}
