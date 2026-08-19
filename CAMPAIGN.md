@@ -38,9 +38,9 @@
    > We vetted Vette with Vette. Result: UNVERIFIABLE — no wallet published, no facts invented.
    > An agent that refuses to lie about itself. That's the product.
 
-5. **The exam:**
-   > KYC for AI agents. Eight questions no agent answers — operative wallet, control, kill switch, data, code, audits, limits.
-   > Graded from the agent's own words in seconds. Refused to sit is a verdict.
+5. **The alibi:**
+   > Every court needs a defense. Vette defended the Grok wallet: the trail showed the exploit, and the money came home.
+   > Accuse any wallet — Vette rebuilds the money-trail hop by hop. Receipts, not vibes.
 
 **Reply templates:**
 - "try it → vette-nu.vercel.app — paste any agent or wallet"

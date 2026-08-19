@@ -31,12 +31,13 @@ mandate-vs-behavior deviation and wallet safety. The rule engine chooses where t
 look; it never invents evidence. If a wallet is empty or unpublished, the verdict
 is UNVERIFIABLE — not flattering, and not fiction.
 
-Then Vette acts. The Exam sits any agent down for eight disclosure questions —
-operative wallet, control, kill switch, data, code, audits, limits — graded
-deterministically from the agent's own published words in seconds (PASSED /
-FAILED / REFUSED TO SIT). And connect your wallet and every dangerous approval
-becomes a one-click kill switch: approve(spender, 0), preflight-simulated onchain
-before any signature, confirmed with the tx hash on screen. Every other entry describes
+Then Vette acts. The Alibi rebuilds any wallet's money-trail from Base — every
+inflow, every outflow, where each coin went next — and hands back the receipts
+(THE MONEY CAME HOME / THE MONEY LEFT / TRAIL TOO SHALLOW). Motive is a matter
+for humans; the trail is a matter of receipts. And connect your wallet and every
+dangerous approval becomes a one-click kill switch: approve(spender, 0),
+preflight-simulated onchain before any signature, confirmed with the tx hash on
+screen. Every other entry describes
 problems. Vette ends them.
 
 Vette also vets the whole field: it pulls the hackathon's own entry API and puts

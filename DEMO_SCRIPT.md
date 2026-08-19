@@ -42,7 +42,7 @@ these, in order:
 | **caught on base — the catch** | the three real wallets it flagged (DANGEROUS / WARNING / COMPLIANT) |
 | **Vette audited a top entry** | the refusal story |
 | **the field** | "Every entry in this contest." |
-| **the moves** | the four tools: Audit · Exam · Field · Ledger |
+| **the moves** | the four tools: Audit · Alibi · Field · Ledger |
 | **the engine — "It doesn't vibe-check"** | the receipt: every claim traceable |
 
 **Voice 2:** "Here's the whole product. The engine: four steps, every one a
@@ -73,21 +73,21 @@ the finding."
 
 ---
 
-## ACT IV — The Exam (0:58–1:15)
+## ACT IV — The Alibi (0:58–1:15)
 
 **Do, in order:**
-1. Click **The Exam** in the nav
-2. Paste `aixbt.tech` (or click the "try: a famous Base agent" chip)
-3. Click **START THE EXAM →**
-4. Wait ~2 seconds — the paper lands almost instantly
-5. Point at the verdict, then scroll the eight graded answers
+1. Click **The Alibi** in the nav
+2. Point at the case file — **the Grok defense** (the famous May 4 exploit)
+3. Click **USE THIS CASE** — the accused wallet fills in automatically
+4. Click **RUN THE ALIBI →**
+5. Wait a few seconds → the verdict + the hop-by-hop trail
 
-**On screen:** the sheet → the paper → **REFUSED TO SIT** → the contract line
-("code, not the wallet that signs").
+**On screen:** the case file → the accused (Grok's wallet) → the trail →
+**THE MONEY CAME HOME** → the ~16 ETH resting in the wallet.
 
-**Voice 4:** "Sit down. Eight questions no agent answers: operative wallet,
-control, kill switch, data, code, audits, limits. I gave the exam to the
-biggest agent on Base. Refused to sit."
+**Voice 4:** "Every court needs a defense. The Grok wallet was accused of
+losing it all — Vette rebuilt the trail from Base. Three billion DRB out,
+dumped to USDC, then sent home. The money came home."
 
 ---
 

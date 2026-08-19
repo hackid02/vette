@@ -37,7 +37,7 @@ VETTE is that accountability layer.
 
 AUDIT — any agent, any wallet. Verdicts: COMPLIANT · DEVIATED · DANGEROUS · UNVERIFIABLE.
 
-THE EXAM — KYC for AI agents. Eight questions, graded in seconds. Refused to sit is a verdict.
+THE ALIBI — accuse any wallet, Vette rebuilds the money-trail hop by hop. Convict and acquit.
 
 THE FIELD — every contest entry, one rubric.
 

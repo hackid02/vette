@@ -14,10 +14,9 @@ Live at **https://vette-nu.vercel.app**
    Base, and rules on whether behavior matches the promise:
    `COMPLIANT` / `DEVIATED` / `DANGEROUS` / `UNVERIFIABLE` — with a score and a
    public receipt behind every claim.
-2. **THE EXAM** 📋 — KYC for AI agents. Eight disclosure questions (operative
-   wallet, control, kill switch, data, code, audits, limits), graded
-   deterministically from the agent's own published words in seconds.
-   `PASSED` / `FAILED` / `REFUSED TO SIT`.
+2. **THE ALIBI** ⚖️ — every court needs a defense. Accuse any wallet and Vette
+   rebuilds its money-trail from Base, hop by hop: `THE MONEY CAME HOME` /
+   `THE MONEY LEFT` / `TRAIL TOO SHALLOW` — receipts, not opinions.
 3. **THE FIELD** 🌐 — every contest entry under one rubric, re-vetted by the
    daily sweep.
 4. **KILL** ⚡ — connect your wallet, and every dangerous approval becomes a

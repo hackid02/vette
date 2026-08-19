@@ -36,13 +36,13 @@ contract, not a wallet. No wallet, no verdict. The refusal is the finding.
 
 ---
 
-## Line 4 — The Exam (ACT IV, 0:58–1:15)
+## Line 4 — The Alibi (ACT IV, 0:58–1:15)
 
-Sit down. Eight questions no agent answers: operative wallet, control, kill
-switch, data, code, audits, limits. I gave the exam to the biggest agent on
-Base. Refused to sit.
+Every court needs a defense. The Grok wallet was accused of losing it all.
+Vette rebuilt the trail from Base. Three billion DRB out, dumped to USDC, then
+sent home. The money came home.
 
-*(30 words · ~11s)*
+*(35 words · ~13s)*
 
 ---
 
@@ -96,17 +96,16 @@ the agent that vets agents.
 | 1 | Hero | the hero page, no action |
 | 2 | Tour | homepage scroll: engine → catch → field → receipt |
 | 3 | Refusal | paste → VET IT → UNVERIFIABLE stamp |
-| 4 | Exam | paste → START THE EXAM → REFUSED TO SIT |
+| 4 | Alibi | Grok case file → RUN THE ALIBI → THE MONEY CAME HOME |
 | 5 | Kill | Ledger flash → live REVOKE + popup → tx hash |
 | 6 | Ledger | /feed scrolling |
 | 7 | Outro | self-audit → UNVERIFIABLE → end card |
 
 ## ⚠️ Honesty notes
 
-- Every result is real: the refusal verdict, the exam grades, the drill's
-  three verdicts — all verifiable on vette-nu.vercel.app. The exam is
-  deterministic text grading; REFUSED TO SIT comes from the agent's own page
-  publishing no operative wallet. The live kill in ACT V is a
+- Every result is real: the refusal verdict, the alibi's trail, the drill's
+  three verdicts — all verifiable on vette-nu.vercel.app. The Grok case is
+  publicly documented (SlowMist, May 2026); Vette rebuilds what the chain shows. The live kill in ACT V is a
   real onchain revoke: the burner's open approval dies on camera, and the tx
   hash it produces is the evidence you show.
 - Keep the pacing calm. Vette's voice is a receipt, not a siren — no hype reads.

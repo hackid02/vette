@@ -340,11 +340,11 @@ export default async function Home() {
             },
             {
               n: "02",
-              icon: "📋",
-              title: "THE EXAM",
+              icon: "⚖️",
+              title: "THE ALIBI",
               status: "LIVE",
               statusTone: "bg-vet/15 text-vet border-vet/40",
-              body: "KYC for AI agents. Eight questions no agent answers — operative wallet, control, kill switch, data, code, audits, limits. Graded from the agent's own words in seconds. Refused to sit is a verdict.",
+              body: "Every court needs a defense. Accuse any wallet — Vette rebuilds its money-trail from Base, hop by hop, and shows where every coin went. Convict and acquit on receipts, not vibes.",
             },
             {
               n: "03",
@@ -428,7 +428,7 @@ export default async function Home() {
           <Logo size={22} />
           <p className="mono text-xs text-muted">Receipts, not opinions. Trust, but verified.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-muted">
-            <Link href="/exam" className="hover:text-vet transition-colors">The Exam</Link>
+            <Link href="/alibi" className="hover:text-vet transition-colors">The Alibi</Link>
             <Link href="/feed" className="hover:text-vet transition-colors">The Ledger</Link>
             <Link href="/activity" className="hover:text-vet transition-colors">Activity</Link>
             <a href="https://x.com/vetteagents" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">X</a>
