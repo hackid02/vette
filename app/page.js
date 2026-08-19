@@ -340,11 +340,11 @@ export default async function Home() {
             },
             {
               n: "02",
-              icon: "📜",
-              title: "THE MANDATE",
+              icon: "📋",
+              title: "THE EXAM",
               status: "LIVE",
               statusTone: "bg-vet/15 text-vet border-vet/40",
-              body: "Write your agent's constitution — the rules it must obey. Vette checks the real wallet against YOUR rules and flags every breach with evidence.",
+              body: "KYC for AI agents. Eight questions no agent answers — operative wallet, control, kill switch, data, code, audits, limits. Graded from the agent's own words in seconds. Refused to sit is a verdict.",
             },
             {
               n: "03",
@@ -428,7 +428,7 @@ export default async function Home() {
           <Logo size={22} />
           <p className="mono text-xs text-muted">Receipts, not opinions. Trust, but verified.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-muted">
-            <Link href="/mandate" className="hover:text-vet transition-colors">The Mandate</Link>
+            <Link href="/exam" className="hover:text-vet transition-colors">The Exam</Link>
             <Link href="/feed" className="hover:text-vet transition-colors">The Ledger</Link>
             <Link href="/activity" className="hover:text-vet transition-colors">Activity</Link>
             <a href="https://x.com/vetteagents" target="_blank" rel="noreferrer" className="hover:text-vet transition-colors">X</a>

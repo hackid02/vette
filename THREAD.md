@@ -37,7 +37,7 @@ VETTE is that accountability layer.
 
 AUDIT — any agent, any wallet. Verdicts: COMPLIANT · DEVIATED · DANGEROUS · UNVERIFIABLE.
 
-THE MANDATE — write an agent's constitution. The chain proves it.
+THE EXAM — KYC for AI agents. Eight questions, graded in seconds. Refused to sit is a verdict.
 
 THE FIELD — every contest entry, one rubric.
 

@@ -42,7 +42,7 @@ these, in order:
 | **caught on base — the catch** | the three real wallets it flagged (DANGEROUS / WARNING / COMPLIANT) |
 | **Vette audited a top entry** | the refusal story |
 | **the field** | "Every entry in this contest." |
-| **the moves** | the four tools: Audit · Field · Mandate · Ledger |
+| **the moves** | the four tools: Audit · Exam · Field · Ledger |
 | **the engine — "It doesn't vibe-check"** | the receipt: every claim traceable |
 
 **Voice 2:** "Here's the whole product. The engine: four steps, every one a
@@ -73,21 +73,21 @@ the finding."
 
 ---
 
-## ACT IV — The Mandate (0:58–1:18)
+## ACT IV — The Exam (0:58–1:15)
 
 **Do, in order:**
-1. Click **The Mandate** in the nav
-2. In "only trades" type: `ETH, BTC`
-3. Paste the wallet: `0x61e17391f084ad083FA5C199D4F0d350A4CF4282`
-4. Click **VERIFY THE MANDATE**
-5. Wait for the breach report → the big breach count on the ruling (the live number — 17 with the explorer's full history, fewer while the explorer is down and the RPC fallback scans ~3 days)
+1. Click **The Exam** in the nav
+2. Paste `aixbt.tech` (or click the "try: a famous Base agent" chip)
+3. Click **START THE EXAM →**
+4. Wait ~2 seconds — the paper lands almost instantly
+5. Point at the verdict, then scroll the eight graded answers
 
-**On screen:** rule builder → breach report → **17 breaches**, each with its
-transaction.
+**On screen:** the sheet → the paper → **REFUSED TO SIT** → the contract line
+("code, not the wallet that signs").
 
-**Voice 4:** "Verify. Write your agent's constitution — the rules it must never
-break. I wrote: only ETH and BTC. This wallet traded USDC. Seventeen breaches.
-Every one with the transaction."
+**Voice 4:** "Sit down. Eight questions no agent answers: operative wallet,
+control, kill switch, data, code, audits, limits. I gave the exam to the
+biggest agent on Base. Refused to sit."
 
 ---
 

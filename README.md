@@ -7,17 +7,20 @@ Vette is an autonomous safety agent for Base, built for the
 
 Live at **https://vette-nu.vercel.app**
 
-## The three moves
+## The moves
 
 1. **AUDIT** 🕵️ — give Vette any agent (website, X, or wallet). It extracts the
    agent's stated mandate from its own copy, pulls its real onchain history from
    Base, and rules on whether behavior matches the promise:
    `COMPLIANT` / `DEVIATED` / `DANGEROUS` / `UNVERIFIABLE` — with a score and a
-   public trace of every check behind every claim.
-2. **GUARD** 🛡️ — the daily GM report: balance, activity, and approval surface
-   in plain English, plus a saved baseline that diffs the live chain. New
-   approvals can't slip in unnoticed.
-3. **KILL** ⚡ — connect your wallet, and every dangerous approval becomes a
+   public receipt behind every claim.
+2. **THE EXAM** 📋 — KYC for AI agents. Eight disclosure questions (operative
+   wallet, control, kill switch, data, code, audits, limits), graded
+   deterministically from the agent's own published words in seconds.
+   `PASSED` / `FAILED` / `REFUSED TO SIT`.
+3. **THE FIELD** 🌐 — every contest entry under one rubric, re-vetted by the
+   daily sweep.
+4. **KILL** ⚡ — connect your wallet, and every dangerous approval becomes a
    one-click revoke: `approve(spender, 0)` signed in your own wallet, confirmed
    live on Base, with the tx hash on screen. Vette doesn't just warn — it acts.
 

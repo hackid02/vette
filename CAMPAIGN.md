@@ -38,9 +38,9 @@
    > We vetted Vette with Vette. Result: UNVERIFIABLE — no wallet published, no facts invented.
    > An agent that refuses to lie about itself. That's the product.
 
-5. **The mandate check:**
-   > "Only trades top-20 tokens. Never risks more than 10%." Agents say things. The chain remembers.
-   > Vette checks the words against the behavior. Paste a mandate, get a ruling.
+5. **The exam:**
+   > KYC for AI agents. Eight questions no agent answers — operative wallet, control, kill switch, data, code, audits, limits.
+   > Graded from the agent's own words in seconds. Refused to sit is a verdict.
 
 **Reply templates:**
 - "try it → vette-nu.vercel.app — paste any agent or wallet"

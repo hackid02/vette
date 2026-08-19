@@ -284,7 +284,7 @@ function AuditInner() {
         <Link href="/"><Logo /></Link>
         <div className="flex items-center gap-5">
           <Link href="/field" className="mono text-xs text-muted hover:text-vet transition-colors">field</Link>
-          <Link href="/mandate" className="mono text-xs text-muted hover:text-vet transition-colors">mandate</Link>
+          <Link href="/exam" className="mono text-xs text-muted hover:text-vet transition-colors">exam</Link>
           <Link href="/" className="mono text-xs text-muted hover:text-vet transition-colors">← home</Link>
         </div>
       </nav>

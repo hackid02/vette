@@ -10,7 +10,7 @@ import Logo from "@/components/Logo";
 const LINKS = [
   { href: "/audit", label: "Audit" },
   { href: "/field", label: "The Field" },
-  { href: "/mandate", label: "The Mandate" },
+  { href: "/exam", label: "The Exam" },
   { href: "/feed", label: "The Ledger" },
   { href: "https://github.com/hackid02/vette", label: "GitHub", external: true },
   { href: "https://x.com/vetteagents", label: "X", external: true },

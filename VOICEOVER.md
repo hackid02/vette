@@ -36,13 +36,13 @@ contract, not a wallet. No wallet, no verdict. The refusal is the finding.
 
 ---
 
-## Line 4 — The Mandate (ACT IV, 0:58–1:18)
+## Line 4 — The Exam (ACT IV, 0:58–1:15)
 
-Verify. Write your agent's constitution — the rules it must never break. I
-wrote: only ETH and BTC. This wallet traded USDC. Breaches — every one with the
-transaction on screen.
+Sit down. Eight questions no agent answers: operative wallet, control, kill
+switch, data, code, audits, limits. I gave the exam to the biggest agent on
+Base. Refused to sit.
 
-*(31 words · ~12s)*
+*(30 words · ~11s)*
 
 ---
 
@@ -96,16 +96,17 @@ the agent that vets agents.
 | 1 | Hero | the hero page, no action |
 | 2 | Tour | homepage scroll: engine → catch → field → receipt |
 | 3 | Refusal | paste → VET IT → UNVERIFIABLE stamp |
-| 4 | Mandate | rules → VERIFY → 17-breaches report |
+| 4 | Exam | paste → START THE EXAM → REFUSED TO SIT |
 | 5 | Kill | Ledger flash → live REVOKE + popup → tx hash |
 | 6 | Ledger | /feed scrolling |
 | 7 | Outro | self-audit → UNVERIFIABLE → end card |
 
 ## ⚠️ Honesty notes
 
-- Every number is real: the refusal verdict, the breach count shown on the
-  ruling (live data — it changes with scan depth), the drill's three verdicts —
-  all verifiable on vette-nu.vercel.app. The live kill in ACT V is a
+- Every result is real: the refusal verdict, the exam grades, the drill's
+  three verdicts — all verifiable on vette-nu.vercel.app. The exam is
+  deterministic text grading; REFUSED TO SIT comes from the agent's own page
+  publishing no operative wallet. The live kill in ACT V is a
   real onchain revoke: the burner's open approval dies on camera, and the tx
   hash it produces is the evidence you show.
 - Keep the pacing calm. Vette's voice is a receipt, not a siren — no hype reads.
