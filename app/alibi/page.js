@@ -37,6 +37,23 @@ const GROK_CASE = {
   address: "0xb1058c959987e3513600eb5b4fd82aeee2a0e4f9",
 };
 
+const DRAIN_CASE = {
+  label: "case file 002 — the august drain",
+  charge: "Aug 6, 2026: ~$500K USDC vanished from a Base wallet in a phishing drain. Accused: this wallet held the stolen money.",
+  verdict: "THE MONEY LEFT",
+  summary:
+    "501,940 USDC left the victim (0x3a5385d8…70b5c) at 02:29 UTC — the victim signed a call to the attacker's contract (0xbeef0e08…73c9). The USDC landed in the attacker's wallet (0x920d3b63…9708), was swapped with no slippage protection, and got sandwiched by an MEV bot: the attacker kept ~$129K, the bot took ~$370K. Today the attacker's wallet is empty — the money moved on.",
+  hops: [
+    { step: "OUT", detail: "501,940 USDC → 0x920d3b63541eafe13e05dc4f3453904102c39708 (attacker)", label: "SENT ON" },
+    { step: "HOP", detail: "USDC swapped with no slippage — MEV sandwich takes ~$370K", label: "CONVERTED" },
+    { step: "HOP", detail: "attacker keeps ~67 WETH (~$129K), then moves it onward", label: "SENT ON" },
+    { step: "NOW", detail: "attacker wallet balance: 0. The money moved on.", label: "SENT ON" },
+  ],
+  note: "PeckShield flagged it Aug 6: '0x920d…9708 drained ~500K USDC from 0x3a53…0B5c on Base.' The victim offered a 10% bounty; as of Aug 7 nothing was returned. Vette rebuilt the drain tx from the chain — evidence above.",
+  address: "0x920d3b63541eafe13e05dc4f3453904102c39708",
+  evidence: "https://base.blockscout.com/tx/0xd2324b49161b53218651eae2852f8684fa68015cfcada94e5c0ad14030fc62ba",
+};
+
 export default function AlibiPage() {
   const [address, setAddress] = useState("");
   const [charge, setCharge] = useState("");
@@ -142,6 +159,41 @@ export default function AlibiPage() {
             className="mono text-xs text-vet hover:underline"
           >
             ⟶ the accused on Blockscout
+          </a>
+        </div>
+
+        {/* CASE FILE 002 */}
+        <div className="panel p-6 mb-8 space-y-5 border-danger/30">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <div className="overline">📁 {DRAIN_CASE.label}</div>
+            <button
+              disabled={busy}
+              onClick={() => { setAddress(DRAIN_CASE.address); setCharge(DRAIN_CASE.charge); }}
+              className="mono text-[10px] px-2.5 py-1 rounded-full border border-danger/40 text-danger hover:bg-danger hover:text-white transition-colors"
+            >
+              USE THIS CASE ↓
+            </button>
+          </div>
+          <p className="text-sm text-soft leading-relaxed">{DRAIN_CASE.charge}</p>
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="mono inline-flex items-center gap-1.5 rounded-full border font-bold tracking-widest px-5 py-2 text-xs bg-danger/15 text-danger border-danger/40">
+              <span className="w-1.5 h-1.5 rounded-full bg-danger" />
+              {DRAIN_CASE.verdict}
+            </span>
+            <span className="mono text-[11px] text-muted">on the evidence of the chain</span>
+          </div>
+          <p className="text-sm text-muted leading-relaxed">{DRAIN_CASE.summary}</p>
+          <ol className="space-y-2">
+            {DRAIN_CASE.hops.map((h, i) => (
+              <li key={i} className="flex items-center gap-3 text-sm flex-wrap">
+                <span className={`mono text-[10px] font-bold px-2 py-0.5 rounded border ${HOP_STYLE[h.label] || HOP_STYLE.RESTING}`}>{h.label}</span>
+                <span className="text-muted">{h.detail}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="mono text-[11px] text-muted leading-relaxed">{DRAIN_CASE.note}</p>
+          <a href={DRAIN_CASE.evidence} target="_blank" rel="noreferrer" className="mono text-xs text-vet hover:underline">
+            ⟶ the drain tx on Blockscout
           </a>
         </div>
 
