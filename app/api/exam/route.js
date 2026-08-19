@@ -43,7 +43,7 @@ export async function POST(req) {
   }
 
   // classify published addresses: EOA (real wallet) vs CONTRACT (code)
-  const addresses = (site.addresses || []).slice(0, 5);
+  const addresses = (site.addresses || []).slice(0, 20);
   const eoas = [];
   const contracts = [];
   let codeCheckFailed = false;
