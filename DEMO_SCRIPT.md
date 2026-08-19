@@ -18,6 +18,13 @@
 5. Rehearse the kill flow **once** off-camera: REVOKE → popup → **REJECT**
    (rejecting sends nothing; the door stays open for the real take)
 
+> ⚠️ **THE DOOR IS ARMED (re-armed 2026-08-19):** the ∞ USDC → SwapRouter02
+> approval is OPEN on the burner right now. The first kill happened
+> off-camera (your earlier REVOKE — grab its tx hash from MetaMask Activity
+> and send it here; it becomes kill #2 in the record). For the video:
+> **confirm ONLY while recording.** If you kill it by accident again, tell me
+> and I'll re-arm it in ~10 seconds — no stress.
+
 Record one clip per act (7 clips) — fumble a step, redo just that clip.
 
 ---
