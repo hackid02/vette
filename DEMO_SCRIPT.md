@@ -1,11 +1,11 @@
-# VETTE — Demo Video Script v4 (full product tour + live demos)
+# VETTE — Demo Video Script v5 (FINAL — full tour + both alibi cases + live kill)
 
 > Plain screen record, no theatrics. Follow the steps, record the screen, add
-> the AI voiceover. Total ≈ 2 minutes. Everything on https://vette-nu.vercel.app
+> the AI voiceover. Total ≈ 2:20. Everything on https://vette-nu.vercel.app
 >
-> **What this version adds:** a homepage scroll-tour so the judge sees EVERY
-> part of the product before the deep dives — engine, catch, field, receipt —
-> not just the three demo moments.
+> **v5 changes:** ACT IV now shows BOTH alibi case files (acquit + convict) and
+> ends with a live run on the August drain. ACT II tour reflects the live field
+> (4 entries: Rigel · BaseScout · Drift-d · CoinOp).
 
 ## Before you start recording (one-time, ~5 min)
 
@@ -41,7 +41,7 @@ these, in order:
 | **01 ENGINE → 02 DECISION → 03 VERDICT → 04 ACTION** | the four-step machine |
 | **caught on base — the catch** | the three real wallets it flagged (DANGEROUS / WARNING / COMPLIANT) |
 | **Vette audited a top entry** | the refusal story |
-| **the field** | "Every entry in this contest." |
+| **the field** | "Every entry in this contest." — 4 live entries: Rigel · BaseScout · Drift-d · CoinOp |
 | **the moves** | the four tools: Audit · Alibi · Field · Ledger |
 | **the engine — "It doesn't vibe-check"** | the receipt: every claim traceable |
 
@@ -73,25 +73,32 @@ the finding."
 
 ---
 
-## ACT IV — The Alibi (0:58–1:15)
+## ACT IV — The Alibi (0:58–1:23) ⚖️ both cases, then a live run
 
 **Do, in order:**
 1. Click **The Alibi** in the nav
-2. Point at the case file — **the Grok defense** (the famous May 4 exploit)
-3. Click **USE THIS CASE** — the accused wallet fills in automatically
-4. Click **RUN THE ALIBI →**
-5. Wait a few seconds → the verdict + the hop-by-hop trail
+2. Point at **case file 001 — the Grok defense** → verdict THE MONEY CAME HOME
+   (2–3 seconds, don't read it all)
+3. Scroll to **case file 002 — the August drain** → verdict THE MONEY LEFT
+   (2–3 seconds)
+4. Click **USE THIS CASE** on the drain → the accused wallet fills in
+5. Click **RUN THE ALIBI →**
+6. Wait a few seconds → the live receipt lands: verdict + the hop trail
 
-**On screen:** the case file → the accused (Grok's wallet) → the trail →
-**THE MONEY CAME HOME** → the ~16 ETH resting in the wallet.
+**On screen:** both case files → the accused (the Aug-6 attacker's wallet) →
+the live receipt. The live verdict is **THE MONEY LEFT** on a good chain day;
+**TRAIL TOO SHALLOW** if the explorers are flaky — BOTH are honest, and the
+case file's THE MONEY LEFT is already on screen either way. Don't retake for
+this; the honesty is the feature.
 
 **Voice 4:** "Every court needs a defense. The Grok wallet was accused of
-losing it all — Vette rebuilt the trail from Base. Three billion DRB out,
-dumped to USDC, then sent home. The money came home."
+losing it all. Vette rebuilt the trail — and the money came home. But some
+trails end elsewhere. The August drain: five hundred thousand USDC, gone.
+Vette followed it. The money left."
 
 ---
 
-## ACT V — The Kill (1:18–1:45) ⚡ live on camera
+## ACT V — The Kill (1:23–1:50) ⚡ live on camera
 
 **Do, in order:**
 1. Quick look at **The Ledger** (nav) — scroll to the live-fire drill entry,
@@ -113,7 +120,7 @@ Blockscout. Voice line still fits. (Plan B.)
 
 ---
 
-## ACT VI — The Ledger (1:45–1:58)
+## ACT VI — The Ledger (1:50–2:03)
 
 **Do, in order:**
 1. Go to **The Ledger** (`/feed`)
@@ -126,7 +133,7 @@ evidence-linked."
 
 ---
 
-## ACT VII — Self-audit + outro (1:58–2:10)
+## ACT VII — Self-audit + outro (2:03–2:15)
 
 **Do, in order:**
 1. Back to the hero
@@ -156,4 +163,4 @@ Shield logo + **VETTE** · `vette-nu.vercel.app`
 - **Burner key** (ACT V import): in the chat history above; also in
   `data/staging.json` (gitignored)
 - After the kill the burner is clean — don't re-run the old kill scripts
-- Export 1080p, ~2:15 total with the end card
+- Export 1080p, ~2:20 total with the end card

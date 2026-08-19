@@ -304,8 +304,9 @@ export default async function Home() {
             <p className="serif text-3xl font-light text-soft leading-snug">
               {fieldLive ? (
                 <>
-                  BaseScout. Rigel.<br />
-                  <em className="text-vet">And yours, when you submit.</em>
+                  BaseScout. Rigel. Drift-d.
+                  <br />
+                  <em className="text-vet">CoinOp. And yours, when you submit.</em>
                 </>
               ) : (
                 <>

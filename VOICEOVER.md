@@ -1,8 +1,8 @@
-# 🎙️ VETTE — AI Voiceover Script (matches DEMO_SCRIPT.md v4 — full tour + demos)
+# 🎙️ VETTE — AI Voiceover Script (matches DEMO_SCRIPT.md v5 — FINAL)
 
 > Generate EACH LINE SEPARATELY (one MP3 per line) and stitch each clip onto
-> its act in the editor. 7 lines ≈ 240 words ≈ 95s of speech — fits the
-> ~2:10 video with pauses.
+> its act in the editor. 7 lines ≈ 250 words ≈ 100s of speech — fits the
+> ~2:20 video with pauses.
 > Every fact in these lines is real and verifiable on the live site.
 
 ---
@@ -36,17 +36,18 @@ contract, not a wallet. No wallet, no verdict. The refusal is the finding.
 
 ---
 
-## Line 4 — The Alibi (ACT IV, 0:58–1:15)
+## Line 4 — The Alibi (ACT IV, 0:58–1:23) — both cases + live run
 
 Every court needs a defense. The Grok wallet was accused of losing it all.
-Vette rebuilt the trail from Base. Three billion DRB out, dumped to USDC, then
-sent home. The money came home.
+Vette rebuilt the trail — and the money came home. But some trails end
+elsewhere. The August drain: five hundred thousand USDC, gone. Vette followed
+it. The money left.
 
-*(35 words · ~13s)*
+*(43 words · ~16s)*
 
 ---
 
-## Line 5 — The Kill (ACT V, 1:18–1:45) — the LIVE kill
+## Line 5 — The Kill (ACT V, 1:23–1:50) — the LIVE kill
 
 Kill. We fired live rounds at Vette: three fresh wallets, four real Base
 transactions. Unlimited USDC. A thousand USDC to an unverified contract. Vette
@@ -57,7 +58,7 @@ Live.
 
 ---
 
-## Line 6 — The Ledger (ACT VI, 1:45–1:58)
+## Line 6 — The Ledger (ACT VI, 1:50–2:03)
 
 And every day, it runs alone. Checks the field. Hunts exposed wallets. Writes
 its diary to a public log. All machine-written. All evidence-linked.
@@ -66,7 +67,7 @@ its diary to a public log. All machine-written. All evidence-linked.
 
 ---
 
-## Line 7 — Self-audit + outro (ACT VII, 1:58–2:10)
+## Line 7 — Self-audit + outro (ACT VII, 2:03–2:15)
 
 We even vetted Vette with Vette: unverifiable. Even we don't get special
 treatment. Every other entry tells you what's wrong. Vette fixes it. Vette —
@@ -89,14 +90,14 @@ the agent that vets agents.
 - The line breaks above ARE the pauses — the TTS reads each line with
   natural stops where the screen actions happen.
 
-## 🎬 Assembly order (matches DEMO_SCRIPT.md v4)
+## 🎬 Assembly order (matches DEMO_SCRIPT.md v5)
 
 | Voice | Act | On-screen at the same time |
 |---|---|---|
 | 1 | Hero | the hero page, no action |
-| 2 | Tour | homepage scroll: engine → catch → field → receipt |
+| 2 | Tour | homepage scroll: engine → catch → field (4 entries) → receipt |
 | 3 | Refusal | paste → VET IT → UNVERIFIABLE stamp |
-| 4 | Alibi | Grok case file → RUN THE ALIBI → THE MONEY CAME HOME |
+| 4 | Alibi | Grok case → August drain case → live run → verdict |
 | 5 | Kill | Ledger flash → live REVOKE + popup → tx hash |
 | 6 | Ledger | /feed scrolling |
 | 7 | Outro | self-audit → UNVERIFIABLE → end card |
@@ -105,7 +106,6 @@ the agent that vets agents.
 
 - Every result is real: the refusal verdict, the alibi's trail, the drill's
   three verdicts — all verifiable on vette-nu.vercel.app. The Grok case is
-  publicly documented (SlowMist, May 2026); Vette rebuilds what the chain shows. The live kill in ACT V is a
-  real onchain revoke: the burner's open approval dies on camera, and the tx
-  hash it produces is the evidence you show.
+  publicly documented (SlowMist, May 2026); the August drain is the Aug-6
+  Base case flagged by PeckShield. Vette rebuilds what the chain shows.
 - Keep the pacing calm. Vette's voice is a receipt, not a siren — no hype reads.
