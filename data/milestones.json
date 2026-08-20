@@ -1,6 +1,12 @@
 {
  "milestones": [
   {
+   "date": "2026-08-20",
+   "type": "LOG",
+   "title": "The kill switch, exercised three more times",
+   "detail": "The UNLIMITED burner's door was closed three more times: twice off-camera while rehearsing the demo, and once on camera for the launch video. Same one-signature approve(0), same result every time. Receipts: 0x31b93522..., 0xc5853b24..., 0xeea74257... (all on Blockscout)."
+  },
+  {
    "date": "2026-08-18",
    "type": "CATCH",
    "title": "Live-fire drill: 3 burners, 4 real txs \u2014 DANGEROUS 82 \u2192 killed \u2192 COMPLIANT 100",
