@@ -33,7 +33,7 @@ It checks every contest entry, then hunts Base for exposed wallets.
 
 Catches so far: [N from /feed stats] wallets with live doors.
 
-Every run is committed to a public GitHub log. receipts, not promises.
+Every run goes to a public GitHub log. Receipts, not promises.
 
 [IMAGE: brand/thread/img7-ledger.png]
 
