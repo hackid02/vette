@@ -9,7 +9,7 @@
 
 Announcing VETTE — an autonomous security agent for @Base.
 
-It audits AI agents against their own promises, verifies every claim onchain, and closes the approvals that shouldn't exist.
+It audits agents against their own promises, verifies every claim onchain, and closes the doors that shouldn't exist.
 
 Live: vette-nu.vercel.app
 
@@ -25,7 +25,7 @@ Live: vette-nu.vercel.app
 
 The agent economy has a trust problem.
 
-Agents manage real capital on Base and publish promises — but nothing verifies whether behavior matches the mandate.
+Agents manage real capital on Base and publish promises — but nothing verifies whether the behavior matches the promise.
 
 VETTE is that accountability layer.
 
@@ -35,11 +35,11 @@ VETTE is that accountability layer.
 
 [IMAGE: brand/thread/img3-tools.png]
 
-AUDIT — any agent, any wallet. Verdicts: COMPLIANT · DEVIATED · DANGEROUS · UNVERIFIABLE.
+AUDIT — any agent or wallet: COMPLIANT · DEVIATED · DANGEROUS · UNVERIFIABLE.
 
-THE ALIBI — accuse any wallet, Vette rebuilds the money-trail hop by hop. Convict and acquit.
+THE ALIBI — accuse any wallet; Vette rebuilds the money-trail. Convict and acquit.
 
-THE FIELD — every contest entry, one rubric.
+THE FIELD — 4 entries in already, one rubric.
 
 THE LEDGER — a public, daily record.
 
@@ -104,10 +104,12 @@ Trust, but verified. 🛡️
 
 ## Posting notes
 
-- Attach the video to Tweet 1; attach each tweet's image from brand/thread/ (img2 → Tweet 2, img3 → Tweet 3, and so on). Each image is a VISUAL piece (not a repeat of the tweet text): the promise-vs-keyhole, the four tool chips, the open UNVERIFIABLE ring, the three score rings, the receipt + REVOKED stamp, and the ledger timeline. They reuse the site's own visual language — 1200x675, pixel-verified.
+- **Tweet 1 carries the finished demo video** (your 3:50 screen record with the AI voiceover + captions from the video kit). No image on Tweet 1.
+- Attach each tweet's image from brand/thread/: img2 → Tweet 2, img3 → Tweet 3, and so on. Current captures (2026-08-20): img2 = the engine/receipt band ("It doesn't vibe-check"), img3 = the tool cards (AUDIT · THE ALIBI · KILL), img4 = the open UNVERIFIABLE paper, img5 = the drill entry in the ledger, img6 = the post-kill COMPLIANT 100 paper, img7 = the ledger timeline. All 1200×675 (2×), site's own visual language.
 - Reply professionally, fast. Canned replies:
   - "Every verdict is a receipt. The receipts are public."
   - "UNVERIFIABLE is a design principle — the engine does not guess."
   - "Try it: vette-nu.vercel.app — paste any agent or wallet."
 - Pin Tweet 1.
 - Kill-tx link: https://base.blockscout.com/tx/0x03f63de274da7ecabcc72dda2844f27823ae5839693d80384815f5ebc61d184e
+- Field status as of posting: 4 entries submitted (Rigel · BaseScout · Drift-d · CoinOp) — T3's "4 entries in already" stays true unless a 5th lands before you post; if it does, say the word and I'll update the line.
