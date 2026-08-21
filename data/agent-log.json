@@ -2,6 +2,63 @@
   "agent": "VETTE",
   "runs": [
     {
+      "id": "run-mt2kk9lw",
+      "reason": "scheduled",
+      "at": "2026-08-21T06:29:28.100Z",
+      "entriesChecked": 4,
+      "fieldError": null,
+      "block": 50252217,
+      "checks": [
+        {
+          "name": "Rigel",
+          "website": "https://rigel-ten.vercel.app",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "BaseScout",
+          "website": "https://base-scout-seven.vercel.app/",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "Drift-d",
+          "website": "https://drift-divergence.netlify.app/",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "CoinOp",
+          "website": "https://shippost-kappa.vercel.app/",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        }
+      ],
+      "catches": [],
+      "sweepNote": "sweep failed — explorer busy",
+      "persisted": null
+    },
+    {
       "id": "run-mt1ymfjj",
       "reason": "manual",
       "at": "2026-08-20T20:15:17.551Z",
