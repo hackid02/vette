@@ -79,10 +79,9 @@ Then VETTE handed us the kill switch.
 
 One signature, approve(0). The door died onchain:
 
-Transaction:
-blockscout.com/tx/0x03f63de2…1d184e
+https://base.blockscout.com/tx/0x03f63de274da7ecabcc72dda2844f27823ae5839693d80384815f5ebc61d184e
 
-And the engine re-audited the wallet: COMPLIANT 100.
+Re-audited: COMPLIANT 100.
 
 Detect. Kill. Verify.
 
