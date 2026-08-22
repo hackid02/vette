@@ -2,6 +2,95 @@
   "agent": "VETTE",
   "runs": [
     {
+      "id": "run-mt400475",
+      "reason": "scheduled",
+      "at": "2026-08-22T06:29:28.001Z",
+      "entriesChecked": 5,
+      "fieldError": null,
+      "block": 50295414,
+      "checks": [
+        {
+          "name": "Rigel",
+          "website": "https://rigel-ten.vercel.app",
+          "wallet": {
+            "txCount": 5,
+            "balanceWei": "0x39c91a1007047",
+            "note": "active"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "BaseScout",
+          "website": "https://base-scout-seven.vercel.app/",
+          "wallet": {
+            "txCount": 4,
+            "balanceWei": "0xb9ed16ae",
+            "note": "active"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "Drift-d",
+          "website": "https://drift-divergence.netlify.app/",
+          "wallet": {
+            "txCount": 2,
+            "balanceWei": "0x1de4735de2a9f",
+            "note": "active"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "CoinOp",
+          "website": "https://shippost-kappa.vercel.app/",
+          "wallet": {
+            "txCount": 50,
+            "balanceWei": "0x1817e01fbb73a",
+            "note": "active"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "VETTE",
+          "website": "https://vette-nu.vercel.app",
+          "wallet": {
+            "txCount": 5,
+            "balanceWei": "0x175458b7db0",
+            "note": "active"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        }
+      ],
+      "catches": [
+        {
+          "address": "0x5DBEc8186a8825CdDD688d11A833b22f086041Cd",
+          "token": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "tokenSymbol": "USDC",
+          "spender": "0x55479b00d58dace8C2f26D676f516DCC8Fa7FA0A",
+          "spenderName": null,
+          "spenderVerified": false,
+          "allowanceWei": "115792089237316195423570985008687907853269984665640564039457584007913125459935",
+          "tx": "0xc0bc9864ca5b76dc671e688c446559222a0280a9d2261ad32457be6c11bafd40"
+        }
+      ],
+      "sweepNote": "sweep found live exposure",
+      "persisted": null
+    },
+    {
       "id": "run-mt2kk9lw",
       "reason": "scheduled",
       "at": "2026-08-21T06:29:28.100Z",
