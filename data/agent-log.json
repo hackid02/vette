@@ -2,6 +2,85 @@
   "agent": "VETTE",
   "runs": [
     {
+      "id": "run-mt4srgo7",
+      "reason": "manual",
+      "at": "2026-08-22T19:54:33.127Z",
+      "entriesChecked": 6,
+      "fieldError": null,
+      "block": 50319575,
+      "checks": [
+        {
+          "name": "Rigel",
+          "website": "https://rigel-ten.vercel.app",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "BaseScout",
+          "website": "https://base-scout-seven.vercel.app/",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "Drift-d",
+          "website": "https://drift-divergence.netlify.app/",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "CoinOp",
+          "website": "https://shippost-kappa.vercel.app/",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "VETTE",
+          "website": "https://vette-nu.vercel.app",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        },
+        {
+          "name": "Termproof",
+          "website": "https://termproof-mauve.vercel.app",
+          "wallet": {
+            "note": "check failed — explorer/RPC busy"
+          },
+          "site": {
+            "status": 200,
+            "note": "up"
+          }
+        }
+      ],
+      "catches": [],
+      "sweepNote": "sweep failed — explorer busy",
+      "persisted": null
+    },
+    {
       "id": "run-mt400475",
       "reason": "scheduled",
       "at": "2026-08-22T06:29:28.001Z",
